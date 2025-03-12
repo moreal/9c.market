@@ -1,0 +1,2023 @@
+[
+  {
+    "name": "Single Package",
+    "order": 6,
+    "active": true,
+    "l10n_key": "MOBILE_SHOP_CATEGORY_Single",
+    "path": "shop/images/category/Icon_Shop_Single.png",
+    "product_list": [
+      {
+        "name": "20 Golden Dust",
+        "order": 1001,
+        "google_sku": "g_single_golddust01",
+        "apple_sku": "a_single_golddust01",
+        "apple_sku_k": "a_single_golddust01_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 24,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Epic",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Epic_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 20
+          }
+        ]
+      },
+      {
+        "name": "100 Golden Dust",
+        "order": 1002,
+        "google_sku": "g_single_golddust04",
+        "apple_sku": "a_single_golddust04",
+        "apple_sku_k": "a_single_golddust04_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 120,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Epic",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Epic_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 100
+          }
+        ]
+      },
+      {
+        "name": "200 Golden Dust",
+        "order": 1003,
+        "google_sku": "g_single_golddust05",
+        "apple_sku": "a_single_golddust05",
+        "apple_sku_k": "a_single_golddust05_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 240,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Epic",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Epic_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 200
+          }
+        ]
+      },
+      {
+        "name": "600 Golden Dust",
+        "order": 1004,
+        "google_sku": "g_single_golddust07",
+        "apple_sku": "a_single_golddust07",
+        "apple_sku_k": "a_single_golddust07_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 720,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Epic",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Epic_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 600
+          }
+        ]
+      },
+      {
+        "name": "AP Potion 15",
+        "order": 10001,
+        "google_sku": "g_single_ap01",
+        "apple_sku": "a_single_ap01",
+        "apple_sku_k": "a_single_ap01_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 24,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Epic",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Epic_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 15
+          }
+        ]
+      },
+      {
+        "name": "AP Potion 75",
+        "order": 10002,
+        "google_sku": "g_single_ap02",
+        "apple_sku": "a_single_ap02",
+        "apple_sku_k": "a_single_ap02_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 120,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Epic",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Epic_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 75
+          }
+        ]
+      },
+      {
+        "name": "AP Potion 150",
+        "order": 10003,
+        "google_sku": "g_single_ap03",
+        "apple_sku": "a_single_ap03",
+        "apple_sku_k": "a_single_ap03_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 240,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Epic",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Epic_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 150
+          }
+        ]
+      },
+      {
+        "name": "Hourglass 3000",
+        "order": 10004,
+        "google_sku": "g_single_hourglass01",
+        "apple_sku": "a_single_hourglass01",
+        "apple_sku_k": "a_single_hourglass01_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 24,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Epic",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Epic_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 3000
+          }
+        ]
+      },
+      {
+        "name": "Hourglass 15000",
+        "order": 10005,
+        "google_sku": "g_single_hourglass02",
+        "apple_sku": "a_single_hourglass02",
+        "apple_sku_k": "a_single_hourglass02_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 120,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Epic",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Epic_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 15000
+          }
+        ]
+      },
+      {
+        "name": "Hourglass 30000",
+        "order": 10006,
+        "google_sku": "g_single_hourglass03",
+        "apple_sku": "a_single_hourglass03",
+        "apple_sku_k": "a_single_hourglass03_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 240,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Epic",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Epic_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 30000
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Special Package",
+    "order": 2,
+    "active": true,
+    "l10n_key": "MOBILE_SHOP_CATEGORY_Special",
+    "path": "shop/images/category/Icon_Shop_Special.png",
+    "product_list": [
+      {
+        "name": "Valentine's Rune Stat Bonus Pack",
+        "order": 4,
+        "google_sku": "g_pkg_valrunestat",
+        "apple_sku": "a_pkg_valrunestat",
+        "apple_sku_k": "a_pkg_valrunestat_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": 4,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 96,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [
+          {
+            "ticker": "RUNESTONE_HP",
+            "amount": 240.0
+          },
+          {
+            "ticker": "RUNESTONE_GOLDENTHOR",
+            "amount": 120.0
+          }
+        ],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 400
+          },
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 120
+          },
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 120
+          }
+        ]
+      },
+      {
+        "name": "Valentine's Costume UP Pack",
+        "order": 5,
+        "google_sku": "g_pkg_valcostume",
+        "apple_sku": "a_pkg_valcostume",
+        "apple_sku_k": "a_pkg_valcostume_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 6,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 240,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [
+          {
+            "ticker": "CRYSTAL",
+            "amount": 24000000.0
+          }
+        ],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 400
+          },
+          {
+            "sheet_item_id": 600203,
+            "fungible_item_id": "Item_NT_600203",
+            "amount": 150
+          }
+        ]
+      },
+      {
+        "name": "Limited Mileage Combo Pack I",
+        "order": 6,
+        "google_sku": "g_pkg_mileagepk1",
+        "apple_sku": "a_pkg_mileagepk1",
+        "apple_sku_k": "a_pkg_mileagepk1_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 48,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 120
+          },
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 120
+          }
+        ]
+      },
+      {
+        "name": "Limited Mileage Combo Pack II",
+        "order": 7,
+        "google_sku": "g_pkg_mileagepk2",
+        "apple_sku": "a_pkg_mileagepk2",
+        "apple_sku_k": "a_pkg_mileagepk2_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": 1,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 120,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [
+          {
+            "ticker": "RUNESTONE_GOLDENTHOR",
+            "amount": 50.0
+          }
+        ],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 120
+          },
+          {
+            "sheet_item_id": 600203,
+            "fungible_item_id": "Item_NT_600203",
+            "amount": 120
+          }
+        ]
+      },
+      {
+        "name": "Traveler Package",
+        "order": 111,
+        "google_sku": "g_pkg_travel01",
+        "apple_sku": "a_pkg_travel01",
+        "apple_sku_k": "a_pkg_travel01_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 80,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Rare",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Rare_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 800
+          },
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 70
+          },
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 15
+          }
+        ]
+      },
+      {
+        "name": "Adventure Package",
+        "order": 112,
+        "google_sku": "g_pkg_adven01",
+        "apple_sku": "a_pkg_adven01",
+        "apple_sku_k": "a_pkg_adven01_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 160,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Rare",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Rare_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 25
+          },
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 1200
+          },
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 150
+          }
+        ]
+      },
+      {
+        "name": "Starter package",
+        "order": 113,
+        "google_sku": "g_pkg_starter01",
+        "apple_sku": "a_pkg_starter01",
+        "apple_sku_k": "a_pkg_starter01_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 24,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Rare",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Rare_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 5
+          },
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 20
+          },
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 300
+          }
+        ]
+      },
+      {
+        "name": "Blacksmith Package",
+        "order": 114,
+        "google_sku": "g_pkg_blacksmith01",
+        "apple_sku": "a_pkg_blacksmith01",
+        "apple_sku_k": "a_pkg_blacksmith01_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 2,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 80,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Rare",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Rare_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [
+          {
+            "ticker": "CRYSTAL",
+            "amount": 5500000.0
+          }
+        ],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 40
+          },
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 4500
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Recommended",
+    "order": 1,
+    "active": true,
+    "l10n_key": "MOBILE_SHOP_CATEGORY_Recommend",
+    "path": "shop/images/category/Icon_Shop_Recommend.png",
+    "product_list": [
+      {
+        "name": "Daily Valentine's Summon Pack",
+        "order": 3,
+        "google_sku": "g_pkg_dailyval",
+        "apple_sku": "a_pkg_dailyval",
+        "apple_sku_k": "a_pkg_dailyval_2",
+        "product_type": "IAP",
+        "daily_limit": 2,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 24,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 100
+          },
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 50
+          },
+          {
+            "sheet_item_id": 600203,
+            "fungible_item_id": "Item_NT_600203",
+            "amount": 10
+          }
+        ]
+      },
+      {
+        "name": "Valentine's Rune Stat Bonus Pack",
+        "order": 4,
+        "google_sku": "g_pkg_valrunestat",
+        "apple_sku": "a_pkg_valrunestat",
+        "apple_sku_k": "a_pkg_valrunestat_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": 4,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 96,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [
+          {
+            "ticker": "RUNESTONE_HP",
+            "amount": 240.0
+          },
+          {
+            "ticker": "RUNESTONE_GOLDENTHOR",
+            "amount": 120.0
+          }
+        ],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 400
+          },
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 120
+          },
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 120
+          }
+        ]
+      },
+      {
+        "name": "Valentine's Costume UP Pack",
+        "order": 5,
+        "google_sku": "g_pkg_valcostume",
+        "apple_sku": "a_pkg_valcostume",
+        "apple_sku_k": "a_pkg_valcostume_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 6,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 240,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [
+          {
+            "ticker": "CRYSTAL",
+            "amount": 24000000.0
+          }
+        ],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 400
+          },
+          {
+            "sheet_item_id": 600203,
+            "fungible_item_id": "Item_NT_600203",
+            "amount": 150
+          }
+        ]
+      },
+      {
+        "name": "Limited Mileage Combo Pack I",
+        "order": 6,
+        "google_sku": "g_pkg_mileagepk1",
+        "apple_sku": "a_pkg_mileagepk1",
+        "apple_sku_k": "a_pkg_mileagepk1_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 48,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 120
+          },
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 120
+          }
+        ]
+      },
+      {
+        "name": "Limited Mileage Combo Pack II",
+        "order": 7,
+        "google_sku": "g_pkg_mileagepk2",
+        "apple_sku": "a_pkg_mileagepk2",
+        "apple_sku_k": "a_pkg_mileagepk2_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": 1,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 120,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [
+          {
+            "ticker": "RUNESTONE_GOLDENTHOR",
+            "amount": 50.0
+          }
+        ],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 120
+          },
+          {
+            "sheet_item_id": 600203,
+            "fungible_item_id": "Item_NT_600203",
+            "amount": 120
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Summon Package",
+    "order": 4,
+    "active": true,
+    "l10n_key": "MOBILE_SHOP_CATEGORY_Summon",
+    "path": "shop/images/category/Icon_Shop_Summon.png",
+    "product_list": [
+      {
+        "name": "Daily Valentine's Summon Pack",
+        "order": 3,
+        "google_sku": "g_pkg_dailyval",
+        "apple_sku": "a_pkg_dailyval",
+        "apple_sku_k": "a_pkg_dailyval_2",
+        "product_type": "IAP",
+        "daily_limit": 2,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 24,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 100
+          },
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 50
+          },
+          {
+            "sheet_item_id": 600203,
+            "fungible_item_id": "Item_NT_600203",
+            "amount": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Pet Package",
+    "order": 5,
+    "active": true,
+    "l10n_key": "MOBILE_SHOP_CATEGORY_Pet",
+    "path": "shop/images/category/Icon_Shop_Pet.png",
+    "product_list": []
+  },
+  {
+    "name": "Level Package",
+    "order": 3,
+    "active": true,
+    "l10n_key": "MOBILE_SHOP_CATEGORY_Level",
+    "path": "shop/images/category/Icon_Shop_Level.png",
+    "product_list": [
+      {
+        "name": "Level Achievement Package : 10Lv",
+        "order": 101,
+        "google_sku": "g_pkg_level10",
+        "apple_sku": "a_pkg_level10",
+        "apple_sku_k": "a_pkg_level10_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": 10,
+        "mileage": 24,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2024-03-04T02:00:00",
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 60
+          },
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 3000
+          },
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 30
+          }
+        ]
+      },
+      {
+        "name": "Level Achievement Package : 50Lv",
+        "order": 102,
+        "google_sku": "g_pkg_level50",
+        "apple_sku": "a_pkg_level50",
+        "apple_sku_k": "a_pkg_level50_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": 50,
+        "mileage": 48,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2024-03-04T02:00:00",
+        "close_timestamp": null,
+        "fav_list": [
+          {
+            "ticker": "CRYSTAL",
+            "amount": 2000000.0
+          }
+        ],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 5000
+          },
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 50
+          },
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 120
+          }
+        ]
+      },
+      {
+        "name": "Level Achievement Package : 100Lv",
+        "order": 103,
+        "google_sku": "g_pkg_level100",
+        "apple_sku": "a_pkg_level100",
+        "apple_sku_k": "a_pkg_level100_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": 100,
+        "mileage": 80,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2024-03-04T02:00:00",
+        "close_timestamp": null,
+        "fav_list": [
+          {
+            "ticker": "RUNE_GOLDENLEAF",
+            "amount": 8.0
+          },
+          {
+            "ticker": "CRYSTAL",
+            "amount": 5000000.0
+          }
+        ],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 75
+          },
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 7500
+          },
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 200
+          }
+        ]
+      },
+      {
+        "name": "Level Achievement Package : 200Lv",
+        "order": 104,
+        "google_sku": "g_pkg_level200",
+        "apple_sku": "a_pkg_level200",
+        "apple_sku_k": "a_pkg_level200_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": 200,
+        "mileage": 120,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2024-03-04T02:00:00",
+        "close_timestamp": null,
+        "fav_list": [
+          {
+            "ticker": "CRYSTAL",
+            "amount": 10000000.0
+          },
+          {
+            "ticker": "RUNE_GOLDENLEAF",
+            "amount": 12.0
+          }
+        ],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 300
+          },
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 100
+          },
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 10000
+          }
+        ]
+      },
+      {
+        "name": "Daily Free Package LV100",
+        "order": 100004,
+        "google_sku": "g_pkg_freedaily100",
+        "apple_sku": "a_pkg_freedaily100",
+        "apple_sku_k": "a_pkg_freedaily100_2",
+        "product_type": "FREE",
+        "daily_limit": 1,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": 100,
+        "mileage": 0,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Normal",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Normal_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2024-04-01T00:00:00",
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 800201,
+            "fungible_item_id": "Item_NT_800201",
+            "amount": 10
+          },
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 100
+          }
+        ]
+      },
+      {
+        "name": "Daily Free Package LV200",
+        "order": 100005,
+        "google_sku": "g_pkg_freedaily200",
+        "apple_sku": "a_pkg_freedaily200",
+        "apple_sku_k": "a_pkg_freedaily200_2",
+        "product_type": "FREE",
+        "daily_limit": 1,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": 200,
+        "mileage": 0,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Normal",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Normal_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2024-04-01T00:00:00",
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 1
+          },
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 200
+          },
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "name": "Daily Free Package LV350",
+        "order": 100006,
+        "google_sku": "g_pkg_freedaily350",
+        "apple_sku": "a_pkg_freedaily350",
+        "apple_sku_k": "a_pkg_freedaily350_2",
+        "product_type": "FREE",
+        "daily_limit": 1,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": 350,
+        "mileage": 0,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Normal",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Normal_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2024-04-01T00:00:00",
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 800201,
+            "fungible_item_id": "Item_NT_800201",
+            "amount": 10
+          },
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 1
+          },
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 1
+          },
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 300
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "NoShow",
+    "order": 999,
+    "active": true,
+    "l10n_key": "MOBILE_SHOP_CATEGORY_NoShow",
+    "path": "shop/images/category/Icon_Shop_NoShow.png",
+    "product_list": [
+      {
+        "name": "WORLDCLEARPASS1Premium",
+        "order": 999999,
+        "google_sku": "g_pkg_worldclearpass1premium",
+        "apple_sku": "a_pkg_worldclearpass1premium",
+        "apple_sku_k": "a_pkg_worldclearpass1premium_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 3,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 240,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 100
+          },
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 200
+          },
+          {
+            "sheet_item_id": 600203,
+            "fungible_item_id": "Item_NT_600203",
+            "amount": 50
+          },
+          {
+            "sheet_item_id": 40100032,
+            "fungible_item_id": "Item_T_40100032",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "name": "COURAGEPASS16Premium",
+        "order": 999999,
+        "google_sku": "g_pkg_couragepass16premium",
+        "apple_sku": "a_pkg_couragepass16premium",
+        "apple_sku_k": "a_pkg_couragepass16premium_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 3,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 240,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-03-01T00:00:00",
+        "close_timestamp": "2025-03-31T23:59:00",
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 150
+          },
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 100
+          },
+          {
+            "sheet_item_id": 49900032,
+            "fungible_item_id": "Item_T_49900032",
+            "amount": 1
+          },
+          {
+            "sheet_item_id": 400000,
+            "fungible_item_id": "Item_NT_400000",
+            "amount": 15000
+          },
+          {
+            "sheet_item_id": 600203,
+            "fungible_item_id": "Item_NT_600203",
+            "amount": 20
+          },
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 800
+          }
+        ]
+      },
+      {
+        "name": "ADVENTUREBOSSPASS4Premium",
+        "order": 999999,
+        "google_sku": "g_pkg_adventurebosspass4premium",
+        "apple_sku": "a_pkg_adventurebosspass4premium",
+        "apple_sku_k": "a_pkg_adventurebosspass4premium_2",
+        "product_type": "IAP",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 3,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 120,
+        "mileage_price": null,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-03-01T00:00:00",
+        "close_timestamp": "2025-03-31T23:59:00",
+        "fav_list": [
+          {
+            "ticker": "RUNESTONE_HP",
+            "amount": 100.0
+          },
+          {
+            "ticker": "RUNESTONE_GOLDENTHOR",
+            "amount": 40.0
+          },
+          {
+            "ticker": "RUNESTONE_CRI",
+            "amount": 100.0
+          },
+          {
+            "ticker": "RUNE_GOLDENLEAF",
+            "amount": 100.0
+          }
+        ],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600401,
+            "fungible_item_id": "Item_T_600401",
+            "amount": 500
+          },
+          {
+            "sheet_item_id": 800202,
+            "fungible_item_id": "Item_NT_800202",
+            "amount": 60
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Mileage",
+    "order": 7,
+    "active": true,
+    "l10n_key": "MOBILE_SHOP_CATEGORY_Mileage",
+    "path": "shop/images/category/Icon_Shop_Mileage.png",
+    "product_list": [
+      {
+        "name": "Limited Essential Package",
+        "order": 1000001,
+        "google_sku": "g_pkg_mileage01",
+        "apple_sku": "a_pkg_mileage01",
+        "apple_sku_k": "a_pkg_mileage01_2",
+        "product_type": "MILEAGE",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 0,
+        "mileage_price": 32,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 200
+          },
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 200
+          }
+        ]
+      },
+      {
+        "name": "Limited Summon Pacakge",
+        "order": 1000002,
+        "google_sku": "g_pkg_mileage02",
+        "apple_sku": "a_pkg_mileage02",
+        "apple_sku_k": "a_pkg_mileage02_2",
+        "product_type": "MILEAGE",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 0,
+        "mileage_price": 100,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 200
+          },
+          {
+            "sheet_item_id": 600203,
+            "fungible_item_id": "Item_NT_600203",
+            "amount": 200
+          }
+        ]
+      },
+      {
+        "name": "Skaedolin the Abyss Harmonizer",
+        "order": 1000003,
+        "google_sku": "g_pkg_mileage17",
+        "apple_sku": "g_pkg_mileage17",
+        "apple_sku_k": "g_pkg_mileage17_2",
+        "product_type": "MILEAGE",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 0,
+        "mileage_price": 8000,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 40100041,
+            "fungible_item_id": "Item_T_40100041",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "name": "Gold Partner",
+        "order": 1000004,
+        "google_sku": "g_pkg_mileage18",
+        "apple_sku": "g_pkg_mileage18",
+        "apple_sku_k": "g_pkg_mileage18_2",
+        "product_type": "MILEAGE",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 0,
+        "mileage_price": 8000,
+        "purchase_count": 0,
+        "rarity": "Legendary",
+        "size": "1x2",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Legendary_1x2.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": null,
+        "close_timestamp": null,
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 49900027,
+            "fungible_item_id": "Item_T_49900027",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "name": "Goodbye Thor Pack",
+        "order": 1000013,
+        "google_sku": "g_pkg_mileage28",
+        "apple_sku": "a_pkg_mileage28",
+        "apple_sku_k": "a_pkg_mileage28_2",
+        "product_type": "MILEAGE",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 0,
+        "mileage_price": 200,
+        "purchase_count": 0,
+        "rarity": "Unique",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Unique_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-03-04T00:00:00",
+        "close_timestamp": "2025-03-31T23:59:00",
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 2000
+          },
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 2000
+          }
+        ]
+      },
+      {
+        "name": "Thor's Summoner Pack",
+        "order": 1000014,
+        "google_sku": "g_pkg_mileage29",
+        "apple_sku": "a_pkg_mileage29",
+        "apple_sku_k": "a_pkg_mileage29_2",
+        "product_type": "MILEAGE",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 0,
+        "mileage_price": 4000,
+        "purchase_count": 0,
+        "rarity": "Unique",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Unique_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-03-04T00:00:00",
+        "close_timestamp": "2025-03-31T23:59:00",
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 400
+          },
+          {
+            "sheet_item_id": 600203,
+            "fungible_item_id": "Item_NT_600203",
+            "amount": 200
+          },
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 1000
+          }
+        ]
+      },
+      {
+        "name": "Thor's Beginner Pack",
+        "order": 1000015,
+        "google_sku": "g_pkg_mileage30",
+        "apple_sku": "a_pkg_mileage30",
+        "apple_sku_k": "a_pkg_mileage30_2",
+        "product_type": "MILEAGE",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 0,
+        "mileage_price": 1800,
+        "purchase_count": 0,
+        "rarity": "Unique",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Unique_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-03-04T00:00:00",
+        "close_timestamp": "2025-03-31T23:59:00",
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 1000
+          },
+          {
+            "sheet_item_id": 800202,
+            "fungible_item_id": "Item_NT_800202",
+            "amount": 100
+          },
+          {
+            "sheet_item_id": 500000,
+            "fungible_item_id": "Item_NT_500000",
+            "amount": 300
+          }
+        ]
+      },
+      {
+        "name": "Thor's Warrior Pack",
+        "order": 1000016,
+        "google_sku": "g_pkg_mileage31",
+        "apple_sku": "a_pkg_mileage31",
+        "apple_sku_k": "a_pkg_mileage31_2",
+        "product_type": "MILEAGE",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 0,
+        "mileage_price": 7000,
+        "purchase_count": 0,
+        "rarity": "Unique",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Unique_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-03-04T00:00:00",
+        "close_timestamp": "2025-03-31T23:59:00",
+        "fav_list": [
+          {
+            "ticker": "RUNESTONE_GOLDENTHOR",
+            "amount": 250.0
+          }
+        ],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 600
+          }
+        ]
+      },
+      {
+        "name": "Golden Thor 10",
+        "order": 1000017,
+        "google_sku": "g_pkg_mileage19",
+        "apple_sku": "a_pkg_mileage19",
+        "apple_sku_k": "a_pkg_mileage19_2",
+        "product_type": "MILEAGE",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 0,
+        "mileage_price": 160,
+        "purchase_count": 0,
+        "rarity": "Unique",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Unique_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-01-17T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [
+          {
+            "ticker": "RUNESTONE_GOLDENTHOR",
+            "amount": 10.0
+          }
+        ],
+        "fungible_item_list": []
+      },
+      {
+        "name": "Limited Combo Pack I",
+        "order": 1000018,
+        "google_sku": "g_pkg_mileage24",
+        "apple_sku": "a_pkg_mileage24",
+        "apple_sku_k": "a_pkg_mileage24_2",
+        "product_type": "MILEAGE",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": 1,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 0,
+        "mileage_price": 90,
+        "purchase_count": 0,
+        "rarity": "Unique",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Unique_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 80
+          },
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 80
+          }
+        ]
+      },
+      {
+        "name": "Limited Combo Pack II",
+        "order": 1000019,
+        "google_sku": "g_pkg_mileage25",
+        "apple_sku": "a_pkg_mileage25",
+        "apple_sku_k": "a_pkg_mileage25_2",
+        "product_type": "MILEAGE",
+        "daily_limit": null,
+        "weekly_limit": 1,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 0,
+        "mileage_price": 120,
+        "purchase_count": 0,
+        "rarity": "Unique",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Unique_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600203,
+            "fungible_item_id": "Item_NT_600203",
+            "amount": 80
+          },
+          {
+            "sheet_item_id": 600202,
+            "fungible_item_id": "Item_NT_600202",
+            "amount": 80
+          }
+        ]
+      },
+      {
+        "name": "Golden Dust Pack",
+        "order": 1000020,
+        "google_sku": "g_pkg_mileage26",
+        "apple_sku": "a_pkg_mileage26",
+        "apple_sku_k": "a_pkg_mileage26_2",
+        "product_type": "MILEAGE",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 0,
+        "mileage_price": 960,
+        "purchase_count": 0,
+        "rarity": "Unique",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Unique_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 600201,
+            "fungible_item_id": "Item_NT_600201",
+            "amount": 400
+          }
+        ]
+      },
+      {
+        "name": "Golden Meat",
+        "order": 1000021,
+        "google_sku": "g_pkg_mileage27",
+        "apple_sku": "a_pkg_mileage27",
+        "apple_sku_k": "a_pkg_mileage27_2",
+        "product_type": "MILEAGE",
+        "daily_limit": null,
+        "weekly_limit": null,
+        "account_limit": null,
+        "active": true,
+        "buyable": true,
+        "required_level": null,
+        "mileage": 0,
+        "mileage_price": 160,
+        "purchase_count": 0,
+        "rarity": "Unique",
+        "size": "1x1",
+        "discount": 0,
+        "l10n_key": "=",
+        "path": "=",
+        "bg_path": "shop/images/product/list/bg_Unique_1x1.png",
+        "popup_path_key": "=_PATH",
+        "open_timestamp": "2025-02-14T00:00:00",
+        "close_timestamp": "2025-03-13T23:59:00",
+        "fav_list": [],
+        "fungible_item_list": [
+          {
+            "sheet_item_id": 800202,
+            "fungible_item_id": "Item_NT_800202",
+            "amount": 10
+          }
+        ]
+      }
+    ]
+  }
+]
