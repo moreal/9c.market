@@ -1,6 +1,8 @@
 {
   "name": "9c-market",
   "type": "module",
+  "private": true,
+  "license": "AGPL-3.0-only",
   "scripts": {
     "dev": "vinxi dev",
     "build": "vinxi build",
