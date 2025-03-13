@@ -1,44 +1,54 @@
-import { Show } from "solid-js";
 import { Product } from "../../types/iap";
-import { formatPrice } from "../../utils/iap-utils";
+import { currency } from "~/contexts/CurrencyContext";
 
 type ProductPriceProps = {
-  product: Product;
+	product: Product;
+};
+
+// KRW to some currencies.
+const KRW_EXCHANGE_RATE_MAP: Record<string, number> = {
+	USD: 0.00069,
 };
 
 export default function ProductPrice(props: ProductPriceProps) {
-  const { product } = props;
-  
-  // Helper to format mileage value
-  const formatMileage = () => {
-    if (product.product_type === "MILEAGE" && product.mileage_price !== null) {
-      return `${product.mileage_price} Mileage`;
-    }
-    return `${product.mileage} Mileage`;
-  };
-  
-  return (
-    <div class="flex items-center">
-      <div class="text-right">
-        {/* Show KRW price first if available */}
-        <Show when={product.networkPrice?.KRW} fallback={
-          <span class="text-lg font-bold text-gray-900">{formatMileage()}</span>
-        }>
-          <span class="text-lg font-bold text-gray-900">{product.networkPrice!.KRW.toLocaleString()} KRW</span>
-          <div class="text-xs text-blue-600 font-medium">
-            {formatMileage()}
-          </div>
-        </Show>
-        
-        {/* Show discounted price if applicable */}
-        {product.discount > 0 && (
-          <div class="text-xs text-gray-500 line-through">
-            {product.networkPrice?.KRW 
-              ? `${Math.round(product.networkPrice.KRW * (1 / (1 - product.discount / 100))).toLocaleString()} KRW` 
-              : formatMileage()}
-          </div>
-        )}
-      </div>
-    </div>
-  );
+	const { product } = props;
+
+	const definePriceMessage = () => {
+		if (product.product_type === "MILEAGE") {
+			if (product.mileage_price !== null) {
+				return `${product.mileage_price} Mileage`;
+			}
+
+			return `${product.mileage} Mileage`;
+		}
+
+		if (product.product_type === "FREE") {
+			return "FREE";
+		}
+
+		if (product.product_type === "IAP") {
+			if (product.networkPrice === undefined) {
+				return "Unknown Price";
+			}
+			if (
+				product.networkPrice[currency()] === undefined &&
+				product.networkPrice.KRW !== undefined &&
+				KRW_EXCHANGE_RATE_MAP[currency()] !== undefined
+			) {
+				return `${product.networkPrice.KRW * KRW_EXCHANGE_RATE_MAP[currency()]} ${currency()}`;
+			}
+
+			return `${product.networkPrice[currency()]} ${currency()}`;
+		}
+	};
+
+	return (
+		<div class="flex items-center">
+			<div class="text-right">
+				<div class="text-lg font-bold text-gray-900">
+					{definePriceMessage()}
+				</div>
+			</div>
+		</div>
+	);
 }

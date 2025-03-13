@@ -6,18 +6,18 @@ import { NetworkProvider } from "~/contexts/NetworkContext";
 import "./app.css";
 
 export default function App() {
-  return (
-    <NetworkProvider>
-      <Router
-        root={props => (
-          <>
-            <Nav />
-            <Suspense>{props.children}</Suspense>
-          </>
-        )}
-      >
-        <FileRoutes />
-      </Router>
-    </NetworkProvider>
-  );
+	return (
+		<NetworkProvider>
+			<Router
+				root={(props) => (
+					<>
+						<Nav />
+						<Suspense>{props.children}</Suspense>
+					</>
+				)}
+			>
+				<FileRoutes />
+			</Router>
+		</NetworkProvider>
+	);
 }
