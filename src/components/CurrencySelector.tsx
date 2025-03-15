@@ -37,7 +37,9 @@ export default function CurrencySelector() {
 				onClick={toggleDropdown}
 				class="flex items-center bg-sky-700 hover:bg-sky-600 text-white px-3 py-1 rounded-lg focus:outline-none transition-colors duration-200"
 			>
-				<span class="mr-1">{SYMBOL_BY_CURRENCY[currency()]} {currency()}</span>
+				<span class="mr-1">
+					{SYMBOL_BY_CURRENCY[currency()]} {currency()}
+				</span>
 				<HeroiconsOutlineChevronDown
 					stroke="currentColor"
 					fill="none"

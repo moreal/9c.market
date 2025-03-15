@@ -1,4 +1,4 @@
-import { Show } from "solid-js";
+import { createMemo, Show } from "solid-js";
 import { useCurrency } from "~/contexts/CurrencyContext";
 import { useWNCGPrice } from "~/contexts/WNCGPriceContext";
 import type { ItemProduct } from "~/types/market.zod";
@@ -6,7 +6,10 @@ import { SHEET_ID_MAP } from "~/utils/sheet_ids";
 import HeroiconsOutlineCurrencyDollar from "~icons/heroicons-outline/currency-dollar";
 import HeroiconsOutlineTag from "~icons/heroicons-outline/tag";
 import HeroiconsOutlineExternalLink from "~icons/heroicons-outline/external-link";
+import HeroiconsOutlineTrendingDown from "~icons/heroicons-outline/trending-down";
+import HeroiconsOutlineTrendingUp from "~icons/heroicons-outline/trending-up";
 import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
+import { useProducts } from "~/contexts/ProductsContext";
 
 const NCSCAN_BY_NETWORK: Record<NetworkType, string> = {
 	heimdall: "https://heimdall.9cscan.com",
@@ -19,6 +22,30 @@ export function MarketProduct(props: {
 	const { network } = useNetwork();
 	const { currency } = useCurrency();
 	const { wncgPrice } = useWNCGPrice();
+	const { getAveragePrice } = useProducts();
+
+	const iapPriceComparison = createMemo(() => {
+		const result = getAveragePrice(props.product.itemId, currency());
+		if (result === null) return null;
+
+		const price = wncgPrice();
+		if (price === null || price === undefined) return null;
+
+		const percent =
+			100 - (props.product.unitPrice / (result.averagePrice / price)) * 100;
+
+		if (percent < 0) {
+			return {
+				percent: Math.abs(percent),
+				cheaper: false,
+			};
+		}
+
+		return {
+			percent,
+			cheaper: true,
+		};
+	});
 
 	return (
 		<Show when={!wncgPrice.error && !wncgPrice.loading && wncgPrice()}>
@@ -57,8 +84,7 @@ export function MarketProduct(props: {
 							</a>
 						</div>
 					</div>
-
-					<div class="grid grid-cols-2 gap-2 bg-gray-50 rounded-md p-2">
+					<div class="grid grid-cols-3 gap-2 bg-gray-50 rounded-md p-2">
 						<div class="flex items-center">
 							<HeroiconsOutlineCurrencyDollar class="stroke-2 h-4 w-4 text-amber-500 mr-1.5" />
 							<div>
@@ -79,6 +105,25 @@ export function MarketProduct(props: {
 								</div>
 							</div>
 						</div>
+						<Show when={iapPriceComparison()}>
+							<div class="flex items-center">
+								{iapPriceComparison()?.cheaper ? (
+									<HeroiconsOutlineTrendingDown class="stroke-2 h-4 w-4 text-green-500 mr-1.5" />
+								) : (
+									<HeroiconsOutlineTrendingUp class="stroke-2 h-4 w-4 text-orange-500 mr-1.5" />
+								)}
+								<div>
+									<span class="text-xs text-gray-500">Compare with IAP</span>
+									<div
+										class={`font-semibold ${iapPriceComparison()?.cheaper ? "text-green-600" : "text-orange-600"} text-sm transition-all duration-300`}
+									>
+										{iapPriceComparison()?.percent.toFixed(2)}%{" "}
+										{iapPriceComparison()?.cheaper ? "cheaper" : "expensive"}{" "}
+										than IAP
+									</div>
+								</div>
+							</div>
+						</Show>
 					</div>
 				</div>
 			</div>

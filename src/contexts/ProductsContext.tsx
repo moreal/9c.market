@@ -3,6 +3,8 @@ import type { Category, Product } from "~/types/iap";
 import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
 import { createAsync, query } from "@solidjs/router";
 import { marketApi } from "~/lib/api";
+import type { CurrencyType } from "./CurrencyContext";
+import { EXCHANGE_RATE_BY_CURRENCY } from "~/constants";
 
 // Create a server action for product fetching
 const fetchProducts = query((networkName: NetworkType) => {
@@ -14,6 +16,10 @@ const fetchProducts = query((networkName: NetworkType) => {
 type ProductsContextType = {
 	categories: () => Category[] | undefined;
 	allProducts: () => Product[];
+	getAveragePrice: (
+		sheetId: number,
+		currency: CurrencyType,
+	) => { averagePrice: number; amount: number; sheetId: number } | null;
 };
 
 const ProductsContext = createContext<ProductsContextType>();
@@ -27,7 +33,6 @@ export function ProductsProvider(props: { children: JSX.Element }) {
 	});
 
 	const allProducts = () => {
-		// console.log("owner", getOwner());
 		const cate = categories();
 		// Flatten all products from all categories into a single array
 		return cate.reduce((acc, category) => {
@@ -35,11 +40,42 @@ export function ProductsProvider(props: { children: JSX.Element }) {
 		}, [] as Product[]);
 	};
 
+	const getAveragePrice = (
+		sheetId: number,
+		currency: CurrencyType,
+	): { averagePrice: number; sheetId: number; amount: number } | null => {
+		const filtered = allProducts().filter(
+			(p) =>
+				p.fungible_item_list.length === 1 &&
+				p.fungible_item_list[0].sheet_item_id === sheetId,
+		);
+		const sorted = filtered.toSorted(
+			(a, b) => a.fungible_item_list[0].amount - b.fungible_item_list[0].amount,
+		);
+		if (sorted.length === 0) return null;
+		const productWithHighestAmount = sorted[sorted.length - 1];
+
+		const amount = productWithHighestAmount.fungible_item_list[0].amount || 0;
+		if (amount > 0) {
+			return {
+				averagePrice:
+					productWithHighestAmount.networkPrice.KRW /
+					amount /
+					EXCHANGE_RATE_BY_CURRENCY[currency],
+				sheetId,
+				amount,
+			};
+		}
+
+		return null;
+	};
+
 	return (
 		<ProductsContext.Provider
 			value={{
 				categories,
 				allProducts,
+				getAveragePrice,
 			}}
 		>
 			{props.children}

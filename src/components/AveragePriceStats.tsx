@@ -1,72 +1,26 @@
-import { For, createMemo, Show } from "solid-js";
-import { type CurrencyType, useCurrency } from "../contexts/CurrencyContext";
+import { For, createMemo, Show, Suspense } from "solid-js";
+import { useCurrency } from "../contexts/CurrencyContext";
 import { useWNCGPrice } from "~/contexts/WNCGPriceContext";
 import { useProducts } from "~/contexts/ProductsContext";
-import type { Product } from "~/types/iap";
 import { NoHydration } from "solid-js/web";
-import {
-	DECIMALS_BY_CURRENCY,
-	EXCHANGE_RATE_BY_CURRENCY,
-	SYMBOL_BY_CURRENCY,
-} from "~/constants";
+import { DECIMALS_BY_CURRENCY, SYMBOL_BY_CURRENCY } from "~/constants";
+import { SHEET_ID_MAP } from "~/utils/sheet_ids";
 
-// Item types that we want to calculate average price for
 const ITEM_TYPES = [
-	{ key: "AP Potion", label: "AP Potion" },
-	{ key: "Hourglass", label: "Hourglass" },
-	{ key: "Golden Dust", label: "Golden Dust" },
+	{ label: SHEET_ID_MAP[500000], itemId: 500000 },
+	{ label: SHEET_ID_MAP[400000], itemId: 400000 },
+	{ label: SHEET_ID_MAP[600201], itemId: 600201 },
 ];
-
-// Calculate average price per unit for specific item types
-function calculateAveragePrice(
-	products: Product[],
-	itemName: string,
-): { averagePrice: number; amount: number } | null {
-	// let productWithHighestAmount: Product | null = null;
-
-	const filtered = products.filter((p) => p.name.includes(itemName));
-	const sorted = filtered.toSorted(
-		(a, b) => a.fungible_item_list[0].amount - b.fungible_item_list[0].amount,
-	);
-	if (sorted.length === 0) return null;
-	const productWithHighestAmount = sorted[0];
-
-	if (productWithHighestAmount?.networkPrice?.KRW) {
-		const amount = productWithHighestAmount.fungible_item_list[0].amount || 0;
-		if (amount > 0) {
-			const averagePrice = Number(
-				(productWithHighestAmount.networkPrice.KRW / amount).toFixed(2),
-			);
-			return { averagePrice, amount };
-		}
-	}
-
-	return null;
-}
 
 export default function AveragePriceStats() {
 	const { currency } = useCurrency();
 	const { wncgPrice } = useWNCGPrice();
-	const { allProducts } = useProducts();
+	const { getAveragePrice } = useProducts();
 	// Calculate average price per item type
 	const averagePrices = createMemo(() => {
-		const result = ITEM_TYPES.map((itemType) => {
-			const result = calculateAveragePrice(allProducts(), itemType.key);
-
-			// If the currency is USD and we have KRW prices, convert them
-			if (result === null) return null;
-			const adjustedPrice =
-				result.averagePrice / EXCHANGE_RATE_BY_CURRENCY[currency()];
-
-			return {
-				...itemType,
-				...result,
-				averagePrice: adjustedPrice,
-			};
-		})
-			.filter((item) => item !== null)
-			.filter((item) => item.averagePrice !== undefined);
-		return result;
+		return ITEM_TYPES.map((item) =>
+			getAveragePrice(item.itemId, currency()),
+		).filter((r) => r !== null);
 	});
 
 	// Calculate NCG price equivalent
@@ -78,7 +32,7 @@ export default function AveragePriceStats() {
 	};
 
 	return (
-		<Show when={allProducts() && allProducts().length > 0}>
+		<Suspense>
 			<div class="bg-white rounded-lg shadow-sm p-4 mb-6">
 				<h3 class="text-lg font-semibold text-gray-800 mb-3">
 					Average Prices (per unit)
@@ -89,7 +43,9 @@ export default function AveragePriceStats() {
 						{(item) => (
 							<div class="bg-gray-50 p-3 rounded-md border border-gray-100">
 								<div class="flex justify-between items-center">
-									<span class="text-gray-700">{item.label}</span>
+									<span class="text-gray-700">
+										{SHEET_ID_MAP[item.sheetId]}
+									</span>
 									<span class="font-semibold text-indigo-600">
 										{SYMBOL_BY_CURRENCY[currency()]}
 										{item.averagePrice.toFixed(
@@ -121,6 +77,6 @@ export default function AveragePriceStats() {
 					</For>
 				</div>
 			</div>
-		</Show>
+		</Suspense>
 	);
 }
