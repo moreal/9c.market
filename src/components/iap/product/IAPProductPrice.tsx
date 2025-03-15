@@ -1,12 +1,12 @@
 import { DECIMALS_BY_CURRENCY, EXCHANGE_RATE_BY_CURRENCY } from "~/constants";
-import type { Product } from "../../types/iap";
+import type { Product } from "~/types/iap";
 import { useCurrency } from "~/contexts/CurrencyContext";
 
-type ProductPriceProps = {
+type IAPProductPriceProps = {
 	product: Product;
 };
 
-export default function ProductPrice(props: ProductPriceProps) {
+export default function IAPProductPrice(props: IAPProductPriceProps) {
 	const { product } = props;
 	const { currency } = useCurrency();
 

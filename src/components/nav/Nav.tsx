@@ -2,7 +2,7 @@ import { A, useLocation } from "@solidjs/router";
 import NetworkSelector from "./NetworkSelector";
 import CurrencySelector from "./CurrencySelector";
 import HeroiconsOutlineShoppingBag from "~icons/heroicons-outline/shopping-bag";
-import { InformationCircleIcon } from "./ui/InformationCircleIcon";
+import { InformationCircleIcon } from "../ui/InformationCircleIcon";
 
 export default function Nav() {
 	const location = useLocation();

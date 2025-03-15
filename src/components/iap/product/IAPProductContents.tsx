@@ -1,13 +1,13 @@
 import { For } from "solid-js";
-import type { Product } from "../../types/iap";
-import CollapsibleContent from "../CollapsibleContent";
+import type { Product } from "../../../types/iap";
+import CollapsibleContent from "../../ui/CollapsibleContent";
 import { SHEET_ID_MAP } from "~/utils/sheet_ids";
 
-type ProductContentsProps = {
+type IAPProductContentsProps = {
 	product: Product;
 };
 
-export default function ProductContents(props: ProductContentsProps) {
+export default function IAPProductContents(props: IAPProductContentsProps) {
 	const { product } = props;
 
 	return (

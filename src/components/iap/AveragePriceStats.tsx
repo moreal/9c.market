@@ -1,5 +1,5 @@
 import { For, createMemo, Show, Suspense } from "solid-js";
-import { useCurrency } from "../contexts/CurrencyContext";
+import { useCurrency } from "../../contexts/CurrencyContext";
 import { useWNCGPrice } from "~/contexts/WNCGPriceContext";
 import { useProducts } from "~/contexts/ProductsContext";
 import { NoHydration } from "solid-js/web";

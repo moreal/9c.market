@@ -1,11 +1,11 @@
-import type { Product } from "../../types/iap";
-import AttributeItem from "../ui/AttributeItem";
+import type { Product } from "~/types/iap";
+import AttributeItem from "~/components/ui/AttributeItem";
 
-type ProductDetailsProps = {
+type IAPProductDetailsProps = {
 	product: Product;
 };
 
-export default function ProductDetails(props: ProductDetailsProps) {
+export default function IAPProductDetails(props: IAPProductDetailsProps) {
 	const { product } = props;
 
 	return (

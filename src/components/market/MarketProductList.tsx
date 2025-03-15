@@ -1,6 +1,6 @@
 import { For } from "solid-js";
 import type { ItemProduct } from "~/types/market.zod";
-import { MarketProduct } from "~/components/MarketProduct";
+import { MarketProduct } from "~/components/market/MarketProduct";
 
 export function MarketProductList(props: {
 	products: ItemProduct[];

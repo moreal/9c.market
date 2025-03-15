@@ -1,7 +1,7 @@
 import { For, Show } from "solid-js";
-import type { Category } from "../types/iap";
-import ProductItem from "./ProductItem";
-import CategoryHeader from "./category/CategoryHeader";
+import type { Category } from "~/types/iap";
+import IAPProductItem from "~/components/iap/product/IAPProductItem";
+import CategoryHeader from "~/components/iap/category/CategoryHeader";
 
 export default function CategorySection(props: { category: Category }) {
 	const { category } = props;
@@ -23,7 +23,7 @@ export default function CategorySection(props: { category: Category }) {
 							.filter((product) => product.active)
 							.sort((a, b) => a.order - b.order)}
 					>
-						{(product) => <ProductItem product={product} />}
+						{(product) => <IAPProductItem product={product} />}
 					</For>
 				</div>
 			</div>

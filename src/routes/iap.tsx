@@ -1,10 +1,10 @@
 import { For, Show, Suspense } from "solid-js";
-import CategorySection from "../components/CategorySection";
-import { useNetwork } from "../contexts/NetworkContext";
-import PageHeader from "../components/ui/PageHeader";
-import LoadingSpinner from "../components/ui/LoadingSpinner";
-import AveragePriceStats from "../components/AveragePriceStats";
-import WNCGPrice from "../components/WNCGPrice";
+import CategorySection from "~/components/iap/category/CategorySection";
+import { useNetwork } from "~/contexts/NetworkContext";
+import PageHeader from "~/components/ui/PageHeader";
+import LoadingSpinner from "~/components/ui/LoadingSpinner";
+import AveragePriceStats from "~/components/iap/AveragePriceStats";
+import WNCGPrice from "~/components/iap/WNCGPrice";
 import { useProducts } from "~/contexts/ProductsContext";
 
 export default function IAPProducts() {

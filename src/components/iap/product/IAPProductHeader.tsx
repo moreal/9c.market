@@ -1,11 +1,11 @@
-import type { Product } from "../../types/iap";
-import { getRarityColorClass } from "../../utils/iap-utils";
+import type { Product } from "~/types/iap";
+import { getRarityColorClass } from "~/utils/iap-utils";
 
-type ProductHeaderProps = {
+type IAPProductHeaderProps = {
 	product: Product;
 };
 
-export default function ProductHeader(props: ProductHeaderProps) {
+export default function IAPProductHeader(props: IAPProductHeaderProps) {
 	const { product } = props;
 
 	return (
@@ -21,6 +21,8 @@ export default function ProductHeader(props: ProductHeaderProps) {
 				{product.discount > 0 && (
 					<span class="ml-2 bg-red-600 px-3 py-1 rounded-full text-xs font-medium text-white flex items-center">
 						<svg
+							role="img"
+							aria-label="Discount"
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-3 w-3 mr-1"
 							fill="none"

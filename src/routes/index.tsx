@@ -1,6 +1,6 @@
 import { createAsync, query } from "@solidjs/router";
 import { Show, Suspense } from "solid-js";
-import { MarketProductList } from "~/components/MarketProductList";
+import { MarketProductList } from "~/components/market/MarketProductList";
 import LoadingSpinner from "~/components/ui/LoadingSpinner";
 import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
 import {
