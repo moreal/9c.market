@@ -23,12 +23,9 @@ export const config = {
 	 */
 	networks: {
 		/** Network options for the application */
-		availableNetworks: [
-			"odin",
-			"heimdall",
-		] as const satisfies readonly NetworkType[],
+		availableNetworks: ["odin", "heimdall"] as readonly NetworkType[],
 		/** Default network */
-		defaultNetwork: "odin" satisfies NetworkType,
+		defaultNetwork: "odin" as NetworkType,
 		/** Network planet IDs */
 		planetIds: {
 			odin: "0x000000000000",
@@ -46,9 +43,9 @@ export const config = {
 			"EUR",
 			"JPY",
 			"KRW",
-		] as const satisfies readonly CurrencyType[],
+		] as readonly CurrencyType[],
 		/** Default currency */
-		defaultCurrency: "USD" satisfies CurrencyType,
+		defaultCurrency: "USD" as CurrencyType,
 	},
 
 	/**

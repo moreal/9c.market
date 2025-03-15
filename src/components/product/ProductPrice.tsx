@@ -1,13 +1,9 @@
+import { DECIMALS_BY_CURRENCY, EXCHANGE_RATE_BY_CURRENCY } from "~/constants";
 import type { Product } from "../../types/iap";
 import { useCurrency } from "~/contexts/CurrencyContext";
 
 type ProductPriceProps = {
 	product: Product;
-};
-
-// KRW to some currencies.
-const KRW_EXCHANGE_RATE_MAP: Record<string, number> = {
-	USD: 0.00069,
 };
 
 export default function ProductPrice(props: ProductPriceProps) {
@@ -34,9 +30,9 @@ export default function ProductPrice(props: ProductPriceProps) {
 			if (
 				product.networkPrice[currency()] === undefined &&
 				product.networkPrice.KRW !== undefined &&
-				KRW_EXCHANGE_RATE_MAP[currency()] !== undefined
+				EXCHANGE_RATE_BY_CURRENCY[currency()] !== undefined
 			) {
-				return `${product.networkPrice.KRW * KRW_EXCHANGE_RATE_MAP[currency()]} ${currency()}`;
+				return `(Guessed from KRW) ${(product.networkPrice.KRW / EXCHANGE_RATE_BY_CURRENCY[currency()]).toFixed(DECIMALS_BY_CURRENCY[currency()])} ${currency()}`;
 			}
 
 			return `${product.networkPrice[currency()]} ${currency()}`;

@@ -52,4 +52,11 @@ export const SYMBOL_BY_CURRENCY: Record<CurrencyType, string> = {
 	KRW: "₩",
 	EUR: "€",
 	JPY: "¥",
-};
+} as const;
+
+export const EXCHANGE_RATE_BY_CURRENCY: Record<CurrencyType, number> = {
+	USD: 1451,
+	KRW: 1,
+	EUR: 1579,
+	JPY: 9.76,
+} as const;

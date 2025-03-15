@@ -32,7 +32,7 @@ export default function WNCGPrice() {
 					fallback={
 						<NoHydration>
 							<div class="text-center py-1">
-								<div class="animate-pulse bg-gray-200 h-4 w-20 mx-auto rounded"></div>
+								<div class="animate-pulse bg-gray-200 h-4 w-20 mx-auto rounded" />
 							</div>
 						</NoHydration>
 					}

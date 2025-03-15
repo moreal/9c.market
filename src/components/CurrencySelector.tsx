@@ -1,7 +1,8 @@
 import { For, Suspense, createSignal, onMount } from "solid-js";
-import { useCurrency } from "../contexts/CurrencyContext";
+import { CurrencyType, useCurrency } from "../contexts/CurrencyContext";
 import HeroiconsOutlineChevronDown from "~icons/heroicons-outline/chevron-down";
 import { config } from "~/config";
+import { SYMBOL_BY_CURRENCY } from "~/constants";
 
 export default function CurrencySelector() {
 	const { currency, setCurrency } = useCurrency();
@@ -24,6 +25,11 @@ export default function CurrencySelector() {
 		};
 	});
 
+	const selectCurrency = (curr: CurrencyType) => {
+		setCurrency(curr);
+		setIsOpen(false);
+	};
+
 	return (
 		<div class="relative ml-auto currency-selector">
 			<button
@@ -31,7 +37,7 @@ export default function CurrencySelector() {
 				onClick={toggleDropdown}
 				class="flex items-center bg-sky-700 hover:bg-sky-600 text-white px-3 py-1 rounded-lg focus:outline-none transition-colors duration-200"
 			>
-				<span class="mr-1">{currency()}</span>
+				<span class="mr-1">{SYMBOL_BY_CURRENCY[currency()]} {currency()}</span>
 				<HeroiconsOutlineChevronDown
 					stroke="currentColor"
 					fill="none"
@@ -50,12 +56,10 @@ export default function CurrencySelector() {
 										? "text-sky-600 font-medium"
 										: "text-gray-700"
 								}`}
-								onClick={() => {
-									setCurrency(curr);
-									setIsOpen(false);
-								}}
+								onKeyPress={() => selectCurrency(curr)}
+								onClick={() => selectCurrency(curr)}
 							>
-								{curr}
+								{SYMBOL_BY_CURRENCY[curr]} {curr}
 							</li>
 						)}
 					</For>

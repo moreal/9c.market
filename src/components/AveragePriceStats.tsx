@@ -4,7 +4,11 @@ import { useWNCGPrice } from "~/contexts/WNCGPriceContext";
 import { useProducts } from "~/contexts/ProductsContext";
 import type { Product } from "~/types/iap";
 import { NoHydration } from "solid-js/web";
-import { DECIMALS_BY_CURRENCY, SYMBOL_BY_CURRENCY } from "~/constants";
+import {
+	DECIMALS_BY_CURRENCY,
+	EXCHANGE_RATE_BY_CURRENCY,
+	SYMBOL_BY_CURRENCY,
+} from "~/constants";
 
 // Item types that we want to calculate average price for
 const ITEM_TYPES = [
@@ -12,13 +16,6 @@ const ITEM_TYPES = [
 	{ key: "Hourglass", label: "Hourglass" },
 	{ key: "Golden Dust", label: "Golden Dust" },
 ];
-
-const EXCHANGE_RATE_BY_CURRENCY: Record<CurrencyType, number> = {
-	USD: 1451,
-	KRW: 1,
-	EUR: 1579,
-	JPY: 9.76,
-};
 
 // Calculate average price per unit for specific item types
 function calculateAveragePrice(
