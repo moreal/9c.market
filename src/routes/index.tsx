@@ -30,7 +30,7 @@ export default function Home() {
 	return (
 		<main class="container mx-auto px-4 py-8 max-w-6xl">
 			<Suspense fallback={<LoadingSpinner />}>
-				<Show when={products()}>
+				<Show when={products()} fallback={<LoadingSpinner />}>
 					<MarketProductList products={products()!.itemProducts} />
 				</Show>
 			</Suspense>

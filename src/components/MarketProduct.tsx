@@ -22,7 +22,7 @@ export function MarketProduct(props: {
 
 	return (
 		<Show when={!wncgPrice.error && !wncgPrice.loading && wncgPrice()}>
-			<div class="bg-white border rounded-lg shadow-sm hover:shadow-md transition-all overflow-hidden mb-3">
+			<div class="bg-white border rounded-lg shadow-sm hover:shadow-md transition-all overflow-hidden mb-3 animate-[fadeIn_0.3s_ease-in-out]">
 				<div class="p-3">
 					<div class="flex justify-between items-center mb-2">
 						<div class="flex items-center">

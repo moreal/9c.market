@@ -1,7 +1,8 @@
-import { useLocation } from "@solidjs/router";
+import { A, useLocation } from "@solidjs/router";
 import NetworkSelector from "./NetworkSelector";
 import CurrencySelector from "./CurrencySelector";
 import HeroiconsOutlineShoppingBag from "~icons/heroicons-outline/shopping-bag";
+import { InformationCircleIcon } from "./ui/InformationCircleIcon";
 
 export default function Nav() {
 	const location = useLocation();
@@ -13,13 +14,15 @@ export default function Nav() {
 		<nav class="bg-gradient-to-r from-sky-800 to-indigo-900 shadow-lg">
 			<div class="container mx-auto flex items-center p-4 text-gray-200">
 				<div class="flex items-center mr-6">
-					<HeroiconsOutlineShoppingBag
-						class="stroke-2 h-8 w-8 text-sky-400 mr-3"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					/>
-					<span class="font-bold text-xl text-white">9C Market</span>
+					<A href="/" class="flex items-center transition-colors duration-200">
+						<HeroiconsOutlineShoppingBag
+							class="stroke-2 h-8 w-8 text-sky-400 mr-3"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						/>
+						<span class="font-bold text-xl text-white">9C Market</span>
+					</A>
 				</div>
 				<ul class="flex items-center">
 					<li class={`border-b-2 ${active("/")} mx-3 py-2`}>
@@ -55,20 +58,7 @@ export default function Nav() {
 							href="/about"
 							class="flex items-center transition-colors duration-200"
 						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-4 w-4 mr-1"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-								/>
-							</svg>
+							<InformationCircleIcon />
 							About
 						</a>
 					</li>
