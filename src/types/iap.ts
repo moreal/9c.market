@@ -44,9 +44,18 @@ export type ProductData = {
 	fungible_item_list: FungibleItem[];
 };
 
+export type CategoryData = {
+	name: string;
+	order: number;
+	active: boolean;
+	l10n_key: string;
+	path: string;
+	product_list: ProductData[];
+};
+
 // Domain model for Product with additional price information
 export type Product = ProductData & {
-	networkPrice?: NetworkPrice;
+	networkPrice: NetworkPrice;
 };
 
 export type Category = {

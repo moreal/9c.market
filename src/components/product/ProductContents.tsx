@@ -1,25 +1,14 @@
 import { For } from "solid-js";
-import { Product } from "../../types/iap";
+import type { Product } from "../../types/iap";
 import CollapsibleContent from "../CollapsibleContent";
+import { SHEET_ID_MAP } from "~/utils/sheet_ids";
 
 type ProductContentsProps = {
 	product: Product;
 };
 
-const SHEET_ID_MAP: Record<number, string> = {
-	400000: "Hourglass",
-	500000: "AP Potion",
-	600201: "Golden Dust",
-	600202: "Ruby Dust",
-	600203: "Emerald Dust",
-	800201: "Silver Dust",
-	800202: "Golden Meat",
-};
-
 export default function ProductContents(props: ProductContentsProps) {
 	const { product } = props;
-
-	console.log(product.fungible_item_list);
 
 	return (
 		<CollapsibleContent title="Contents:">

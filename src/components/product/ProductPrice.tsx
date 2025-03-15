@@ -1,5 +1,5 @@
-import { Product } from "../../types/iap";
-import { currency } from "~/contexts/CurrencyContext";
+import type { Product } from "../../types/iap";
+import { useCurrency } from "~/contexts/CurrencyContext";
 
 type ProductPriceProps = {
 	product: Product;
@@ -12,6 +12,7 @@ const KRW_EXCHANGE_RATE_MAP: Record<string, number> = {
 
 export default function ProductPrice(props: ProductPriceProps) {
 	const { product } = props;
+	const { currency } = useCurrency();
 
 	const definePriceMessage = () => {
 		if (product.product_type === "MILEAGE") {

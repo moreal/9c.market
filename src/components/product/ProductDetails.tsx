@@ -1,4 +1,4 @@
-import { Product } from "../../types/iap";
+import type { Product } from "../../types/iap";
 import AttributeItem from "../ui/AttributeItem";
 
 type ProductDetailsProps = {

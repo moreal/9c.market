@@ -1,33 +1,33 @@
 {
-  "$schema": "./network.prices.schema.json",
-  "Hourglass 3000": {
-    "KRW": 4400
-  },
-  "Hourglass 15000": {
-    "KRW": 22000
-  },
-  "Hourglass 30000": {
-    "KRW": 44000
-  },
-  "AP Potion 15": {
-    "KRW": 4400
-  },
-  "AP Potion 75": {
-    "KRW": 22000
-  },
-  "AP Potion 150": {
-    "KRW": 44000
-  },
-  "20 Golden Dust": {
-    "KRW": 4400
-  },
-  "100 Golden Dust": {
-    "KRW": 22000
-  },
-  "200 Golden Dust": {
-    "KRW": 44000
-  },
-  "600 Golden Dust": {
-    "KRW": 129000
-  }
+	"$schema": "./network.prices.schema.json",
+	"Hourglass 3000": {
+		"KRW": 4400
+	},
+	"Hourglass 15000": {
+		"KRW": 22000
+	},
+	"Hourglass 30000": {
+		"KRW": 44000
+	},
+	"AP Potion 15": {
+		"KRW": 4400
+	},
+	"AP Potion 75": {
+		"KRW": 22000
+	},
+	"AP Potion 150": {
+		"KRW": 44000
+	},
+	"20 Golden Dust": {
+		"KRW": 4400
+	},
+	"100 Golden Dust": {
+		"KRW": 22000
+	},
+	"200 Golden Dust": {
+		"KRW": 44000
+	},
+	"600 Golden Dust": {
+		"KRW": 129000
+	}
 }

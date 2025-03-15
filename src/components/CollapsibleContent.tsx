@@ -1,4 +1,4 @@
-import { children, createSignal, JSX } from "solid-js";
+import { children, createSignal, type JSX } from "solid-js";
 
 type CollapsibleContentProps = {
 	title: string;

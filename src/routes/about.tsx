@@ -58,11 +58,11 @@ export default function About() {
 			<div class="text-center">
 				<A href="/">
 					<Button variant="primary" class="mr-4">
-						Return to Home
+						Browser On-Chain Products
 					</Button>
 				</A>
 				<A href="/iap">
-					<Button variant="secondary">Browse Products</Button>
+					<Button variant="secondary">Browse IAP Products</Button>
 				</A>
 			</div>
 		</main>

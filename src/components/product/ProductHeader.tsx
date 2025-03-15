@@ -1,4 +1,4 @@
-import { Product } from "../../types/iap";
+import type { Product } from "../../types/iap";
 import { getRarityColorClass } from "../../utils/iap-utils";
 
 type ProductHeaderProps = {

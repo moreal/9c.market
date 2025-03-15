@@ -1,5 +1,5 @@
 import { For, Show } from "solid-js";
-import { Category } from "../types/iap";
+import type { Category } from "../types/iap";
 import ProductItem from "./ProductItem";
 import CategoryHeader from "./category/CategoryHeader";
 

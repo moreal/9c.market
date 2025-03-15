@@ -1,4 +1,4 @@
-import { Product } from "../types/iap";
+import type { Product } from "../types/iap";
 import ProductHeader from "./product/ProductHeader";
 import ProductPrice from "./product/ProductPrice";
 import ProductDetails from "./product/ProductDetails";

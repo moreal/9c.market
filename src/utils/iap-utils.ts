@@ -1,4 +1,4 @@
-import { Product, ProductData, NetworkPrice } from "../types/iap";
+import type { Product } from "../types/iap";
 
 // Format price from FavItem or mileage
 export function formatPrice(product: Product): string {
@@ -23,74 +23,6 @@ export function formatPrice(product: Product): string {
 
 	// Default when no price info is available
 	return "Unknown USD";
-}
-
-// Attach network prices to products
-export async function attachNetworkPrices(
-	products: ProductData[],
-	network: string,
-): Promise<Product[]> {
-	try {
-		const response = await fetch(`/data/${network.toLowerCase()}.prices.json`);
-		if (!response.ok) {
-			console.error(`Failed to fetch ${network} prices data`);
-			return products as Product[];
-		}
-
-		const pricesData: Record<string, NetworkPrice> = await response.json();
-
-		// Enhance each product with its network price if available
-		return products.map((product) => {
-			const networkPrice = pricesData[product.name] || undefined;
-			return {
-				...product,
-				networkPrice,
-			};
-		});
-	} catch (error) {
-		console.error(`Error fetching ${network} price data:`, error);
-		return products as Product[];
-	}
-}
-
-// Calculate average price per unit for specific item types
-export function calculateAveragePrice(
-	products: Product[],
-	itemType: string,
-): { averagePrice: number; amount: number } | null {
-	let productWithHighestAmount: Product | null = null;
-
-	// Find products of the specified type with the highest amount
-	for (const product of products) {
-		// Skip products without network price
-		if (!product.networkPrice?.KRW) continue;
-
-		// Check if the product name contains the item type
-		if (product.name.includes(itemType)) {
-			// Get the amount from the first fungible item (assuming it's the main item)
-			const amount = product.fungible_item_list[0]?.amount || 0;
-
-			// Update if this is the first match or has higher amount than previous match
-			if (
-				!productWithHighestAmount ||
-				amount > productWithHighestAmount.fungible_item_list[0]?.amount
-			) {
-				productWithHighestAmount = product;
-			}
-		}
-	}
-
-	if (productWithHighestAmount && productWithHighestAmount.networkPrice?.KRW) {
-		const amount = productWithHighestAmount.fungible_item_list[0]?.amount || 0;
-		if (amount > 0) {
-			const averagePrice = Number(
-				(productWithHighestAmount.networkPrice.KRW / amount).toFixed(2),
-			);
-			return { averagePrice, amount };
-		}
-	}
-
-	return null;
 }
 
 // Get the product rarity color class

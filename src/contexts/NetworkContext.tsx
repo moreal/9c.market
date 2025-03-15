@@ -1,8 +1,9 @@
-import { createContext, createSignal, useContext, JSX } from "solid-js";
+import { cookieStorage, makePersisted } from "@solid-primitives/storage";
+import { createSignal, createContext, useContext, type JSX } from "solid-js";
+import { config } from "~/config";
 
-// Available networks
-export const NETWORKS = ["odin", "heimdall"] as const;
-type NetworkType = (typeof NETWORKS)[number];
+// Define the available network types
+export type NetworkType = "odin" | "heimdall"; // Use literal types instead of circular reference
 
 // Create the context
 type NetworkContextType = {
@@ -10,23 +11,38 @@ type NetworkContextType = {
 	setNetwork: (network: NetworkType) => void;
 };
 
-const NetworkContext = createContext<NetworkContextType>({
-	network: () => NETWORKS[0],
-	setNetwork: () => {},
-});
+const NetworkContext = createContext<NetworkContextType>();
 
 // Provider component
 export function NetworkProvider(props: { children: JSX.Element }) {
-	const [network, setNetwork] = createSignal<NetworkType>(NETWORKS[0]);
+	// const [network, setNetwork] = createSignal<NetworkType>(
+	// 	config.networks.defaultNetwork
+	// );
+
+	const [network, setNetwork] = makePersisted(
+		createSignal<NetworkType>(config.networks.defaultNetwork),
+		{
+			storage: cookieStorage,
+		},
+	);
 
 	return (
-		<NetworkContext.Provider value={{ network, setNetwork }}>
+		<NetworkContext.Provider
+			value={{
+				network,
+				setNetwork,
+			}}
+		>
 			{props.children}
 		</NetworkContext.Provider>
 	);
 }
 
-// Hook to use the network context
+// Consumer hook
 export function useNetwork() {
-	return useContext(NetworkContext);
+	const context = useContext(NetworkContext);
+	if (!context) {
+		throw new Error("useNetwork must be used within a NetworkProvider");
+	}
+	return context;
 }

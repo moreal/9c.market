@@ -1,4 +1,4 @@
-import { JSX, children } from "solid-js";
+import { type JSX, children } from "solid-js";
 
 type PageHeaderProps = {
 	title: string;

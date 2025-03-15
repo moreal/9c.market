@@ -1,7 +1,10 @@
-import { For, createSignal, onMount } from "solid-js";
-import { CURRENCIES, currency, setCurrency } from "../contexts/CurrencyContext";
+import { For, Suspense, createSignal, onMount } from "solid-js";
+import { useCurrency } from "../contexts/CurrencyContext";
+import HeroiconsOutlineChevronDown from "~icons/heroicons-outline/chevron-down";
+import { config } from "~/config";
 
 export default function CurrencySelector() {
+	const { currency, setCurrency } = useCurrency();
 	const [isOpen, setIsOpen] = createSignal(false);
 
 	const toggleDropdown = () => setIsOpen(!isOpen());
@@ -24,29 +27,22 @@ export default function CurrencySelector() {
 	return (
 		<div class="relative ml-auto currency-selector">
 			<button
+				type="button"
 				onClick={toggleDropdown}
 				class="flex items-center bg-sky-700 hover:bg-sky-600 text-white px-3 py-1 rounded-lg focus:outline-none transition-colors duration-200"
 			>
 				<span class="mr-1">{currency()}</span>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-4 w-4"
+				<HeroiconsOutlineChevronDown
+					stroke="currentColor"
 					fill="none"
 					viewBox="0 0 24 24"
-					stroke="currentColor"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M19 9l-7 7-7-7"
-					/>
-				</svg>
+					class="stroke-2 h-4 w-4"
+				/>
 			</button>
 
 			{isOpen() && (
 				<ul class="absolute right-0 mt-2 py-2 w-24 bg-white rounded-md shadow-lg z-10">
-					<For each={CURRENCIES}>
+					<For each={config.currency.availableCurrencies}>
 						{(curr) => (
 							<li
 								class={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${
