@@ -11,7 +11,7 @@ export const AVAILABLE_ITEM_SUB_TYPE = [
 ] as const;
 export type ItemSubType = (typeof AVAILABLE_ITEM_SUB_TYPE)[number];
 
-const ITEM_SUB_TYPE_VALUES: Record<ItemSubType, number> = {
+const ITEM_SUB_TYPE_VALUES: Readonly<Record<ItemSubType, number>> = {
 	HOURGLASS: 15,
 	AP_STONE: 16,
 	SCROLL: 21,

@@ -12,7 +12,7 @@ import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
 import { useProducts } from "~/contexts/ProductsContext";
 import { DECIMALS_BY_CURRENCY, EXCHANGE_RATE_BY_CURRENCY } from "~/constants";
 
-const NCSCAN_BY_NETWORK: Record<NetworkType, string> = {
+const NCSCAN_BY_NETWORK: Readonly<Record<NetworkType, string>> = {
 	heimdall: "https://heimdall.9cscan.com",
 	odin: "https://9cscan.com",
 };

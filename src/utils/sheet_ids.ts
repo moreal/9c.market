@@ -1,4 +1,4 @@
-export const SHEET_ID_MAP: Record<number, string> = {
+export const SHEET_ID_MAP: Readonly<Record<number, string>> = {
 	400000: "Hourglass",
 	500000: "AP Potion",
 	600201: "Golden Dust",

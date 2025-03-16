@@ -10,7 +10,7 @@ import {
 } from "~/utils/market-service-client";
 import { useItemSubType } from "~/contexts/ItemSubTypeContext";
 
-const CLIENT_BY_NETWORK: Record<NetworkType, MarketServiceClient> = {
+const CLIENT_BY_NETWORK: Readonly<Record<NetworkType, MarketServiceClient>> = {
 	heimdall: new MarketServiceClient(
 		"https://api.9capi.com/marketProviderHeimdall",
 	),

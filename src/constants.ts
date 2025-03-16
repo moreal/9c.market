@@ -40,7 +40,7 @@ export const ERROR_MESSAGES = {
 	PRODUCT_FETCH_ERROR: "Failed to fetch products. Please try again later.",
 } as const;
 
-export const DECIMALS_BY_CURRENCY: Record<CurrencyType, number> = {
+export const DECIMALS_BY_CURRENCY: Readonly<Record<CurrencyType, number>> = {
 	USD: 4,
 	KRW: 2,
 	EUR: 4,
@@ -49,7 +49,7 @@ export const DECIMALS_BY_CURRENCY: Record<CurrencyType, number> = {
 	VND: 2,
 } as const;
 
-export const SYMBOL_BY_CURRENCY: Record<CurrencyType, string> = {
+export const SYMBOL_BY_CURRENCY: Readonly<Record<CurrencyType, string>> = {
 	USD: "$",
 	KRW: "₩",
 	EUR: "€",
@@ -58,7 +58,7 @@ export const SYMBOL_BY_CURRENCY: Record<CurrencyType, string> = {
 	VND: "đ",
 } as const;
 
-export const EXCHANGE_RATE_BY_CURRENCY: Record<CurrencyType, number> = {
+export const EXCHANGE_RATE_BY_CURRENCY: Readonly<Record<CurrencyType, number>> = {
 	USD: 1451,
 	KRW: 1,
 	EUR: 1579,
