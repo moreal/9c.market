@@ -43,6 +43,8 @@ export const config = {
 			"EUR",
 			"JPY",
 			"KRW",
+			"PHP",
+			"VND",
 		] as readonly CurrencyType[],
 		/** Default currency */
 		defaultCurrency: "USD" as CurrencyType,

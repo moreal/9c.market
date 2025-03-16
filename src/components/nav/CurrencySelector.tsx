@@ -1,5 +1,5 @@
 import { For, Suspense, createSignal, onMount } from "solid-js";
-import { CurrencyType, useCurrency } from "../../contexts/CurrencyContext";
+import { type CurrencyType, useCurrency } from "../../contexts/CurrencyContext";
 import HeroiconsOutlineChevronDown from "~icons/heroicons-outline/chevron-down";
 import { config } from "~/config";
 import { SYMBOL_BY_CURRENCY } from "~/constants";

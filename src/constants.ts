@@ -45,6 +45,8 @@ export const DECIMALS_BY_CURRENCY: Record<CurrencyType, number> = {
 	KRW: 2,
 	EUR: 4,
 	JPY: 2,
+	PHP: 2,
+	VND: 2,
 } as const;
 
 export const SYMBOL_BY_CURRENCY: Record<CurrencyType, string> = {
@@ -52,6 +54,8 @@ export const SYMBOL_BY_CURRENCY: Record<CurrencyType, string> = {
 	KRW: "₩",
 	EUR: "€",
 	JPY: "¥",
+	PHP: "₱",
+	VND: "đ",
 } as const;
 
 export const EXCHANGE_RATE_BY_CURRENCY: Record<CurrencyType, number> = {
@@ -59,4 +63,6 @@ export const EXCHANGE_RATE_BY_CURRENCY: Record<CurrencyType, number> = {
 	KRW: 1,
 	EUR: 1579,
 	JPY: 9.76,
+	PHP: 25.31,
+	VND: 0.057,
 } as const;

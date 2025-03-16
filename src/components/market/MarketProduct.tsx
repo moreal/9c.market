@@ -10,6 +10,7 @@ import HeroiconsOutlineTrendingDown from "~icons/heroicons-outline/trending-down
 import HeroiconsOutlineTrendingUp from "~icons/heroicons-outline/trending-up";
 import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
 import { useProducts } from "~/contexts/ProductsContext";
+import { DECIMALS_BY_CURRENCY, EXCHANGE_RATE_BY_CURRENCY } from "~/constants";
 
 const NCSCAN_BY_NETWORK: Record<NetworkType, string> = {
 	heimdall: "https://heimdall.9cscan.com",
@@ -90,7 +91,13 @@ export function MarketProduct(props: {
 							<div>
 								<span class="text-xs text-gray-500">Price</span>
 								<div class="font-bold text-gray-900 text-sm">
-									{(props.product.price * wncgPrice()).toFixed(4)} {currency()}
+									{(props.product.price * wncgPrice()).toFixed(
+										DECIMALS_BY_CURRENCY[currency()],
+									)}{" "}
+									{currency()}{" "}
+									<span class="font-medium text-xs text-gray-700">
+										({props.product.price} NCG)
+									</span>
 								</div>
 							</div>
 						</div>
@@ -100,8 +107,13 @@ export function MarketProduct(props: {
 							<div>
 								<span class="text-xs text-gray-500">Unit Price</span>
 								<div class="font-bold text-gray-900 text-sm">
-									{(props.product.unitPrice * wncgPrice()).toFixed(6)}{" "}
-									{currency()}
+									{(props.product.unitPrice * wncgPrice()).toFixed(
+										DECIMALS_BY_CURRENCY[currency()] + 2,
+									)}{" "}
+									{currency()}{" "}
+									<span class="font-medium text-xs text-gray-700">
+										({props.product.unitPrice} NCG)
+									</span>
 								</div>
 							</div>
 						</div>

@@ -3,7 +3,7 @@ import { createSignal, createContext, useContext, type JSX } from "solid-js";
 import { config } from "~/config";
 
 // Define the available currency types
-export type CurrencyType = "USD" | "EUR" | "JPY" | "KRW";
+export type CurrencyType = "USD" | "EUR" | "JPY" | "KRW" | "PHP" | "VND";
 
 // Create the context
 type CurrencyContextType = {
@@ -15,10 +15,6 @@ const CurrencyContext = createContext<CurrencyContextType>();
 
 // Provider component
 export function CurrencyProvider(props: { children: JSX.Element }) {
-	// const [currency, setCurrency] = createSignal<CurrencyType>(
-	// 	config.currency.defaultCurrency as CurrencyType
-	// );
-
 	const [currency, setCurrency] = makePersisted(
 		createSignal<CurrencyType>(config.currency.defaultCurrency),
 		{
