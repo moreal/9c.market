@@ -6,6 +6,6 @@ export const SHEET_ID_MAP: Readonly<Record<number, string>> = {
 	600203: "Emerald Dust",
 	800201: "Silver Dust",
 	800202: "Golden Meat",
-  600401: "Scroll",
-  600402: "Circle",
+	600401: "Scroll",
+	600402: "Circle",
 };

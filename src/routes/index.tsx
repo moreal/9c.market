@@ -8,9 +8,9 @@ export default function Home() {
 	return (
 		<main class="container mx-auto px-4 py-8 max-w-6xl">
 			<ItemSubTypeProvider>
-        <div class="ml-auto flex items-center space-x-3 mb-6">
-				  <ItemSubTypeSelector />
-        </div>
+				<div class="ml-auto flex items-center space-x-3 mb-6">
+					<ItemSubTypeSelector />
+				</div>
 				<Suspense fallback={<LoadingSpinner />}>
 					<MarketProductList />
 				</Suspense>

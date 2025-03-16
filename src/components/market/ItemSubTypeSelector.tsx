@@ -7,10 +7,10 @@ import {
 } from "~/utils/market-service-client";
 
 const NAME_BY_ITEM_SUB_TYPE: Record<ItemSubType, string> = {
-  HOURGLASS: "Hourglass",
-  AP_STONE: "AP Potion",
-  SCROLL: "Scroll",
-  CIRCLE: "Circle",
+	HOURGLASS: "Hourglass",
+	AP_STONE: "AP Potion",
+	SCROLL: "Scroll",
+	CIRCLE: "Circle",
 };
 
 export default function ItemSubTypeSelector() {

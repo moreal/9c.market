@@ -58,11 +58,12 @@ export const SYMBOL_BY_CURRENCY: Readonly<Record<CurrencyType, string>> = {
 	VND: "đ",
 } as const;
 
-export const EXCHANGE_RATE_BY_CURRENCY: Readonly<Record<CurrencyType, number>> = {
-	USD: 1451,
-	KRW: 1,
-	EUR: 1579,
-	JPY: 9.76,
-	PHP: 25.31,
-	VND: 0.057,
-} as const;
+export const EXCHANGE_RATE_BY_CURRENCY: Readonly<Record<CurrencyType, number>> =
+	{
+		USD: 1451,
+		KRW: 1,
+		EUR: 1579,
+		JPY: 9.76,
+		PHP: 25.31,
+		VND: 0.057,
+	} as const;
