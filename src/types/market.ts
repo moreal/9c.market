@@ -1,59 +1,61 @@
-/**
- * TypeScript interfaces for the 9C Market API responses
- */
+import { z } from "zod";
+
+export const ItemProductSchema = z.object({
+	productId: z.string().uuid(),
+	sellerAgentAddress: z.string(),
+	sellerAvatarAddress: z.string(),
+	price: z.number().int().nonnegative(),
+	quantity: z.number().int().positive(),
+	registeredBlockIndex: z.number().int().nonnegative(),
+	exist: z.boolean(),
+	legacy: z.boolean(),
+	itemId: z.number().int().nonnegative(),
+	iconId: z.number().int().nonnegative(),
+	grade: z.number().int().nonnegative(),
+	itemType: z.number().int().nonnegative(),
+	itemSubType: z.number().int().nonnegative(),
+	elementalType: z.number().int().nonnegative(),
+	tradableId: z.string(),
+	setId: z.number().int().nonnegative(),
+	combatPoint: z.number().int().nonnegative(),
+	level: z.number().int().nonnegative(),
+	optionCountFromCombination: z.number().int().nonnegative(),
+	unitPrice: z.number().nonnegative(),
+	crystal: z.number().int().nonnegative(),
+	crystalPerPrice: z.number().nonnegative(),
+	byCustomCraft: z.boolean(),
+	hasRandomOnlyIcon: z.boolean(),
+});
 
 /**
- * Represents a skill model in an item product
+ * Zod schema for market API response
  */
-// interface SkillModel {
-//   // Fields would be added based on actual data structure
-// }
+export const MarketItemProductsResponseSchema = z.object({
+	totalCount: z.number().int().nonnegative(),
+	limit: z.number().int().nonnegative(),
+	offset: z.number().int().nonnegative(),
+	itemProducts: z.array(ItemProductSchema),
+	fungibleAssetValueProducts: z.array(z.any()), // This can be more specific when data structure is known
+});
+
+// Type inferences from the schemas
+export type ItemProduct = z.infer<typeof ItemProductSchema>;
+export type MarketItemProductsResponse = z.infer<
+	typeof MarketItemProductsResponseSchema
+>;
 
 /**
- * Represents a stat model in an item product
+ * Utility function to validate market item products data
  */
-// interface StatModel {
-//   // Fields would be added based on actual data structure
-// }
-
-/**
- * Represents an individual product item in the marketplace
- */
-export interface ItemProduct {
-	productId: string;
-	sellerAgentAddress: string;
-	sellerAvatarAddress: string;
-	price: number;
-	quantity: number;
-	registeredBlockIndex: number;
-	exist: boolean;
-	legacy: boolean;
-	itemId: number;
-	iconId: number;
-	grade: number;
-	itemType: number;
-	itemSubType: number;
-	elementalType: number;
-	tradableId: string;
-	setId: number;
-	combatPoint: number;
-	level: number;
-	// skillModels: SkillModel[];
-	// statModels: StatModel[];
-	optionCountFromCombination: number;
-	unitPrice: number;
-	crystal: number;
-	crystalPerPrice: number;
-	byCustomCraft: boolean;
-	hasRandomOnlyIcon: boolean;
+export function validateMarketItemProductsResponse(
+	data: unknown,
+): MarketItemProductsResponse {
+	return MarketItemProductsResponseSchema.parse(data);
 }
 
 /**
- * Represents the market API response for item products
+ * Utility function to safely validate market item products data (returns result instead of throwing)
  */
-export interface MarketItemProductsResponse {
-	totalCount: number;
-	limit: number;
-	offset: number;
-	itemProducts: ItemProduct[];
+export function safeValidateMarketItemProductsResponse(data: unknown) {
+	return MarketItemProductsResponseSchema.safeParse(data);
 }

@@ -1,5 +1,5 @@
 import { createContext, useContext, createSignal, type JSX } from "solid-js";
-import type { ItemSubType } from "~/utils/market-service-client";
+import type { ItemSubType } from "~/types/item";
 
 type ItemSubTypeContextType = {
 	itemSubType: () => ItemSubType;

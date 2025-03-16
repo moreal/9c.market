@@ -1,15 +1,8 @@
+import type { ItemSubType } from "~/types/item";
 import {
 	type MarketItemProductsResponse,
 	safeValidateMarketItemProductsResponse,
-} from "../types/market.zod";
-
-export const AVAILABLE_ITEM_SUB_TYPE = [
-	"HOURGLASS",
-	"AP_STONE",
-	"SCROLL",
-	"CIRCLE",
-] as const;
-export type ItemSubType = (typeof AVAILABLE_ITEM_SUB_TYPE)[number];
+} from "../types/market";
 
 const ITEM_SUB_TYPE_VALUES: Readonly<Record<ItemSubType, number>> = {
 	HOURGLASS: 15,

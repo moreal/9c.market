@@ -50,27 +50,6 @@ export const marketApi = {
 	},
 
 	/**
-	 * Fetch WNCG price from external service
-	 */
-	async fetchWNCGPrice(networkName: NetworkType): Promise<number | null> {
-		try {
-			const response = await fetch(
-				`${config.api.priceApi}/${networkName.toLowerCase()}.wncg.json`,
-			);
-
-			if (!response.ok) {
-				throw new Error(`Failed to fetch WNCG price for ${networkName}`);
-			}
-
-			const data = await response.json();
-			return data.price || null;
-		} catch (error) {
-			console.error("Error fetching WNCG price:", error);
-			return null;
-		}
-	},
-
-	/**
 	 * Attach network prices to products
 	 */
 	async attachNetworkPrices(

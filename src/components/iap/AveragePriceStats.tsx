@@ -4,7 +4,7 @@ import { useWNCGPrice } from "~/contexts/WNCGPriceContext";
 import { useProducts } from "~/contexts/ProductsContext";
 import { NoHydration } from "solid-js/web";
 import { DECIMALS_BY_CURRENCY, SYMBOL_BY_CURRENCY } from "~/constants";
-import { SHEET_ID_MAP } from "~/utils/sheet_ids";
+import { SHEET_ID_MAP } from "~/constants";
 
 const ITEM_TYPES = [
 	{ label: SHEET_ID_MAP[500000], itemId: 500000 },

@@ -1,7 +1,7 @@
 import { For } from "solid-js";
 import type { Product } from "../../../types/iap";
 import CollapsibleContent from "../../ui/CollapsibleContent";
-import { SHEET_ID_MAP } from "~/utils/sheet_ids";
+import { SHEET_ID_MAP } from "~/constants";
 
 type IAPProductContentsProps = {
 	product: Product;

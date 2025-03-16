@@ -1,13 +1,11 @@
 import { createAsync, query } from "@solidjs/router";
 import { For } from "solid-js";
-import { MarketProduct } from "~/components/market/MarketProduct";
 
 import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
-import {
-	MarketServiceClient,
-	type ItemSubType,
-} from "~/utils/market-service-client";
 import { useItemSubType } from "~/contexts/ItemSubTypeContext";
+import { MarketProduct } from "~/components/market/MarketProduct";
+import { MarketServiceClient } from "~/utils/MarketServiceClient";
+import type { ItemSubType } from "~/types/item";
 
 const CLIENT_BY_NETWORK: Readonly<Record<NetworkType, MarketServiceClient>> = {
 	heimdall: new MarketServiceClient(

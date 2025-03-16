@@ -27,11 +27,6 @@ async function fetchCryptoPrice(
 ): Promise<number | null> {
 	"use server";
 
-	// if (symbol === "WNCG") {
-	// 	// For WNCG, use our specialized network-specific API
-	// 	return await marketApi.fetchWNCGPrice(networkName as any);
-	// }
-
 	// For other currencies, use the general cryptocurrency API
 	return await marketApi.fetchCryptoPrice(symbol, currency);
 }

@@ -1,16 +1,18 @@
 import { createMemo, Show } from "solid-js";
+
 import { useCurrency } from "~/contexts/CurrencyContext";
 import { useWNCGPrice } from "~/contexts/WNCGPriceContext";
-import type { ItemProduct } from "~/types/market.zod";
-import { SHEET_ID_MAP } from "~/utils/sheet_ids";
+import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
+import { useProducts } from "~/contexts/ProductsContext";
+import { DECIMALS_BY_CURRENCY } from "~/constants";
+import type { ItemProduct } from "~/types/market";
+import { SHEET_ID_MAP } from "~/constants";
+
 import HeroiconsOutlineCurrencyDollar from "~icons/heroicons-outline/currency-dollar";
 import HeroiconsOutlineTag from "~icons/heroicons-outline/tag";
 import HeroiconsOutlineExternalLink from "~icons/heroicons-outline/external-link";
 import HeroiconsOutlineTrendingDown from "~icons/heroicons-outline/trending-down";
 import HeroiconsOutlineTrendingUp from "~icons/heroicons-outline/trending-up";
-import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
-import { useProducts } from "~/contexts/ProductsContext";
-import { DECIMALS_BY_CURRENCY } from "~/constants";
 
 const NCSCAN_BY_NETWORK: Readonly<Record<NetworkType, string>> = {
 	heimdall: "https://heimdall.9cscan.com",

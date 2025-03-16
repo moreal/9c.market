@@ -1,9 +1,23 @@
 import type { Product } from "~/types/iap";
-import { getRarityColorClass } from "~/utils/iap-utils";
 
 type IAPProductHeaderProps = {
 	product: Product;
 };
+
+function getRarityColorClass(rarity: string): string {
+	switch (rarity.toLowerCase()) {
+		case "legendary":
+			return "bg-amber-500 text-white";
+		case "epic":
+			return "bg-purple-600 text-white";
+		case "rare":
+			return "bg-blue-600 text-white";
+		case "unique":
+			return "bg-green-600 text-white";
+		default:
+			return "bg-gray-500 text-white";
+	}
+}
 
 export default function IAPProductHeader(props: IAPProductHeaderProps) {
 	const { product } = props;

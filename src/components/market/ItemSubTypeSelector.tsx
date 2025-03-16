@@ -1,10 +1,7 @@
 import { createSignal, For, onMount } from "solid-js";
 import HeroiconsOutlineChevronDown from "~icons/heroicons-outline/chevron-down";
 import { useItemSubType } from "~/contexts/ItemSubTypeContext";
-import {
-	AVAILABLE_ITEM_SUB_TYPE,
-	type ItemSubType,
-} from "~/utils/market-service-client";
+import { type ItemSubType, AVAILABLE_ITEM_SUB_TYPE } from "~/types/item";
 
 const NAME_BY_ITEM_SUB_TYPE: Record<ItemSubType, string> = {
 	HOURGLASS: "Hourglass",
