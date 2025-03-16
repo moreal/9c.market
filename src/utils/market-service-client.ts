@@ -3,12 +3,20 @@ import {
 	safeValidateMarketItemProductsResponse,
 } from "../types/market.zod";
 
-export enum ItemSubType {
-	HOURGLASS = 15,
-	AP_STONE = 16,
-	SCROLL = 21,
-	CIRCLE = 22,
-}
+export const AVAILABLE_ITEM_SUB_TYPE = [
+	"HOURGLASS",
+	"AP_STONE",
+	"SCROLL",
+	"CIRCLE",
+] as const;
+export type ItemSubType = (typeof AVAILABLE_ITEM_SUB_TYPE)[number];
+
+const ITEM_SUB_TYPE_VALUES: Record<ItemSubType, number> = {
+	HOURGLASS: 15,
+	AP_STONE: 16,
+	SCROLL: 21,
+	CIRCLE: 22,
+};
 
 export class MarketServiceClient {
 	constructor(private readonly baseUrl: string) {}
@@ -19,7 +27,7 @@ export class MarketServiceClient {
 		itemSubType: ItemSubType,
 	): Promise<MarketItemProductsResponse> {
 		const response = await fetch(
-			`${this.baseUrl}/Market/products/items/${itemSubType}?offset=${offset}&limit=${limit}&order=unit_price_asc`,
+			`${this.baseUrl}/Market/products/items/${ITEM_SUB_TYPE_VALUES[itemSubType]}?offset=${offset}&limit=${limit}&order=unit_price_asc`,
 		);
 		const data = await response.json();
 

@@ -7,7 +7,6 @@ import {
 	type Resource,
 } from "solid-js";
 import { useCurrency } from "./CurrencyContext";
-import { useNetwork } from "./NetworkContext";
 import { marketApi } from "~/lib/api";
 import { config } from "~/config";
 
