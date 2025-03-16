@@ -28,7 +28,7 @@ export default function WNCGPrice() {
 				</div>
 
 				<Show
-					when={!wncgPrice.loading && wncgPrice()}
+					when={wncgPrice()}
 					fallback={
 						<NoHydration>
 							<div class="text-center py-1">
@@ -37,13 +37,15 @@ export default function WNCGPrice() {
 						</NoHydration>
 					}
 				>
-					<div class="text-right">
-						<div class="text-semibold text-gray-900">
-							{SYMBOL_BY_CURRENCY[currency()]}
-							{wncgPrice()?.toFixed(DECIMALS_BY_CURRENCY[currency()])}{" "}
-							{currency()}
+					{(wncgPrice) => (
+						<div class="text-right">
+							<div class="text-semibold text-gray-900">
+								{SYMBOL_BY_CURRENCY[currency()]}
+								{wncgPrice().toFixed(DECIMALS_BY_CURRENCY[currency()])}{" "}
+								{currency()}
+							</div>
 						</div>
-					</div>
+					)}
 				</Show>
 			</div>
 		</div>
