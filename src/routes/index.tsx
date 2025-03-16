@@ -1,4 +1,4 @@
-import { Show, Suspense } from "solid-js";
+import { Suspense } from "solid-js";
 import ItemSubTypeSelector from "~/components/market/ItemSubTypeSelector";
 import { MarketProductList } from "~/components/market/MarketProductList";
 import LoadingSpinner from "~/components/ui/LoadingSpinner";

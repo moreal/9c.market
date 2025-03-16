@@ -1,4 +1,4 @@
-import { createSignal, For, Suspense } from "solid-js";
+import { createSignal, For } from "solid-js";
 import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
 import HeroiconsOutlineChevronDown from "~icons/heroicons-outline/chevron-down";
 import HeroiconsOutlineGlobe from "~icons/heroicons-outline/globe";

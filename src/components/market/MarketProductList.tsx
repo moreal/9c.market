@@ -1,6 +1,5 @@
 import { createAsync, query } from "@solidjs/router";
 import { For } from "solid-js";
-import type { ItemProduct } from "~/types/market.zod";
 import { MarketProduct } from "~/components/market/MarketProduct";
 
 import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";

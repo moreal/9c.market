@@ -8,8 +8,7 @@
 		"build": "vinxi build",
 		"start": "vinxi start",
     "fmt": "biome format --write src",
-    "lint": "biome lint --write src",
-		"codegen": "graphql-codegen --config codegen.ts"
+    "lint": "biome lint --write src"
 	},
 	"dependencies": {
 		"@planetarium/chrono-sdk": "npm:@jsr/planetarium__chrono-sdk@^0.2.0",
