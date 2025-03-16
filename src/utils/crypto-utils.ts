@@ -17,5 +17,5 @@ export function formatCryptoValue(
 		return `$${amount.toFixed(2)} ${symbolUpper}`;
 	}
 
-  return `₩${amount.toFixed(2)} ${symbolUpper}`;
+	return `₩${amount.toFixed(2)} ${symbolUpper}`;
 }
