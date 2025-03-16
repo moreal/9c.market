@@ -12,6 +12,12 @@ Run development server:
 yarn dev
 ```
 
+Run formatter(biome):
+
+```
+yarn biome format --write src
+```
+
 ## Deploy
 
 ### With fly.io
