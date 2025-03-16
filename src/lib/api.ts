@@ -65,7 +65,7 @@ export const marketApi = {
 			const data = await response.json();
 			return data.price || null;
 		} catch (error) {
-			console.error(`Error fetching WNCG price:`, error);
+			console.error("Error fetching WNCG price:", error);
 			return null;
 		}
 	},
@@ -97,7 +97,7 @@ export const marketApi = {
 				};
 			});
 		} catch (error) {
-			console.error(`Error attaching network prices:`, error);
+			console.error("Error attaching network prices:", error);
 			return products as Product[];
 		}
 	},

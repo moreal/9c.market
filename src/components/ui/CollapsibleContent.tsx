@@ -13,6 +13,7 @@ export default function CollapsibleContent(props: CollapsibleContentProps) {
 	return (
 		<div class="border-t border-gray-200 pt-4 mt-4">
 			<button
+        type="button"
 				class="flex w-full justify-between items-center focus:outline-none group"
 				onClick={() => setIsOpen(!isOpen())}
 				aria-expanded={isOpen()}
@@ -25,6 +26,8 @@ export default function CollapsibleContent(props: CollapsibleContentProps) {
 					class={`w-6 h-6 rounded-full flex items-center justify-center bg-gray-100 group-hover:bg-indigo-100 text-gray-500 group-hover:text-indigo-600 transition-all duration-200 ${isOpen() ? "transform rotate-180" : ""}`}
 				>
 					<svg
+            role="img"
+            aria-label="Toggle Icon"
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-4 w-4"
 						fill="none"

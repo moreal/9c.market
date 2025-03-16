@@ -11,6 +11,8 @@ export default function EmptyState(props: EmptyStateProps) {
 			case "empty-box":
 				return (
 					<svg
+            role="img"
+            aria-label="Empty Box"
 						xmlns="http://www.w3.org/2000/svg"
 						class="w-12 h-12 text-amber-500 mx-auto mb-4"
 						fill="none"
@@ -28,6 +30,8 @@ export default function EmptyState(props: EmptyStateProps) {
 			case "no-data":
 				return (
 					<svg
+            role="img"
+            aria-label="No Data"
 						xmlns="http://www.w3.org/2000/svg"
 						class="w-12 h-12 text-amber-500 mx-auto mb-4"
 						fill="none"
@@ -45,6 +49,8 @@ export default function EmptyState(props: EmptyStateProps) {
 			case "search":
 				return (
 					<svg
+            role="img"
+            aria-label="Search"
 						xmlns="http://www.w3.org/2000/svg"
 						class="w-12 h-12 text-amber-500 mx-auto mb-4"
 						fill="none"

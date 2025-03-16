@@ -14,6 +14,8 @@ export default function AttributeItem(props: AttributeItemProps) {
 			case "lightning":
 				return (
 					<svg
+            role="img"
+            aria-label="Lightning"
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-4 w-4 mr-1 text-indigo-500"
 						fill="none"
@@ -31,6 +33,8 @@ export default function AttributeItem(props: AttributeItemProps) {
 			case "clock":
 				return (
 					<svg
+            role="img"
+            aria-label="Clock"
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-4 w-4 mr-1 text-indigo-500"
 						fill="none"
@@ -48,6 +52,8 @@ export default function AttributeItem(props: AttributeItemProps) {
 			case "calendar":
 				return (
 					<svg
+            role="img"
+            aria-label="Calendar"
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-4 w-4 mr-1 text-indigo-500"
 						fill="none"
@@ -65,6 +71,8 @@ export default function AttributeItem(props: AttributeItemProps) {
 			case "user":
 				return (
 					<svg
+            role="img"
+            aria-label="User"
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-4 w-4 mr-1 text-indigo-500"
 						fill="none"
@@ -82,6 +90,8 @@ export default function AttributeItem(props: AttributeItemProps) {
 			case "tag":
 				return (
 					<svg
+            role="img"
+            aria-label="Tag"
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-4 w-4 mr-1 text-indigo-500"
 						fill="none"

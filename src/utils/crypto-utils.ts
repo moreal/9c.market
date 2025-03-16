@@ -15,7 +15,7 @@ export function formatCryptoValue(
 
 	if (currency === "usd") {
 		return `$${amount.toFixed(2)} ${symbolUpper}`;
-	} else {
-		return `₩${amount.toFixed(2)} ${symbolUpper}`;
 	}
+
+  return `₩${amount.toFixed(2)} ${symbolUpper}`;
 }
