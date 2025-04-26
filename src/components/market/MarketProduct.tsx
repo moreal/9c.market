@@ -1,6 +1,6 @@
 import { createMemo, Show } from "solid-js";
 
-import { useCurrency } from "~/contexts/CurrencyContext";
+import { useCurrency, type CurrencyType } from "~/contexts/CurrencyContext";
 import { useWNCGPrice } from "~/contexts/WNCGPriceContext";
 import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
 import { useProducts } from "~/contexts/ProductsContext";
@@ -14,10 +14,90 @@ import HeroiconsOutlineExternalLink from "~icons/heroicons-outline/external-link
 import HeroiconsOutlineTrendingDown from "~icons/heroicons-outline/trending-down";
 import HeroiconsOutlineTrendingUp from "~icons/heroicons-outline/trending-up";
 
+// Constants
 const NCSCAN_BY_NETWORK: Readonly<Record<NetworkType, string>> = {
 	heimdall: "https://heimdall.9cscan.com",
 	odin: "https://9cscan.com",
 };
+
+const ADDRESS_SHORT_LENGTH = 6;
+const PRICE_DECIMAL_OFFSET = 2;
+
+// Price Display Component
+function PriceDisplay(props: {
+	label: string;
+	price: number;
+	unitPrice: number;
+	currency: CurrencyType;
+	wncgPrice: number;
+	icon: any;
+	iconColor: string;
+}) {
+	return (
+		<div class="flex items-center">
+			<props.icon class={`stroke-2 h-4 w-4 ${props.iconColor} mr-1.5`} />
+			<div>
+				<span class="text-xs text-gray-500">{props.label}</span>
+				<div class="font-bold text-gray-900 text-sm">
+					{(props.price * props.wncgPrice).toFixed(
+						DECIMALS_BY_CURRENCY[props.currency],
+					)}{" "}
+					{props.currency}{" "}
+					<span class="font-medium text-xs text-gray-700">
+						({props.price} NCG)
+					</span>
+				</div>
+			</div>
+		</div>
+	);
+}
+
+// IAP Comparison Component
+function IAPComparison(props: {
+	comparison: { percent: number; cheaper: boolean } | null;
+}) {
+	return (
+		<Show when={props.comparison}>
+			{(comparison) => (
+				<div class="flex items-center">
+					{comparison().cheaper ? (
+						<HeroiconsOutlineTrendingDown class="stroke-2 h-4 w-4 text-green-500 mr-1.5" />
+					) : (
+						<HeroiconsOutlineTrendingUp class="stroke-2 h-4 w-4 text-orange-500 mr-1.5" />
+					)}
+					<div>
+						<span class="text-xs text-gray-500">Compare with IAP</span>
+						<div
+							class={`font-semibold ${comparison().cheaper ? "text-green-600" : "text-orange-600"} text-sm transition-all duration-300`}
+						>
+							{comparison().percent.toFixed(2)}%{" "}
+							{comparison().cheaper ? "cheaper" : "expensive"} than IAP
+						</div>
+					</div>
+				</div>
+			)}
+		</Show>
+	);
+}
+
+// Address Link Component
+function AddressLink(props: {
+	network: NetworkType;
+	address: string;
+	label: string;
+}) {
+	return (
+		<a
+			href={`${NCSCAN_BY_NETWORK[props.network]}/address/0x${props.address}`}
+			class="text-gray-500 hover:text-gray-700 text-xs hover:underline flex items-center"
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			<HeroiconsOutlineExternalLink class="stroke-2 h-3 w-3 mr-0.5" />
+			{props.label} (0x{props.address.substring(0, ADDRESS_SHORT_LENGTH)})
+		</a>
+	);
+}
 
 export function MarketProduct(props: {
 	product: ItemProduct;
@@ -68,81 +148,38 @@ export function MarketProduct(props: {
 								</span>
 							</div>
 							<div class="flex items-center gap-2">
-								<a
-									href={`${NCSCAN_BY_NETWORK[network()]}/address/0x${props.product.sellerAgentAddress}`}
-									class="text-gray-500 hover:text-gray-700 text-xs hover:underline flex items-center"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<HeroiconsOutlineExternalLink class="stroke-2 h-3 w-3 mr-0.5" />
-									Agent (0x{props.product.sellerAgentAddress.substring(0, 6)})
-								</a>
-								<a
-									href={`${NCSCAN_BY_NETWORK[network()]}/avatar/0x${props.product.sellerAvatarAddress}`}
-									class="text-gray-500 hover:text-gray-700 text-xs hover:underline flex items-center"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<HeroiconsOutlineExternalLink class="stroke-2 h-3 w-3 mr-0.5" />
-									Avatar (0x{props.product.sellerAvatarAddress.substring(0, 6)})
-								</a>
+								<AddressLink
+									network={network()}
+									address={props.product.sellerAgentAddress}
+									label="Agent"
+								/>
+								<AddressLink
+									network={network()}
+									address={props.product.sellerAvatarAddress}
+									label="Avatar"
+								/>
 							</div>
 						</div>
 						<div class="grid grid-cols-3 gap-2 bg-gray-50 rounded-md p-2">
-							<div class="flex items-center">
-								<HeroiconsOutlineCurrencyDollar class="stroke-2 h-4 w-4 text-amber-500 mr-1.5" />
-								<div>
-									<span class="text-xs text-gray-500">Price</span>
-									<div class="font-bold text-gray-900 text-sm">
-										{(props.product.price * wncgPrice()).toFixed(
-											DECIMALS_BY_CURRENCY[currency()],
-										)}{" "}
-										{currency()}{" "}
-										<span class="font-medium text-xs text-gray-700">
-											({props.product.price} NCG)
-										</span>
-									</div>
-								</div>
-							</div>
-
-							<div class="flex items-center">
-								<HeroiconsOutlineTag class="stroke-2 h-4 w-4 text-sky-500 mr-1.5" />
-								<div>
-									<span class="text-xs text-gray-500">Unit Price</span>
-									<div class="font-bold text-gray-900 text-sm">
-										{(props.product.unitPrice * wncgPrice()).toFixed(
-											DECIMALS_BY_CURRENCY[currency()] + 2,
-										)}{" "}
-										{currency()}{" "}
-										<span class="font-medium text-xs text-gray-700">
-											({props.product.unitPrice} NCG)
-										</span>
-									</div>
-								</div>
-							</div>
-							<Show when={iapPriceComparison()}>
-								{(iapPriceComparison) => (
-									<div class="flex items-center">
-										{iapPriceComparison().cheaper ? (
-											<HeroiconsOutlineTrendingDown class="stroke-2 h-4 w-4 text-green-500 mr-1.5" />
-										) : (
-											<HeroiconsOutlineTrendingUp class="stroke-2 h-4 w-4 text-orange-500 mr-1.5" />
-										)}
-										<div>
-											<span class="text-xs text-gray-500">
-												Compare with IAP
-											</span>
-											<div
-												class={`font-semibold ${iapPriceComparison().cheaper ? "text-green-600" : "text-orange-600"} text-sm transition-all duration-300`}
-											>
-												{iapPriceComparison().percent.toFixed(2)}%{" "}
-												{iapPriceComparison().cheaper ? "cheaper" : "expensive"}{" "}
-												than IAP
-											</div>
-										</div>
-									</div>
-								)}
-							</Show>
+							<PriceDisplay
+								label="Price"
+								price={props.product.price}
+								unitPrice={props.product.unitPrice}
+								currency={currency()}
+								wncgPrice={wncgPrice()}
+								icon={HeroiconsOutlineCurrencyDollar}
+								iconColor="text-amber-500"
+							/>
+							<PriceDisplay
+								label="Unit Price"
+								price={props.product.unitPrice}
+								unitPrice={props.product.unitPrice}
+								currency={currency()}
+								wncgPrice={wncgPrice()}
+								icon={HeroiconsOutlineTag}
+								iconColor="text-sky-500"
+							/>
+							<IAPComparison comparison={iapPriceComparison()} />
 						</div>
 					</div>
 				</div>
