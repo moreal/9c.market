@@ -17,10 +17,10 @@ export default function NetworkSelector() {
 	};
 
 	return (
-		<div class="relative ml-auto">
+		<div class="relative w-full md:w-auto">
 			<button
 				type="button"
-				class="flex items-center px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all duration-200"
+				class="flex items-center px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all duration-200 w-full md:w-auto justify-between md:justify-start"
 				onClick={toggleDropdown}
 			>
 				<HeroiconsOutlineGlobe
@@ -41,7 +41,7 @@ export default function NetworkSelector() {
 			</button>
 
 			<div
-				class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-lg shadow-lg z-10 transform origin-top-right transition-all duration-200"
+				class="absolute right-0 mt-2 py-2 w-full md:w-48 bg-white rounded-lg shadow-lg z-10 transform origin-top-right transition-all duration-200"
 				style={{
 					opacity: isOpen() ? 1 : 0,
 					visibility: isOpen() ? "visible" : "hidden",

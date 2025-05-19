@@ -31,11 +31,11 @@ export default function CurrencySelector() {
 	};
 
 	return (
-		<div class="relative ml-auto currency-selector">
+		<div class="relative currency-selector w-full md:w-auto">
 			<button
 				type="button"
 				onClick={toggleDropdown}
-				class="flex items-center bg-sky-700 hover:bg-sky-600 text-white px-3 py-1 rounded-lg focus:outline-none transition-colors duration-200"
+				class="flex items-center bg-sky-700 hover:bg-sky-600 text-white px-3 py-1 rounded-lg focus:outline-none transition-colors duration-200 w-full md:w-auto justify-between md:justify-start"
 			>
 				<span class="mr-1">
 					{SYMBOL_BY_CURRENCY[currency()]} {currency()}
@@ -49,7 +49,7 @@ export default function CurrencySelector() {
 			</button>
 
 			{isOpen() && (
-				<ul class="absolute right-0 mt-2 py-2 w-24 bg-white rounded-md shadow-lg z-10">
+				<ul class="absolute right-0 mt-2 py-2 w-full md:w-24 bg-white rounded-md shadow-lg z-10">
 					<For each={config.currency.availableCurrencies}>
 						{(curr) => (
 							<li
