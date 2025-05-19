@@ -1,5 +1,5 @@
 import { A, useLocation } from "@solidjs/router";
-import { createSignal, Show } from "solid-js";
+import { createSignal, Show, onMount } from "solid-js";
 import NetworkSelector from "./NetworkSelector";
 import CurrencySelector from "./CurrencySelector";
 import HeroiconsOutlineShoppingBag from "~icons/heroicons-outline/shopping-bag";
@@ -14,6 +14,21 @@ export default function Nav() {
 	const toggleMobileMenu = () => {
 		setMobileMenuOpen(!mobileMenuOpen());
 	};
+	
+	// Close menu when clicking outside
+	onMount(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			const target = event.target as HTMLElement;
+			if (mobileMenuOpen() && !target.closest('.mobile-menu-container') && !target.closest('.mobile-menu-button')) {
+				setMobileMenuOpen(false);
+			}
+		};
+
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	});
 	
 	const active = (path: string) =>
 		path === location.pathname
@@ -37,7 +52,7 @@ export default function Nav() {
 				{/* Mobile menu button */}
 				<button 
 					type="button" 
-					class="md:hidden ml-auto p-2 rounded-md text-white hover:bg-sky-700 focus:outline-none"
+					class="mobile-menu-button md:hidden ml-auto p-2 rounded-md text-white hover:bg-sky-700 focus:outline-none"
 					onClick={toggleMobileMenu}
 				>
 					<Show when={mobileMenuOpen()} fallback={
@@ -61,7 +76,7 @@ export default function Nav() {
 				<div 
 					class={`${
 						mobileMenuOpen() ? 'block' : 'hidden'
-					} md:flex md:items-center w-full md:w-auto md:ml-0 mt-4 md:mt-0`}
+					} md:flex md:items-center w-full md:w-auto md:ml-0 mt-4 md:mt-0 mobile-menu-transition mobile-menu-container`}
 				>
 					<ul class="flex flex-col md:flex-row md:items-center">
 						<li class={`border-b-2 ${active("/")} mx-3 py-2`}>

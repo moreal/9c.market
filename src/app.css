@@ -43,6 +43,11 @@ main {
 	animation: fadeIn 0.3s ease-in-out;
 }
 
+/* Mobile menu transition */
+.mobile-menu-transition {
+	transition: max-height 0.3s ease-out, opacity 0.2s ease-out;
+}
+
 @keyframes fadeIn {
 	from {
 		opacity: 0;
