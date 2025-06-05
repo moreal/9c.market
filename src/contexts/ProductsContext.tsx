@@ -47,6 +47,7 @@ export function ProductsProvider(props: { children: JSX.Element }) {
 		const filtered = allProducts().filter(
 			(p) =>
 				p.fungible_item_list.length === 1 &&
+        p.networkPrice !== undefined &&
 				p.fungible_item_list[0].sheet_item_id === sheetId,
 		);
 		const sorted = filtered.toSorted(
