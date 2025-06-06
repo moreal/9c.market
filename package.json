@@ -5,10 +5,14 @@
 	"license": "AGPL-3.0-only",
 	"scripts": {
 		"dev": "vinxi dev",
+		"typecheck": "tsc --noEmit",
 		"build": "vinxi build",
 		"start": "vinxi start",
 		"fmt": "biome format --write src",
-		"lint": "biome lint --write src"
+		"lint": "biome lint --write src",
+		"test": "vitest run",
+		"test:ui": "vitest run --ui",
+		"validate": "yarn fmt && yarn typecheck && yarn test"
 	},
 	"dependencies": {
 		"@planetarium/chrono-sdk": "npm:@jsr/planetarium__chrono-sdk@^0.2.0",
@@ -25,8 +29,14 @@
 		"@svgr/core": "^8.1.0",
 		"@svgr/plugin-jsx": "^8.1.0",
 		"@tailwindcss/vite": "^4.0.7",
+		"@testing-library/jest-dom": "^6.6.3",
+		"@types/node": "^22.15.30",
+		"@vitest/ui": "^3.2.2",
+		"jsdom": "^26.1.0",
 		"tailwindcss": "^4.0.7",
-		"unplugin-icons": "^22.1.0"
+		"typescript": "^5.8.3",
+		"unplugin-icons": "^22.1.0",
+		"vitest": "^3.2.2"
 	},
 	"engines": {
 		"node": ">=22"

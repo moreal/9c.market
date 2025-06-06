@@ -1,10 +1,5 @@
 import type { NetworkType } from "~/contexts/NetworkContext";
-import type {
-	Category,
-	CategoryData,
-	Product,
-	ProductData,
-} from "~/types/iap";
+import type { Category, CategoryData, Product, ProductData } from "~/types/iap";
 import { config } from "~/config";
 
 /**
@@ -62,7 +57,7 @@ export const marketApi = {
 
 				// Extract USD price from price_list
 				const usdPriceItem = product.price_list.find(
-					(item) => item.currency === "USD"
+					(item) => item.currency === "USD",
 				);
 
 				if (usdPriceItem) {

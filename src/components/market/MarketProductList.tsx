@@ -1,46 +1,41 @@
-import { createAsync, query } from "@solidjs/router";
-import { For } from "solid-js";
+import { createAsync } from "@solidjs/router";
+import { createMemo } from "solid-js";
 
-import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
+import { useNetwork } from "~/contexts/NetworkContext";
 import { useItemSubType } from "~/contexts/ItemSubTypeContext";
-import { MarketProduct } from "~/components/market/MarketProduct";
-import { MarketServiceClient } from "~/utils/MarketServiceClient";
-import type { ItemSubType } from "~/types/item";
-import { config } from "~/config";
+import { getDIContainer } from "~/utils/DIContainer";
 
-// API Client Configuration  
-const CLIENT_BY_NETWORK: Readonly<Record<NetworkType, MarketServiceClient>> = {
-	heimdall: new MarketServiceClient(`${config.api.marketApi}/marketProviderHeimdall`),
-	odin: new MarketServiceClient(`${config.api.marketApi}/marketProviderOdin`),
-};
-
-// Server-side query function
-const fetchItemProducts = query(
-	async (network: NetworkType, itemSubType: ItemSubType) => {
-		"use server";
-		const client = CLIENT_BY_NETWORK[network];
-		return await client.fetchItemProducts(
-			config.market.defaultPage,
-			config.market.defaultPageSize,
-			itemSubType,
-		);
-	},
-	"fetch-item-products",
-);
-
+/**
+ * Market product list component
+ * Follows SRP by focusing only on orchestrating data flow and rendering
+ * Follows DIP by depending on abstractions rather than concrete implementations
+ * Follows OCP by allowing different sorting strategies without modification
+ */
 export function MarketProductList() {
 	const { network } = useNetwork();
 	const { itemSubType } = useItemSubType();
 
+	// Get dependencies from DI container
+	const diContainer = getDIContainer();
+
+	// Fetch products using injected service
 	const products = createAsync(async () => {
-		return (
-			await fetchItemProducts(network(), itemSubType())
-		).itemProducts.toSorted((a, b) => a.unitPrice - b.unitPrice);
+		const response = await diContainer.marketProductService.fetchProducts(
+			network(),
+			itemSubType(),
+		);
+		return response.itemProducts;
 	});
 
-	return (
-		<For each={products()}>
-			{(product) => <MarketProduct product={product} />}
-		</For>
-	);
+	// Sort products using injected sorting service
+	const sortedProducts = createMemo(() => {
+		const productList = products();
+		if (!productList) return [];
+
+		return diContainer.productSortService.sort(productList);
+	});
+
+	// Render using injected renderer
+	const ProductRenderer = diContainer.productListRenderer;
+	return <ProductRenderer products={sortedProducts()} />;
 }

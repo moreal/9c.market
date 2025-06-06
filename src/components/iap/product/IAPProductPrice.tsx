@@ -1,4 +1,8 @@
-import { DECIMALS_BY_CURRENCY, EXCHANGE_RATE_BY_CURRENCY, SYMBOL_BY_CURRENCY } from "~/constants";
+import {
+	DECIMALS_BY_CURRENCY,
+	EXCHANGE_RATE_BY_CURRENCY,
+	SYMBOL_BY_CURRENCY,
+} from "~/constants";
 import type { Product } from "~/types/iap";
 import { useCurrency } from "~/contexts/CurrencyContext";
 
@@ -27,14 +31,16 @@ export default function IAPProductPrice(props: IAPProductPriceProps) {
 			if (product.usdPrice === undefined) {
 				return "Unknown Price";
 			}
-			
+
 			// If current currency is USD, show USD price directly
 			if (currency() === "USD") {
 				return `${SYMBOL_BY_CURRENCY.USD}${product.usdPrice.toFixed(DECIMALS_BY_CURRENCY.USD)} USD`;
 			}
-			
+
 			// Convert USD to other currencies using exchange rate
-			const convertedPrice = product.usdPrice * EXCHANGE_RATE_BY_CURRENCY.USD / EXCHANGE_RATE_BY_CURRENCY[currency()];
+			const convertedPrice =
+				(product.usdPrice * EXCHANGE_RATE_BY_CURRENCY.USD) /
+				EXCHANGE_RATE_BY_CURRENCY[currency()];
 			return `(Guessed from USD) ${SYMBOL_BY_CURRENCY[currency()]}${convertedPrice.toFixed(DECIMALS_BY_CURRENCY[currency()])} ${currency()}`;
 		}
 	};

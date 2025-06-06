@@ -59,14 +59,14 @@ export const SYMBOL_BY_CURRENCY: Readonly<Record<CurrencyType, string>> = {
 } as const;
 
 export const EXCHANGE_RATE_BY_CURRENCY: Readonly<Record<CurrencyType, number>> =
-  {
-    USD: 1,
-    KRW: 1359.56,
-    EUR: 0.88,
-    JPY: 143.15,
-    PHP: 55.69,
-    VND: 26098.49,
-  } as const;
+	{
+		USD: 1,
+		KRW: 1359.56,
+		EUR: 0.88,
+		JPY: 143.15,
+		PHP: 55.69,
+		VND: 26098.49,
+	} as const;
 
 export const SHEET_ID_MAP: Readonly<Record<number, string>> = {
 	400000: "Hourglass",
