@@ -47,7 +47,7 @@ export function ProductsProvider(props: { children: JSX.Element }) {
 		const filtered = allProducts().filter(
 			(p) =>
 				p.fungible_item_list.length === 1 &&
-        p.networkPrice !== undefined &&
+        p.usdPrice !== undefined &&
 				p.fungible_item_list[0].sheet_item_id === sheetId,
 		);
 		const sorted = filtered.toSorted(
@@ -57,12 +57,12 @@ export function ProductsProvider(props: { children: JSX.Element }) {
 		const productWithHighestAmount = sorted[sorted.length - 1];
 
 		const amount = productWithHighestAmount.fungible_item_list[0].amount || 0;
-		if (amount > 0) {
+		if (amount > 0 && productWithHighestAmount.usdPrice !== undefined) {
 			return {
 				averagePrice:
-					productWithHighestAmount.networkPrice.KRW /
-					amount /
-					EXCHANGE_RATE_BY_CURRENCY[currency],
+					productWithHighestAmount.usdPrice
+          * EXCHANGE_RATE_BY_CURRENCY[currency]
+					/ amount,
 				sheetId,
 				amount,
 			};

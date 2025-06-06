@@ -2,7 +2,6 @@ import type { NetworkType } from "~/contexts/NetworkContext";
 import type {
 	Category,
 	CategoryData,
-	NetworkPrice,
 	Product,
 	ProductData,
 } from "~/types/iap";
@@ -57,22 +56,22 @@ export const marketApi = {
 		network: NetworkType,
 	): Promise<Product[]> {
 		try {
-			const response = await fetch(
-				`${config.api.priceApi}/${network.toLowerCase()}.prices.json`,
-			);
-
-			if (!response.ok) {
-				throw new Error(`Failed to fetch ${network} prices data`);
-			}
-
-			const pricesData: Record<string, NetworkPrice> = await response.json();
-
-			// Enhance each product with its network price if available
+			// Enhance each product with its USD price from price_list
 			return products.map((product) => {
-				const networkPrice = pricesData[product.name] || undefined;
+				let usdPrice: number | undefined = undefined;
+
+				// Extract USD price from price_list
+				const usdPriceItem = product.price_list.find(
+					(item) => item.currency === "USD"
+				);
+
+				if (usdPriceItem) {
+					usdPrice = usdPriceItem.price;
+				}
+
 				return {
 					...product,
-					networkPrice,
+					usdPrice,
 				};
 			});
 		} catch (error) {

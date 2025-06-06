@@ -42,6 +42,7 @@ export type ProductData = {
 	close_timestamp: string | null;
 	fav_list: FavItem[];
 	fungible_item_list: FungibleItem[];
+	price_list: PriceListItem[];
 };
 
 export type CategoryData = {
@@ -53,9 +54,15 @@ export type CategoryData = {
 	product_list: ProductData[];
 };
 
+export type PriceListItem = {
+	store: number;
+	currency: string;
+	price: number;
+};
+
 // Domain model for Product with additional price information
 export type Product = ProductData & {
-	networkPrice: NetworkPrice;
+	usdPrice?: number;
 };
 
 export type Category = {
