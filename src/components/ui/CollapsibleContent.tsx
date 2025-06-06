@@ -1,4 +1,4 @@
-import { children, createSignal, type JSX } from "solid-js";
+import { children, createSignal, createUniqueId, type JSX } from "solid-js";
 
 type CollapsibleContentProps = {
 	title: string;
@@ -9,6 +9,7 @@ type CollapsibleContentProps = {
 export default function CollapsibleContent(props: CollapsibleContentProps) {
 	const [isOpen, setIsOpen] = createSignal(props.defaultOpen || false);
 	const c = children(() => props.children);
+	const uniqueId = createUniqueId();
 
 	return (
 		<div class="border-t border-gray-200 pt-4 mt-4">
@@ -17,7 +18,7 @@ export default function CollapsibleContent(props: CollapsibleContentProps) {
 				class="flex w-full justify-between items-center focus:outline-none group"
 				onClick={() => setIsOpen(!isOpen())}
 				aria-expanded={isOpen()}
-				aria-controls="content-panel"
+				aria-controls={uniqueId}
 			>
 				<span class="font-medium text-gray-700 group-hover:text-indigo-600 transition-colors duration-200">
 					{props.title}
@@ -45,7 +46,7 @@ export default function CollapsibleContent(props: CollapsibleContentProps) {
 			</button>
 
 			<div
-				id="content-panel"
+				id={uniqueId}
 				class="overflow-hidden transition-all duration-300 ease-in-out"
 				style={{
 					"max-height": isOpen() ? "500px" : "0px",

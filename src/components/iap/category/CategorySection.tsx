@@ -17,13 +17,17 @@ export default function CategorySection(props: { category: Category }) {
 			<div class="mb-12">
 				<CategoryHeader title={category.name} />
 
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+				<div class="flex flex-col md:flex-row md:flex-wrap gap-6">
 					<For
 						each={category.product_list
 							.filter((product) => product.active)
 							.sort((a, b) => a.order - b.order)}
 					>
-						{(product) => <IAPProductItem product={product} />}
+						{(product) => (
+							<div class="w-full md:w-[calc(50%-0.75rem)]">
+								<IAPProductItem product={product} />
+							</div>
+						)}
 					</For>
 				</div>
 			</div>
