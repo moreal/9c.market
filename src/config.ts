@@ -16,6 +16,8 @@ export const config = {
 		priceApi: "https://9c.market/data",
 		/** Base URL for crypto price API */
 		cryptoPriceApi: "https://coinprice-api.9c.market/api/coins",
+		/** Base URL for the market API */
+		marketApi: "https://api.9capi.com",
 	},
 
 	/**
@@ -56,5 +58,15 @@ export const config = {
 	refreshIntervals: {
 		/** How often to refresh WNCG price */
 		wncgPrice: 5 * 60 * 1000, // 5 minutes
+	},
+
+	/**
+	 * Market API pagination defaults
+	 */
+	market: {
+		/** Default page size for market API requests */
+		defaultPageSize: 100,
+		/** Default page number for market API requests */
+		defaultPage: 0,
 	},
 };

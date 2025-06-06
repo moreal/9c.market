@@ -6,6 +6,10 @@ import { marketApi } from "~/lib/api";
 import type { CurrencyType } from "./CurrencyContext";
 import { EXCHANGE_RATE_BY_CURRENCY } from "~/constants";
 
+// Constants for average price calculation
+const SINGLE_FUNGIBLE_ITEM_COUNT = 1;
+const MINIMUM_AMOUNT = 0;
+
 // Create a server action for product fetching
 const fetchProducts = query((networkName: NetworkType) => {
 	"use server";
@@ -44,25 +48,41 @@ export function ProductsProvider(props: { children: JSX.Element }) {
 		sheetId: number,
 		currency: CurrencyType,
 	): { averagePrice: number; sheetId: number; amount: number } | null => {
-		const filtered = allProducts().filter(
-			(p) =>
-				p.fungible_item_list.length === 1 &&
-        p.usdPrice !== undefined &&
-				p.fungible_item_list[0].sheet_item_id === sheetId,
+		const products = allProducts();
+		
+		// Filter products that match criteria for average price calculation
+		const isSingleFungibleItem = (product: Product) => 
+			product.fungible_item_list.length === SINGLE_FUNGIBLE_ITEM_COUNT;
+		const hasValidPrice = (product: Product) => product.usdPrice !== undefined;
+		const hasMatchingSheetId = (product: Product) => 
+			product.fungible_item_list[0].sheet_item_id === sheetId;
+		
+		const eligibleProducts = products.filter(
+			(product) =>
+				isSingleFungibleItem(product) &&
+				hasValidPrice(product) &&
+				hasMatchingSheetId(product),
 		);
-		const sorted = filtered.toSorted(
+		
+		if (eligibleProducts.length === 0) return null;
+		
+		const sortedByAmount = eligibleProducts.toSorted(
 			(a, b) => a.fungible_item_list[0].amount - b.fungible_item_list[0].amount,
 		);
-		if (sorted.length === 0) return null;
-		const productWithHighestAmount = sorted[sorted.length - 1];
-
-		const amount = productWithHighestAmount.fungible_item_list[0].amount || 0;
-		if (amount > 0 && productWithHighestAmount.usdPrice !== undefined) {
+		
+		const productWithHighestAmount = sortedByAmount[sortedByAmount.length - 1];
+		const amount = productWithHighestAmount.fungible_item_list[0].amount || MINIMUM_AMOUNT;
+		
+		const hasValidAmount = amount > MINIMUM_AMOUNT;
+		const hasValidUsdPrice = productWithHighestAmount.usdPrice !== undefined;
+		
+		if (hasValidAmount && hasValidUsdPrice) {
+			const exchangeRate = EXCHANGE_RATE_BY_CURRENCY[currency];
+			const usdPrice = productWithHighestAmount.usdPrice as number; // Type guard already ensures this is defined
+			const averagePrice = (usdPrice * exchangeRate) / amount;
+			
 			return {
-				averagePrice:
-					productWithHighestAmount.usdPrice
-          * EXCHANGE_RATE_BY_CURRENCY[currency]
-					/ amount,
+				averagePrice,
 				sheetId,
 				amount,
 			};

@@ -6,16 +6,12 @@ import { useItemSubType } from "~/contexts/ItemSubTypeContext";
 import { MarketProduct } from "~/components/market/MarketProduct";
 import { MarketServiceClient } from "~/utils/MarketServiceClient";
 import type { ItemSubType } from "~/types/item";
+import { config } from "~/config";
 
-// Constants
-const API_BASE_URL = "https://api.9capi.com";
-const DEFAULT_PAGE_SIZE = 100;
-const DEFAULT_PAGE = 0;
-
-// API Client Configuration
+// API Client Configuration  
 const CLIENT_BY_NETWORK: Readonly<Record<NetworkType, MarketServiceClient>> = {
-	heimdall: new MarketServiceClient(`${API_BASE_URL}/marketProviderHeimdall`),
-	odin: new MarketServiceClient(`${API_BASE_URL}/marketProviderOdin`),
+	heimdall: new MarketServiceClient(`${config.api.marketApi}/marketProviderHeimdall`),
+	odin: new MarketServiceClient(`${config.api.marketApi}/marketProviderOdin`),
 };
 
 // Server-side query function
@@ -24,8 +20,8 @@ const fetchItemProducts = query(
 		"use server";
 		const client = CLIENT_BY_NETWORK[network];
 		return await client.fetchItemProducts(
-			DEFAULT_PAGE,
-			DEFAULT_PAGE_SIZE,
+			config.market.defaultPage,
+			config.market.defaultPageSize,
 			itemSubType,
 		);
 	},
