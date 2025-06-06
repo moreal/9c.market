@@ -10,51 +10,64 @@ import { SYMBOL_BY_CURRENCY } from "~/constants";
  */
 interface CurrencySelectorProps {
 	class?: string;
-	variant?: "default" | "compact";
+	variant?: "primary" | "compact";
 }
 
 /**
- * Currency selector component using the generic Dropdown component
+ * Props for currency selector variant components
  */
-function CurrencySelector(props: CurrencySelectorProps = {}): JSX.Element {
-	const { currency, setCurrency } = useCurrency();
+interface CurrencySelectorVariantProps {
+	class?: string;
+	onCurrencySelect: (currency: CurrencyType) => void;
+}
 
-	const handleCurrencySelect = (selectedCurrency: CurrencyType) => {
-		setCurrency(selectedCurrency);
-	};
+/**
+ * Compact variant of currency selector
+ */
+function CompactCurrencySelector(
+	props: CurrencySelectorVariantProps,
+): JSX.Element {
+	const { currency } = useCurrency();
 
-	if (props.variant === "compact") {
-		return (
-			<Dropdown class={props.class || "ml-auto"}>
-				<Dropdown.Trigger class="bg-sky-700 hover:bg-sky-600 text-white px-2 py-1 rounded-lg focus:outline-none transition-colors duration-200">
-					<span class="text-sm font-medium">
-						{SYMBOL_BY_CURRENCY[currency()]}
-					</span>
-				</Dropdown.Trigger>
+	return (
+		<Dropdown class={props.class || "ml-auto"}>
+			<Dropdown.Trigger class="bg-sky-700 hover:bg-sky-600 text-white px-2 py-1 rounded-lg focus:outline-none transition-colors duration-200">
+				<span class="text-sm font-medium">
+					{SYMBOL_BY_CURRENCY[currency()]}
+				</span>
+			</Dropdown.Trigger>
 
-				<Dropdown.Content class="py-2 w-24" align="right">
-					<For each={config.currency.availableCurrencies}>
-						{(curr) => (
-							<Dropdown.Item
-								class="px-4 py-2 text-sm text-center"
-								onClick={() => handleCurrencySelect(curr)}
+			<Dropdown.Content class="py-2 w-24" align="right">
+				<For each={config.currency.availableCurrencies}>
+					{(curr) => (
+						<Dropdown.Item
+							class="px-4 py-2 text-sm text-center"
+							onClick={() => props.onCurrencySelect(curr)}
+						>
+							<span
+								class={
+									currency() === curr
+										? "text-sky-600 font-medium"
+										: "text-gray-700"
+								}
 							>
-								<span
-									class={
-										currency() === curr
-											? "text-sky-600 font-medium"
-											: "text-gray-700"
-									}
-								>
-									{SYMBOL_BY_CURRENCY[curr]} {curr}
-								</span>
-							</Dropdown.Item>
-						)}
-					</For>
-				</Dropdown.Content>
-			</Dropdown>
-		);
-	}
+								{SYMBOL_BY_CURRENCY[curr]} {curr}
+							</span>
+						</Dropdown.Item>
+					)}
+				</For>
+			</Dropdown.Content>
+		</Dropdown>
+	);
+}
+
+/**
+ * Primary variant of currency selector
+ */
+function PrimaryCurrencySelector(
+	props: CurrencySelectorVariantProps,
+): JSX.Element {
+	const { currency } = useCurrency();
 
 	return (
 		<Dropdown class={props.class || "ml-auto"}>
@@ -77,7 +90,7 @@ function CurrencySelector(props: CurrencySelectorProps = {}): JSX.Element {
 					{(curr) => (
 						<Dropdown.Item
 							class="px-4 py-2 text-sm text-center"
-							onClick={() => handleCurrencySelect(curr)}
+							onClick={() => props.onCurrencySelect(curr)}
 						>
 							<span
 								class={
@@ -93,6 +106,34 @@ function CurrencySelector(props: CurrencySelectorProps = {}): JSX.Element {
 				</For>
 			</Dropdown.Content>
 		</Dropdown>
+	);
+}
+
+/**
+ * Currency selector component using the generic Dropdown component
+ */
+function CurrencySelector(props: CurrencySelectorProps = {}): JSX.Element {
+	const { setCurrency } = useCurrency();
+	const variant = props.variant || "primary";
+
+	const handleCurrencySelect = (selectedCurrency: CurrencyType) => {
+		setCurrency(selectedCurrency);
+	};
+
+	if (variant === "compact") {
+		return (
+			<CompactCurrencySelector
+				class={props.class}
+				onCurrencySelect={handleCurrencySelect}
+			/>
+		);
+	}
+
+	return (
+		<PrimaryCurrencySelector
+			class={props.class}
+			onCurrencySelect={handleCurrencySelect}
+		/>
 	);
 }
 

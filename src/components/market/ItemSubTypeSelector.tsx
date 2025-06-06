@@ -19,53 +19,64 @@ const NAME_BY_ITEM_SUB_TYPE: Record<ItemSubType, string> = {
  */
 interface ItemSubTypeSelectorProps {
 	class?: string;
-	variant?: "default" | "compact";
+	variant?: "primary" | "compact";
 }
 
 /**
- * Item sub-type selector component using the generic Dropdown component
+ * Props for item sub-type selector variant components
  */
-function ItemSubTypeSelector(
-	props: ItemSubTypeSelectorProps = {},
+interface ItemSubTypeSelectorVariantProps {
+	class?: string;
+	onItemSubTypeSelect: (subType: ItemSubType) => void;
+}
+
+/**
+ * Compact variant of item sub-type selector
+ */
+function CompactItemSubTypeSelector(
+	props: ItemSubTypeSelectorVariantProps,
 ): JSX.Element {
-	const { itemSubType, setItemSubType } = useItemSubType();
+	const { itemSubType } = useItemSubType();
 
-	const handleItemSubTypeSelect = (selectedSubType: ItemSubType) => {
-		setItemSubType(selectedSubType);
-	};
+	return (
+		<Dropdown class={props.class || "ml-auto"}>
+			<Dropdown.Trigger class="bg-sky-700 hover:bg-sky-600 text-white px-2 py-1 rounded-lg focus:outline-none transition-colors duration-200">
+				<span class="text-sm font-medium">
+					{NAME_BY_ITEM_SUB_TYPE[itemSubType()]}
+				</span>
+			</Dropdown.Trigger>
 
-	if (props.variant === "compact") {
-		return (
-			<Dropdown class={props.class || "ml-auto"}>
-				<Dropdown.Trigger class="bg-sky-700 hover:bg-sky-600 text-white px-2 py-1 rounded-lg focus:outline-none transition-colors duration-200">
-					<span class="text-sm font-medium">
-						{NAME_BY_ITEM_SUB_TYPE[itemSubType()]}
-					</span>
-				</Dropdown.Trigger>
-
-				<Dropdown.Content class="py-2 w-32" align="right">
-					<For each={AVAILABLE_ITEM_SUB_TYPE}>
-						{(subType) => (
-							<Dropdown.Item
-								class="px-4 py-2 text-sm text-center"
-								onClick={() => handleItemSubTypeSelect(subType)}
+			<Dropdown.Content class="py-2 w-32" align="right">
+				<For each={AVAILABLE_ITEM_SUB_TYPE}>
+					{(subType) => (
+						<Dropdown.Item
+							class="px-4 py-2 text-sm text-center"
+							onClick={() => props.onItemSubTypeSelect(subType)}
+						>
+							<span
+								class={
+									itemSubType() === subType
+										? "text-sky-600 font-medium"
+										: "text-gray-700"
+								}
 							>
-								<span
-									class={
-										itemSubType() === subType
-											? "text-sky-600 font-medium"
-											: "text-gray-700"
-									}
-								>
-									{NAME_BY_ITEM_SUB_TYPE[subType]}
-								</span>
-							</Dropdown.Item>
-						)}
-					</For>
-				</Dropdown.Content>
-			</Dropdown>
-		);
-	}
+								{NAME_BY_ITEM_SUB_TYPE[subType]}
+							</span>
+						</Dropdown.Item>
+					)}
+				</For>
+			</Dropdown.Content>
+		</Dropdown>
+	);
+}
+
+/**
+ * Primary variant of item sub-type selector
+ */
+function PrimaryItemSubTypeSelector(
+	props: ItemSubTypeSelectorVariantProps,
+): JSX.Element {
+	const { itemSubType } = useItemSubType();
 
 	return (
 		<Dropdown class={props.class || "ml-auto"}>
@@ -86,7 +97,7 @@ function ItemSubTypeSelector(
 					{(subType) => (
 						<Dropdown.Item
 							class="px-4 py-2 text-sm text-center"
-							onClick={() => handleItemSubTypeSelect(subType)}
+							onClick={() => props.onItemSubTypeSelect(subType)}
 						>
 							<span
 								class={
@@ -102,6 +113,36 @@ function ItemSubTypeSelector(
 				</For>
 			</Dropdown.Content>
 		</Dropdown>
+	);
+}
+
+/**
+ * Item sub-type selector component using the generic Dropdown component
+ */
+function ItemSubTypeSelector(
+	props: ItemSubTypeSelectorProps = {},
+): JSX.Element {
+	const { setItemSubType } = useItemSubType();
+	const variant = props.variant || "primary";
+
+	const handleItemSubTypeSelect = (selectedSubType: ItemSubType) => {
+		setItemSubType(selectedSubType);
+	};
+
+	if (variant === "compact") {
+		return (
+			<CompactItemSubTypeSelector
+				class={props.class}
+				onItemSubTypeSelect={handleItemSubTypeSelect}
+			/>
+		);
+	}
+
+	return (
+		<PrimaryItemSubTypeSelector
+			class={props.class}
+			onItemSubTypeSelect={handleItemSubTypeSelect}
+		/>
 	);
 }
 
