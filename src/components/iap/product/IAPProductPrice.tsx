@@ -41,7 +41,20 @@ export default function IAPProductPrice(props: IAPProductPriceProps) {
 			const convertedPrice =
 				(product.usdPrice * EXCHANGE_RATE_BY_CURRENCY.USD) /
 				EXCHANGE_RATE_BY_CURRENCY[currency()];
-			return `(Guessed from USD) ${SYMBOL_BY_CURRENCY[currency()]}${convertedPrice.toFixed(DECIMALS_BY_CURRENCY[currency()])} ${currency()}`;
+
+			return (
+				<span
+					class="flex items-center gap-1 border-b border-dotted border-gray-400 cursor-help"
+					title={`Guessed from USD, ${SYMBOL_BY_CURRENCY.USD}${product.usdPrice.toFixed(DECIMALS_BY_CURRENCY.USD)} USD`}
+				>
+					<span>🤔</span>
+					<span>
+						{SYMBOL_BY_CURRENCY[currency()]}
+						{convertedPrice.toFixed(DECIMALS_BY_CURRENCY[currency()])}{" "}
+						{currency()}
+					</span>
+				</span>
+			);
 		}
 	};
 
