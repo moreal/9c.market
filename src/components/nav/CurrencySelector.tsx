@@ -1,72 +1,107 @@
-import { For, createSignal, onMount } from "solid-js";
-import { type CurrencyType, useCurrency } from "../../contexts/CurrencyContext";
+import { For, type JSX } from "solid-js";
+import { type CurrencyType, useCurrency } from "~/contexts/CurrencyContext";
+import { Dropdown } from "~/components/ui/Dropdown";
 import HeroiconsOutlineChevronDown from "~icons/heroicons-outline/chevron-down";
 import { config } from "~/config";
 import { SYMBOL_BY_CURRENCY } from "~/constants";
 
-export default function CurrencySelector() {
+/**
+ * Props for CurrencySelector component
+ */
+interface CurrencySelectorProps {
+	class?: string;
+	variant?: "default" | "compact";
+}
+
+/**
+ * Currency selector component using the generic Dropdown component
+ */
+function CurrencySelector(props: CurrencySelectorProps = {}): JSX.Element {
 	const { currency, setCurrency } = useCurrency();
-	const [isOpen, setIsOpen] = createSignal(false);
 
-	const toggleDropdown = () => setIsOpen(!isOpen());
-
-	// Close dropdown when clicking outside
-	onMount(() => {
-		const handleClickOutside = (event: MouseEvent) => {
-			const target = event.target as HTMLElement;
-			if (!target.closest(".currency-selector")) {
-				setIsOpen(false);
-			}
-		};
-
-		document.addEventListener("mousedown", handleClickOutside);
-		return () => {
-			document.removeEventListener("mousedown", handleClickOutside);
-		};
-	});
-
-	const selectCurrency = (curr: CurrencyType) => {
-		setCurrency(curr);
-		setIsOpen(false);
+	const handleCurrencySelect = (selectedCurrency: CurrencyType) => {
+		setCurrency(selectedCurrency);
 	};
 
-	return (
-		<div class="relative ml-auto currency-selector">
-			<button
-				type="button"
-				onClick={toggleDropdown}
-				class="flex items-center bg-sky-700 hover:bg-sky-600 text-white px-3 py-1 rounded-lg focus:outline-none transition-colors duration-200"
-			>
-				<span class="mr-1">
-					{SYMBOL_BY_CURRENCY[currency()]} {currency()}
-				</span>
-				<HeroiconsOutlineChevronDown
-					stroke="currentColor"
-					fill="none"
-					viewBox="0 0 24 24"
-					class="stroke-2 h-4 w-4"
-				/>
-			</button>
+	if (props.variant === "compact") {
+		return (
+			<Dropdown class={props.class || "ml-auto"}>
+				<Dropdown.Trigger class="bg-sky-700 hover:bg-sky-600 text-white px-2 py-1 rounded-lg focus:outline-none transition-colors duration-200">
+					<span class="text-sm font-medium">
+						{SYMBOL_BY_CURRENCY[currency()]}
+					</span>
+				</Dropdown.Trigger>
 
-			{isOpen() && (
-				<ul class="absolute right-0 mt-2 py-2 w-24 bg-white rounded-md shadow-lg z-10">
+				<Dropdown.Content class="py-2 w-24" align="right">
 					<For each={config.currency.availableCurrencies}>
 						{(curr) => (
-							<li
-								class={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${
+							<Dropdown.Item
+								class="px-4 py-2 text-sm text-center"
+								onClick={() => handleCurrencySelect(curr)}
+							>
+								<span
+									class={
+										currency() === curr
+											? "text-sky-600 font-medium"
+											: "text-gray-700"
+									}
+								>
+									{SYMBOL_BY_CURRENCY[curr]} {curr}
+								</span>
+							</Dropdown.Item>
+						)}
+					</For>
+				</Dropdown.Content>
+			</Dropdown>
+		);
+	}
+
+	return (
+		<Dropdown class={props.class || "ml-auto"}>
+			<Dropdown.Trigger class="flex items-center bg-sky-700 hover:bg-sky-600 text-white px-3 py-1 rounded-lg focus:outline-none transition-colors duration-200">
+				<div class="flex items-center">
+					<span class="mr-1">
+						{SYMBOL_BY_CURRENCY[currency()]} {currency()}
+					</span>
+					<HeroiconsOutlineChevronDown
+						stroke="currentColor"
+						fill="none"
+						viewBox="0 0 24 24"
+						class="stroke-2 h-4 w-4"
+					/>
+				</div>
+			</Dropdown.Trigger>
+
+			<Dropdown.Content class="py-2 w-24" align="right">
+				<For each={config.currency.availableCurrencies}>
+					{(curr) => (
+						<Dropdown.Item
+							class="px-4 py-2 text-sm text-center"
+							onClick={() => handleCurrencySelect(curr)}
+						>
+							<span
+								class={
 									currency() === curr
 										? "text-sky-600 font-medium"
 										: "text-gray-700"
-								}`}
-								onKeyPress={() => selectCurrency(curr)}
-								onClick={() => selectCurrency(curr)}
+								}
 							>
 								{SYMBOL_BY_CURRENCY[curr]} {curr}
-							</li>
-						)}
-					</For>
-				</ul>
-			)}
-		</div>
+							</span>
+						</Dropdown.Item>
+					)}
+				</For>
+			</Dropdown.Content>
+		</Dropdown>
 	);
 }
+
+/**
+ * Default export for backward compatibility
+ */
+export default CurrencySelector;
+
+/**
+ * Named export for explicit usage
+ */
+export { CurrencySelector };
