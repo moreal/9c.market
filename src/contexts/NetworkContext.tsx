@@ -2,23 +2,34 @@ import { cookieStorage, makePersisted } from "@solid-primitives/storage";
 import { createSignal, createContext, useContext, type JSX } from "solid-js";
 import { config } from "~/config";
 
-// Define the available network types
-export type NetworkType = "odin" | "heimdall"; // Use literal types instead of circular reference
+/**
+ * Available network types for Nine Chronicles
+ */
+export type NetworkType = "odin" | "heimdall";
 
-// Create the context
-type NetworkContextType = {
+/**
+ * Props interface for NetworkProvider component
+ */
+interface NetworkProviderProps {
+	children: JSX.Element;
+}
+
+/**
+ * Context type for network management
+ */
+interface NetworkContextType {
 	network: () => NetworkType;
 	setNetwork: (network: NetworkType) => void;
-};
+}
 
 const NetworkContext = createContext<NetworkContextType>();
 
-// Provider component
-export function NetworkProvider(props: { children: JSX.Element }) {
-	// const [network, setNetwork] = createSignal<NetworkType>(
-	// 	config.networks.defaultNetwork
-	// );
-
+/**
+ * Network context provider component
+ * Manages network selection with persistent storage
+ * Uses cookie storage to maintain network preference across sessions
+ */
+export function NetworkProvider(props: NetworkProviderProps) {
 	const [network, setNetwork] = makePersisted(
 		createSignal<NetworkType>(config.networks.defaultNetwork),
 		{
@@ -38,7 +49,11 @@ export function NetworkProvider(props: { children: JSX.Element }) {
 	);
 }
 
-// Consumer hook
+/**
+ * Hook for accessing network context
+ * @throws {Error} When used outside of NetworkProvider
+ * @returns Network context with current network and setter function
+ */
 export function useNetwork() {
 	const context = useContext(NetworkContext);
 	if (!context) {

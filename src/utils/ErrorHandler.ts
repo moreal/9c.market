@@ -1,5 +1,10 @@
 /**
- * 커스텀 에러 클래스들
+ * Custom error classes for different service types
+ * Provides structured error handling with context information
+ */
+
+/**
+ * Error class for market service operations
  */
 export class MarketServiceError extends Error {
 	constructor(
@@ -11,6 +16,9 @@ export class MarketServiceError extends Error {
 	}
 }
 
+/**
+ * Error class for sort service operations
+ */
 export class SortServiceError extends Error {
 	constructor(
 		message: string,
@@ -21,10 +29,13 @@ export class SortServiceError extends Error {
 	}
 }
 
+/**
+ * Error class for render service operations
+ */
 export class RenderServiceError extends Error {
 	constructor(
 		message: string,
-		public readonly context?: any,
+		public readonly context?: unknown,
 	) {
 		super(message);
 		this.name = "RenderServiceError";
@@ -32,11 +43,23 @@ export class RenderServiceError extends Error {
 }
 
 /**
- * 에러 핸들링 유틸리티 함수들
+ * Type guard to check if a value is an Error
+ */
+function isError(value: unknown): value is Error {
+	return value instanceof Error;
+}
+
+/**
+ * Error handling utility functions
+ * Provides consistent error handling across the application
  */
 export const ErrorHandler = {
 	/**
-	 * 에러를 안전하게 로깅하고 기본값을 반환
+	 * Executes an operation safely and returns a fallback value on error
+	 * @param operation - The operation to execute
+	 * @param fallback - The fallback value to return on error
+	 * @param errorMessage - Optional custom error message for logging
+	 * @returns The operation result or fallback value
 	 */
 	withFallback<T>(operation: () => T, fallback: T, errorMessage?: string): T {
 		try {
@@ -48,7 +71,11 @@ export const ErrorHandler = {
 	},
 
 	/**
-	 * 비동기 작업을 안전하게 실행하고 에러를 처리
+	 * Executes an async operation safely and returns a fallback value on error
+	 * @param operation - The async operation to execute
+	 * @param fallback - The fallback value to return on error
+	 * @param errorMessage - Optional custom error message for logging
+	 * @returns Promise resolving to the operation result or fallback value
 	 */
 	async withAsyncFallback<T>(
 		operation: () => Promise<T>,
@@ -64,22 +91,36 @@ export const ErrorHandler = {
 	},
 
 	/**
-	 * 에러가 특정 타입인지 확인
+	 * Type guard to check if error is a MarketServiceError
+	 * @param error - The error to check
+	 * @returns True if error is MarketServiceError
 	 */
 	isMarketServiceError(error: unknown): error is MarketServiceError {
 		return error instanceof MarketServiceError;
 	},
 
+	/**
+	 * Type guard to check if error is a SortServiceError
+	 * @param error - The error to check
+	 * @returns True if error is SortServiceError
+	 */
 	isSortServiceError(error: unknown): error is SortServiceError {
 		return error instanceof SortServiceError;
 	},
 
+	/**
+	 * Type guard to check if error is a RenderServiceError
+	 * @param error - The error to check
+	 * @returns True if error is RenderServiceError
+	 */
 	isRenderServiceError(error: unknown): error is RenderServiceError {
 		return error instanceof RenderServiceError;
 	},
 
 	/**
-	 * 에러를 사용자 친화적인 메시지로 변환
+	 * Converts errors to user-friendly messages in Korean
+	 * @param error - The error to convert
+	 * @returns User-friendly error message
 	 */
 	getUserFriendlyMessage(error: unknown): string {
 		if (this.isMarketServiceError(error)) {
@@ -94,10 +135,26 @@ export const ErrorHandler = {
 			return `화면을 표시하는 중 오류가 발생했습니다: ${error.message}`;
 		}
 
-		if (error instanceof Error) {
+		if (isError(error)) {
 			return `오류가 발생했습니다: ${error.message}`;
 		}
 
 		return "알 수 없는 오류가 발생했습니다.";
+	},
+
+	/**
+	 * Logs error with context information
+	 * @param error - The error to log
+	 * @param context - Additional context information
+	 */
+	logError(error: unknown, context?: Record<string, unknown>): void {
+		const errorInfo = {
+			message: this.getUserFriendlyMessage(error),
+			error: error instanceof Error ? error.stack : String(error),
+			context,
+			timestamp: new Date().toISOString(),
+		};
+
+		console.error("Application Error:", errorInfo);
 	},
 };

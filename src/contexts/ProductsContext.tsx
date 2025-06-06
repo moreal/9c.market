@@ -10,6 +10,78 @@ import { EXCHANGE_RATE_BY_CURRENCY } from "~/constants";
 const SINGLE_FUNGIBLE_ITEM_COUNT = 1;
 const MINIMUM_AMOUNT = 0;
 
+/**
+ * Result type for average price calculation
+ */
+export interface AveragePriceResult {
+	averagePrice: number;
+	amount: number;
+	sheetId: number;
+}
+
+/**
+ * Helper functions for product filtering and price calculation
+ */
+const ProductHelpers = {
+	/**
+	 * Checks if product has single fungible item
+	 */
+	isSingleFungibleItem(product: Product): boolean {
+		return product.fungible_item_list.length === SINGLE_FUNGIBLE_ITEM_COUNT;
+	},
+
+	/**
+	 * Checks if product has valid USD price
+	 */
+	hasValidPrice(product: Product): boolean {
+		return product.usdPrice !== undefined && product.usdPrice > 0;
+	},
+
+	/**
+	 * Checks if product matches the given sheet ID
+	 */
+	hasMatchingSheetId(product: Product, sheetId: number): boolean {
+		return product.fungible_item_list[0]?.sheet_item_id === sheetId;
+	},
+
+	/**
+	 * Filters products eligible for average price calculation
+	 */
+	getEligibleProducts(products: Product[], sheetId: number): Product[] {
+		return products.filter(
+			(product) =>
+				this.isSingleFungibleItem(product) &&
+				this.hasValidPrice(product) &&
+				this.hasMatchingSheetId(product, sheetId),
+		);
+	},
+
+	/**
+	 * Calculates average price for a product
+	 */
+	calculateAveragePrice(
+		product: Product,
+		currency: CurrencyType,
+		sheetId: number,
+	): AveragePriceResult | null {
+		const amount = product.fungible_item_list[0]?.amount || MINIMUM_AMOUNT;
+		const usdPrice = product.usdPrice;
+
+		if (amount <= MINIMUM_AMOUNT || !usdPrice) {
+			return null;
+		}
+
+		const exchangeRate = EXCHANGE_RATE_BY_CURRENCY[currency];
+		const averagePrice = (usdPrice * exchangeRate) / amount;
+
+		return {
+			averagePrice,
+			sheetId,
+			amount,
+		};
+	},
+};
+
 // Create a server action for product fetching
 const fetchProducts = query((networkName: NetworkType) => {
 	"use server";
@@ -23,7 +95,7 @@ type ProductsContextType = {
 	getAveragePrice: (
 		sheetId: number,
 		currency: CurrencyType,
-	) => { averagePrice: number; amount: number; sheetId: number } | null;
+	) => AveragePriceResult | null;
 };
 
 const ProductsContext = createContext<ProductsContextType>();
@@ -36,60 +108,49 @@ export function ProductsProvider(props: { children: JSX.Element }) {
 		initialValue: [],
 	});
 
-	const allProducts = () => {
-		const cate = categories();
-		// Flatten all products from all categories into a single array
-		return cate.reduce((acc, category) => {
+	/**
+	 * Flattens all products from all categories into a single array
+	 */
+	const allProducts = (): Product[] => {
+		const categoryList = categories();
+		if (!categoryList) return [];
+
+		return categoryList.reduce((acc, category) => {
 			return acc.concat(category.product_list);
 		}, [] as Product[]);
 	};
 
+	/**
+	 * Calculates average price for a given sheet ID and currency
+	 * Returns null if no eligible products are found
+	 */
 	const getAveragePrice = (
 		sheetId: number,
 		currency: CurrencyType,
-	): { averagePrice: number; sheetId: number; amount: number } | null => {
+	): AveragePriceResult | null => {
 		const products = allProducts();
 
-		// Filter products that match criteria for average price calculation
-		const isSingleFungibleItem = (product: Product) =>
-			product.fungible_item_list.length === SINGLE_FUNGIBLE_ITEM_COUNT;
-		const hasValidPrice = (product: Product) => product.usdPrice !== undefined;
-		const hasMatchingSheetId = (product: Product) =>
-			product.fungible_item_list[0].sheet_item_id === sheetId;
-
-		const eligibleProducts = products.filter(
-			(product) =>
-				isSingleFungibleItem(product) &&
-				hasValidPrice(product) &&
-				hasMatchingSheetId(product),
+		const eligibleProducts = ProductHelpers.getEligibleProducts(
+			products,
+			sheetId,
 		);
 
-		if (eligibleProducts.length === 0) return null;
+		if (eligibleProducts.length === 0) {
+			return null;
+		}
 
+		// Sort by amount to get the product with highest amount
 		const sortedByAmount = eligibleProducts.toSorted(
 			(a, b) => a.fungible_item_list[0].amount - b.fungible_item_list[0].amount,
 		);
 
 		const productWithHighestAmount = sortedByAmount[sortedByAmount.length - 1];
-		const amount =
-			productWithHighestAmount.fungible_item_list[0].amount || MINIMUM_AMOUNT;
 
-		const hasValidAmount = amount > MINIMUM_AMOUNT;
-		const hasValidUsdPrice = productWithHighestAmount.usdPrice !== undefined;
-
-		if (hasValidAmount && hasValidUsdPrice) {
-			const exchangeRate = EXCHANGE_RATE_BY_CURRENCY[currency];
-			const usdPrice = productWithHighestAmount.usdPrice as number; // Type guard already ensures this is defined
-			const averagePrice = (usdPrice * exchangeRate) / amount;
-
-			return {
-				averagePrice,
-				sheetId,
-				amount,
-			};
-		}
-
-		return null;
+		return ProductHelpers.calculateAveragePrice(
+			productWithHighestAmount,
+			currency,
+			sheetId,
+		);
 	};
 
 	return (
@@ -105,7 +166,10 @@ export function ProductsProvider(props: { children: JSX.Element }) {
 	);
 }
 
-// Consumer hook
+/**
+ * Consumer hook for accessing products context
+ * @throws {Error} When used outside of ProductsProvider
+ */
 export function useProducts() {
 	const context = useContext(ProductsContext);
 	if (!context) {
