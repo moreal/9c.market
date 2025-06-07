@@ -6,13 +6,13 @@ import { type CurrencyTicker, type Currency, CurrencyUtils } from "./Currency";
  * This is a value object that encapsulates both the decimal amount and currency.
  * Uses generic type parameter to ensure type safety at compile time.
  *
- * @template TCurrency - The specific currency ticker (e.g., "USD", "EUR", etc.)
+ * @template TCurrencyTicker - The specific currency ticker (e.g., "USD", "EUR", etc.)
  */
-export interface Money<TCurrency extends CurrencyTicker = CurrencyTicker> {
+export interface Money<TCurrencyTicker extends CurrencyTicker = CurrencyTicker> {
 	/** The decimal amount of the monetary value */
 	readonly decimal: number;
 	/** The currency information including ticker, decimal places, and symbol */
-	readonly currency: Currency<TCurrency>;
+	readonly currency: Currency<TCurrencyTicker>;
 }
 
 /**
