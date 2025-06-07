@@ -1,6 +1,6 @@
 import { createMemo, Show } from "solid-js";
 
-import { useCurrency, type CurrencyType } from "~/contexts/CurrencyContext";
+import { useCurrency, type CurrencyTicker } from "~/contexts/CurrencyContext";
 import { useWNCGPrice } from "~/contexts/WNCGPriceContext";
 import { useNetwork, type NetworkType } from "~/contexts/NetworkContext";
 import { useProducts } from "~/contexts/ProductsContext";
@@ -37,7 +37,7 @@ interface ProductHeaderProps {
  */
 interface ProductPriceGridProps {
 	product: ItemProduct;
-	currency: CurrencyType;
+	currency: CurrencyTicker;
 	wncgPrice: number;
 	iapComparison: ReturnType<
 		typeof PriceFormatter.calculatePriceComparison

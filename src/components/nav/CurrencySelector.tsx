@@ -1,5 +1,5 @@
 import { For, type JSX } from "solid-js";
-import { type CurrencyType, useCurrency } from "~/contexts/CurrencyContext";
+import { type CurrencyTicker, useCurrency } from "~/contexts/CurrencyContext";
 import { Dropdown } from "~/components/ui/Dropdown";
 import HeroiconsOutlineChevronDown from "~icons/heroicons-outline/chevron-down";
 import { config } from "~/config";
@@ -18,7 +18,7 @@ interface CurrencySelectorProps {
  */
 interface CurrencySelectorVariantProps {
 	class?: string;
-	onCurrencySelect: (currency: CurrencyType) => void;
+	onCurrencySelect: (currency: CurrencyTicker) => void;
 }
 
 /**
@@ -116,7 +116,7 @@ function CurrencySelector(props: CurrencySelectorProps = {}): JSX.Element {
 	const { setCurrency } = useCurrency();
 	const variant = props.variant || "primary";
 
-	const handleCurrencySelect = (selectedCurrency: CurrencyType) => {
+	const handleCurrencySelect = (selectedCurrency: CurrencyTicker) => {
 		setCurrency(selectedCurrency);
 	};
 

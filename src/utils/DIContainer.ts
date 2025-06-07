@@ -6,6 +6,8 @@ import type {
 import { marketProductService } from "~/services/MarketProductService";
 import { ProductSortServiceFactory } from "~/services/ProductSortService";
 import { productListRenderer } from "~/services/ProductListRenderer";
+import { CurrencyConverter } from "~/services/CurrencyConverter";
+import { EXCHANGE_RATE_BY_CURRENCY } from "~/constants";
 
 /**
  * Dependency injection container
@@ -20,6 +22,7 @@ export class DIContainer {
 		private readonly _marketProductService: IMarketProductService,
 		private readonly _productSortService: IProductSortService,
 		private readonly _productListRenderer: IProductListRenderer,
+		private readonly _currencyConverter: CurrencyConverter,
 	) {}
 
 	static getInstance(): DIContainer {
@@ -38,6 +41,7 @@ export class DIContainer {
 			marketProductService,
 			ProductSortServiceFactory.createUnitPriceSorter(),
 			productListRenderer,
+			new CurrencyConverter(EXCHANGE_RATE_BY_CURRENCY),
 		);
 	}
 
@@ -50,6 +54,7 @@ export class DIContainer {
 			marketProductService,
 			ProductSortServiceFactory.createPriceSorter(),
 			productListRenderer,
+			new CurrencyConverter(EXCHANGE_RATE_BY_CURRENCY),
 		);
 	}
 
@@ -62,6 +67,7 @@ export class DIContainer {
 			marketProductService,
 			ProductSortServiceFactory.createQuantitySorter(),
 			productListRenderer,
+			new CurrencyConverter(EXCHANGE_RATE_BY_CURRENCY),
 		);
 	}
 
@@ -75,6 +81,10 @@ export class DIContainer {
 
 	get productListRenderer(): IProductListRenderer {
 		return this._productListRenderer;
+	}
+
+	get currencyConverter(): CurrencyConverter {
+		return this._currencyConverter;
 	}
 }
 

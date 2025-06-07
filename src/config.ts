@@ -1,4 +1,4 @@
-import type { CurrencyType } from "./contexts/CurrencyContext";
+import type { CurrencyTicker } from "./types/Currency";
 import type { NetworkType } from "./contexts/NetworkContext";
 
 /**
@@ -40,16 +40,9 @@ export const config = {
 	 */
 	currency: {
 		/** Available currency options */
-		availableCurrencies: [
-			"USD",
-			"EUR",
-			"JPY",
-			"KRW",
-			"PHP",
-			"VND",
-		] as readonly CurrencyType[],
+		availableCurrencies: ["USD", "EUR", "JPY", "KRW", "PHP", "VND"] as const,
 		/** Default currency */
-		defaultCurrency: "USD" as CurrencyType,
+		defaultCurrency: "USD" as const,
 	},
 
 	/**

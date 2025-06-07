@@ -1,11 +1,15 @@
-import type { CurrencyType } from "~/contexts/CurrencyContext";
+import type { CurrencyTicker } from "~/types/Currency";
 
 /**
  * Interface for price display strategies
  * Follows OCP by allowing extension without modification
  */
 export interface IPriceDisplayStrategy {
-	formatPrice(price: number, currency: CurrencyType, wncgPrice: number): string;
+	formatPrice(
+		price: number,
+		currency: CurrencyTicker,
+		wncgPrice: number,
+	): string;
 	getLabel(): string;
 }
 
@@ -15,7 +19,7 @@ export interface IPriceDisplayStrategy {
 export class StandardPriceStrategy implements IPriceDisplayStrategy {
 	formatPrice(
 		price: number,
-		currency: CurrencyType,
+		currency: CurrencyTicker,
 		wncgPrice: number,
 	): string {
 		return `${(price * wncgPrice).toFixed(2)} ${currency} (${price} NCG)`;
@@ -32,7 +36,7 @@ export class StandardPriceStrategy implements IPriceDisplayStrategy {
 export class UnitPriceStrategy implements IPriceDisplayStrategy {
 	formatPrice(
 		price: number,
-		currency: CurrencyType,
+		currency: CurrencyTicker,
 		wncgPrice: number,
 	): string {
 		return `${(price * wncgPrice).toFixed(2)} ${currency} (${price} NCG)`;
@@ -49,7 +53,7 @@ export class UnitPriceStrategy implements IPriceDisplayStrategy {
 export class CompactPriceStrategy implements IPriceDisplayStrategy {
 	formatPrice(
 		price: number,
-		currency: CurrencyType,
+		currency: CurrencyTicker,
 		wncgPrice: number,
 	): string {
 		return `${(price * wncgPrice).toFixed(0)} ${currency}`;

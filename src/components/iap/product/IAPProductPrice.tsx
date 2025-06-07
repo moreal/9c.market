@@ -1,10 +1,8 @@
-import {
-	DECIMALS_BY_CURRENCY,
-	EXCHANGE_RATE_BY_CURRENCY,
-	SYMBOL_BY_CURRENCY,
-} from "~/constants";
+import { DECIMALS_BY_CURRENCY, SYMBOL_BY_CURRENCY } from "~/constants";
 import type { Product } from "~/types/iap";
 import { useCurrency } from "~/contexts/CurrencyContext";
+import { getDIContainer } from "~/utils/DIContainer";
+import { MoneyFactory } from "~/types/Money";
 
 type IAPProductPriceProps = {
 	product: Product;
@@ -13,6 +11,7 @@ type IAPProductPriceProps = {
 export default function IAPProductPrice(props: IAPProductPriceProps) {
 	const { product } = props;
 	const { currency } = useCurrency();
+	const { currencyConverter } = getDIContainer();
 
 	const definePriceMessage = () => {
 		if (product.product_type === "MILEAGE") {
@@ -37,10 +36,12 @@ export default function IAPProductPrice(props: IAPProductPriceProps) {
 				return `${SYMBOL_BY_CURRENCY.USD}${product.usdPrice.toFixed(DECIMALS_BY_CURRENCY.USD)} USD`;
 			}
 
-			// Convert USD to other currencies using exchange rate
-			const convertedPrice =
-				(product.usdPrice * EXCHANGE_RATE_BY_CURRENCY.USD) /
-				EXCHANGE_RATE_BY_CURRENCY[currency()];
+			// Convert USD to other currencies using the currency converter
+			const usdMoney = MoneyFactory.createUSD(product.usdPrice);
+			const convertedMoney = currencyConverter.convertFromUSD(
+				usdMoney,
+				currency(),
+			);
 
 			return (
 				<span
@@ -50,7 +51,7 @@ export default function IAPProductPrice(props: IAPProductPriceProps) {
 					<span>🤔</span>
 					<span>
 						{SYMBOL_BY_CURRENCY[currency()]}
-						{convertedPrice.toFixed(DECIMALS_BY_CURRENCY[currency()])}{" "}
+						{convertedMoney.decimal.toFixed(DECIMALS_BY_CURRENCY[currency()])}{" "}
 						{currency()}
 					</span>
 				</span>

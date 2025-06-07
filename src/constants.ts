@@ -2,7 +2,7 @@
  * Application constants
  */
 
-import type { CurrencyType } from "./contexts/CurrencyContext";
+import type { CurrencyTicker } from "./types/Currency";
 
 /**
  * Local storage keys
@@ -40,7 +40,7 @@ export const ERROR_MESSAGES = {
 	PRODUCT_FETCH_ERROR: "Failed to fetch products. Please try again later.",
 } as const;
 
-export const DECIMALS_BY_CURRENCY: Readonly<Record<CurrencyType, number>> = {
+export const DECIMALS_BY_CURRENCY: Readonly<Record<CurrencyTicker, number>> = {
 	USD: 4,
 	KRW: 2,
 	EUR: 4,
@@ -49,7 +49,7 @@ export const DECIMALS_BY_CURRENCY: Readonly<Record<CurrencyType, number>> = {
 	VND: 2,
 } as const;
 
-export const SYMBOL_BY_CURRENCY: Readonly<Record<CurrencyType, string>> = {
+export const SYMBOL_BY_CURRENCY: Readonly<Record<CurrencyTicker, string>> = {
 	USD: "$",
 	KRW: "₩",
 	EUR: "€",
@@ -58,15 +58,16 @@ export const SYMBOL_BY_CURRENCY: Readonly<Record<CurrencyType, string>> = {
 	VND: "đ",
 } as const;
 
-export const EXCHANGE_RATE_BY_CURRENCY: Readonly<Record<CurrencyType, number>> =
-	{
-		USD: 1,
-		KRW: 1359.56,
-		EUR: 0.88,
-		JPY: 143.15,
-		PHP: 55.69,
-		VND: 26098.49,
-	} as const;
+export const EXCHANGE_RATE_BY_CURRENCY: Readonly<
+	Record<CurrencyTicker, number>
+> = {
+	USD: 1,
+	KRW: 1359.56,
+	EUR: 0.88,
+	JPY: 143.15,
+	PHP: 55.69,
+	VND: 26098.49,
+} as const;
 
 export const SHEET_ID_MAP: Readonly<Record<number, string>> = {
 	400000: "Hourglass",

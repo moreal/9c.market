@@ -1,11 +1,10 @@
 import { cookieStorage, makePersisted } from "@solid-primitives/storage";
 import { createSignal, createContext, useContext, type JSX } from "solid-js";
 import { config } from "~/config";
+import type { CurrencyTicker } from "~/types/Currency";
 
-/**
- * Available currency types supported by the application
- */
-export type CurrencyType = "USD" | "EUR" | "JPY" | "KRW" | "PHP" | "VND";
+// Re-export CurrencyTicker for convenience
+export type { CurrencyTicker } from "~/types/Currency";
 
 /**
  * Props interface for CurrencyProvider component
@@ -18,8 +17,8 @@ interface CurrencyProviderProps {
  * Context type for currency management
  */
 interface CurrencyContextType {
-	currency: () => CurrencyType;
-	setCurrency: (currency: CurrencyType) => void;
+	currency: () => CurrencyTicker;
+	setCurrency: (currency: CurrencyTicker) => void;
 }
 
 const CurrencyContext = createContext<CurrencyContextType>();
@@ -31,7 +30,9 @@ const CurrencyContext = createContext<CurrencyContextType>();
  */
 export function CurrencyProvider(props: CurrencyProviderProps) {
 	const [currency, setCurrency] = makePersisted(
-		createSignal<CurrencyType>(config.currency.defaultCurrency),
+		createSignal<CurrencyTicker>(
+			config.currency.defaultCurrency as CurrencyTicker,
+		),
 		{
 			storage: cookieStorage,
 		},

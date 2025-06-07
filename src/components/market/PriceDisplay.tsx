@@ -1,5 +1,5 @@
 import type { Component } from "solid-js";
-import type { CurrencyType } from "~/contexts/CurrencyContext";
+import type { CurrencyTicker } from "~/types/Currency";
 
 /**
  * Props for PriceDisplay component
@@ -8,7 +8,7 @@ type PriceDisplayProps = {
 	label: string;
 	price: number;
 	unitPrice: number;
-	currency: CurrencyType;
+	currency: CurrencyTicker;
 	wncgPrice: number;
 	icon: Component<{ class: string }>;
 	iconColor: string;

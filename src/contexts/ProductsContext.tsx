@@ -3,7 +3,7 @@ import type { Category, Product } from "~/types/iap";
 import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
 import { createAsync, query } from "@solidjs/router";
 import { marketApi } from "~/lib/api";
-import type { CurrencyType } from "./CurrencyContext";
+import type { CurrencyTicker } from "~/types/Currency";
 import { EXCHANGE_RATE_BY_CURRENCY } from "~/constants";
 
 // Constants for average price calculation
@@ -61,7 +61,7 @@ const ProductHelpers = {
 	 */
 	calculateAveragePrice(
 		product: Product,
-		currency: CurrencyType,
+		currency: CurrencyTicker,
 		sheetId: number,
 	): AveragePriceResult | null {
 		const amount = product.fungible_item_list[0]?.amount || MINIMUM_AMOUNT;
@@ -94,7 +94,7 @@ type ProductsContextType = {
 	allProducts: () => Product[];
 	getAveragePrice: (
 		sheetId: number,
-		currency: CurrencyType,
+		currency: CurrencyTicker,
 	) => AveragePriceResult | null;
 };
 
@@ -126,7 +126,7 @@ export function ProductsProvider(props: { children: JSX.Element }) {
 	 */
 	const getAveragePrice = (
 		sheetId: number,
-		currency: CurrencyType,
+		currency: CurrencyTicker,
 	): AveragePriceResult | null => {
 		const products = allProducts();
 
