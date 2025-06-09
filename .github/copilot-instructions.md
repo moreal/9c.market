@@ -18,6 +18,11 @@ The goal of this document is to provide guidelines and best practices for improv
 -   **API Communication**: Uses `fetch` API or similar libraries (e.g., `src/lib/api.ts`)
 -   **Testing**: Vitest
 
+**References**: For comprehensive SolidJS documentation and best practices for LLMs, refer to:
+- SolidJS: https://context7.com/solidjs/solid-docs/llms.txt
+- SolidStart: https://context7.com/solidjs/solid-start/llms.txt
+- SolidUI: https://context7.com/stefan-karger/solid-ui/llms.txt
+
 ## Improvement Directions and Considerations
 
 ### 1. Code Style and Consistency
