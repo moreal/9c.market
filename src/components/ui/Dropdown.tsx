@@ -1,33 +1,5 @@
-import {
-	createSignal,
-	createContext,
-	useContext,
-	type JSX,
-	type Accessor,
-} from "solid-js";
-
-/**
- * Context for managing dropdown state
- */
-interface DropdownContextValue {
-	isOpen: Accessor<boolean>;
-	toggle: () => void;
-	close: () => void;
-	open: () => void;
-}
-
-const DropdownContext = createContext<DropdownContextValue>();
-
-/**
- * Hook to access dropdown context
- */
-function useDropdown(): DropdownContextValue {
-	const context = useContext(DropdownContext);
-	if (!context) {
-		throw new Error("useDropdown must be used within a Dropdown component");
-	}
-	return context;
-}
+import { type JSX, splitProps } from "solid-js";
+import { DropdownMenu } from "@kobalte/core/dropdown-menu";
 
 /**
  * Props for Dropdown root component
@@ -36,25 +8,19 @@ interface DropdownProps {
 	children: JSX.Element;
 	class?: string;
 	defaultOpen?: boolean;
+	onOpenChange?: (isOpen: boolean) => void;
 }
 
 /**
- * Root component that provides context for dropdown functionality
+ * Root component that provides context for dropdown functionality using Kobalte
  */
 function Dropdown(props: DropdownProps): JSX.Element {
-	const [isOpen, setIsOpen] = createSignal(props.defaultOpen ?? false);
-
-	const contextValue: DropdownContextValue = {
-		isOpen,
-		toggle: () => setIsOpen(!isOpen()),
-		close: () => setIsOpen(false),
-		open: () => setIsOpen(true),
-	};
+	const [local, kobalteProps] = splitProps(props, ["children", "class"]);
 
 	return (
-		<DropdownContext.Provider value={contextValue}>
-			<div class={`relative ${props.class || ""}`}>{props.children}</div>
-		</DropdownContext.Provider>
+		<DropdownMenu {...kobalteProps}>
+			<div class={`relative ${local.class || ""}`}>{local.children}</div>
+		</DropdownMenu>
 	);
 }
 
@@ -68,24 +34,15 @@ interface TriggerProps {
 }
 
 /**
- * Trigger component for dropdown
+ * Trigger component for dropdown using Kobalte
  */
 function Trigger(props: TriggerProps): JSX.Element {
-	const { toggle } = useDropdown();
-
-	if (props.asChild) {
-		// If asChild is true, clone the child element and add the onClick handler
-		return (
-			<div onClick={toggle} class={props.class}>
-				{props.children}
-			</div>
-		);
-	}
+	const [local, kobalteProps] = splitProps(props, ["children", "class"]);
 
 	return (
-		<button type="button" onClick={toggle} class={props.class}>
-			{props.children}
-		</button>
+		<DropdownMenu.Trigger class={local.class} {...kobalteProps}>
+			{local.children}
+		</DropdownMenu.Trigger>
 	);
 }
 
@@ -100,37 +57,24 @@ interface ContentProps {
 }
 
 /**
- * Content container component for dropdown
+ * Content container component for dropdown using Kobalte
  */
 function Content(props: ContentProps): JSX.Element {
-	const { isOpen } = useDropdown();
-
-	const alignmentClass = () => {
-		switch (props.align) {
-			case "left":
-				return "left-0";
-			case "center":
-				return "left-1/2 transform -translate-x-1/2";
-			case "right":
-			default:
-				return "right-0";
-		}
-	};
-
-	const topOffset = props.sideOffset ? `${props.sideOffset}px` : "0.5rem";
+	const [local, kobalteProps] = splitProps(props, [
+		"children",
+		"class",
+		"align",
+	]);
 
 	return (
-		<div
-			class={`absolute ${alignmentClass()} bg-white rounded-lg shadow-lg z-10 transform origin-top transition-all duration-200 ${props.class || ""}`}
-			style={{
-				"margin-top": topOffset,
-				opacity: isOpen() ? 1 : 0,
-				visibility: isOpen() ? "visible" : "hidden",
-				transform: isOpen() ? "scale(1)" : "scale(0.95)",
-			}}
-		>
-			{props.children}
-		</div>
+		<DropdownMenu.Portal>
+			<DropdownMenu.Content
+				class={`bg-white rounded-lg shadow-lg z-10 transform origin-top transition-all duration-200 ${local.class || ""}`}
+				{...kobalteProps}
+			>
+				{local.children}
+			</DropdownMenu.Content>
+		</DropdownMenu.Portal>
 	);
 }
 
@@ -145,29 +89,22 @@ interface ItemProps {
 }
 
 /**
- * Individual item component within the dropdown
+ * Individual item component within the dropdown using Kobalte
  */
 function Item(props: ItemProps): JSX.Element {
-	const { close } = useDropdown();
-
-	const handleClick = () => {
-		if (!props.disabled) {
-			props.onClick?.();
-			close();
-		}
-	};
+	const [local, kobalteProps] = splitProps(props, ["children", "class"]);
 
 	return (
-		<button
-			type="button"
+		<DropdownMenu.Item
 			class={`block w-full text-left transition-colors duration-150 ${
-				props.disabled ? "cursor-not-allowed opacity-50" : "hover:bg-gray-50"
-			} ${props.class || ""}`}
-			onClick={handleClick}
-			disabled={props.disabled}
+				kobalteProps.disabled
+					? "cursor-not-allowed opacity-50"
+					: "hover:bg-gray-50"
+			} ${local.class || ""}`}
+			{...kobalteProps}
 		>
-			{props.children}
-		</button>
+			{local.children}
+		</DropdownMenu.Item>
 	);
 }
 
@@ -179,10 +116,14 @@ interface SeparatorProps {
 }
 
 /**
- * Separator component for dropdown items
+ * Separator component for dropdown items using Kobalte
  */
 function Separator(props: SeparatorProps): JSX.Element {
-	return <div class={`border-t border-gray-200 my-1 ${props.class || ""}`} />;
+	return (
+		<DropdownMenu.Separator
+			class={`border-t border-gray-200 my-1 ${props.class || ""}`}
+		/>
+	);
 }
 
 /**
@@ -195,4 +136,4 @@ const DropdownCompound = Object.assign(Dropdown, {
 	Separator,
 });
 
-export { DropdownCompound as Dropdown, useDropdown };
+export { DropdownCompound as Dropdown };

@@ -1,4 +1,5 @@
-import type { JSX } from "solid-js";
+import { type JSX, splitProps } from "solid-js";
+import { Button as KobalteButton } from "@kobalte/core/button";
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "danger";
 type ButtonSize = "sm" | "md" | "lg";
@@ -44,25 +45,32 @@ const SIZE_STYLES: Record<ButtonSize, string> = {
  */
 const DEFAULT_VARIANT: ButtonVariant = "primary";
 const DEFAULT_SIZE: ButtonSize = "md";
-const DEFAULT_TYPE = "button";
 
 /**
- * Reusable Button component with multiple variants and sizes
+ * Reusable Button component with multiple variants and sizes using Kobalte
  * Follows SRP by handling only button rendering and styling
  */
 export default function Button(props: ButtonProps) {
+	const [local, kobalteProps] = splitProps(props, [
+		"children",
+		"variant",
+		"size",
+		"fullWidth",
+		"class",
+	]);
+
 	/**
 	 * Gets the CSS classes for the button variant
 	 */
 	const getVariantStyles = (): string => {
-		return VARIANT_STYLES[props.variant || DEFAULT_VARIANT];
+		return VARIANT_STYLES[local.variant || DEFAULT_VARIANT];
 	};
 
 	/**
 	 * Gets the CSS classes for the button size
 	 */
 	const getSizeStyles = (): string => {
-		return SIZE_STYLES[props.size || DEFAULT_SIZE];
+		return SIZE_STYLES[local.size || DEFAULT_SIZE];
 	};
 
 	/**
@@ -78,22 +86,17 @@ export default function Button(props: ButtonProps) {
 		const dynamicClasses = [
 			getVariantStyles(),
 			getSizeStyles(),
-			props.fullWidth ? "w-full" : "",
-			props.disabled ? "" : "hover:shadow-md",
-			props.class || "",
+			local.fullWidth ? "w-full" : "",
+			kobalteProps.disabled ? "" : "hover:shadow-md",
+			local.class || "",
 		];
 
 		return [...baseClasses, ...dynamicClasses].join(" ");
 	};
 
 	return (
-		<button
-			type={props.type || DEFAULT_TYPE}
-			disabled={props.disabled}
-			onClick={props.onClick}
-			class={getButtonClasses()}
-		>
-			{props.children}
-		</button>
+		<KobalteButton class={getButtonClasses()} {...kobalteProps}>
+			{local.children}
+		</KobalteButton>
 	);
 }
