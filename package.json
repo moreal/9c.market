@@ -24,6 +24,7 @@
 		"zod": "^3.24.2"
 	},
 	"devDependencies": {
+		"@anthropic-ai/claude-code": "^1.0.17",
 		"@biomejs/biome": "^1.9.4",
 		"@iconify-json/heroicons-outline": "^1.2.1",
 		"@svgr/core": "^8.1.0",
@@ -33,6 +34,7 @@
 		"@types/node": "^22.15.30",
 		"@vitest/ui": "^3.2.2",
 		"jsdom": "^26.1.0",
+		"oxlint": "^0.18.0",
 		"tailwindcss": "^4.0.7",
 		"typescript": "^5.8.3",
 		"unplugin-icons": "^22.1.0",
