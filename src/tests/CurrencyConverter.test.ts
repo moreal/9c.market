@@ -64,51 +64,6 @@ describe("CurrencyConverter", () => {
 		});
 	});
 
-	describe("convertFromUSDLegacy (backward compatibility)", () => {
-		it("should return the same price for USD", () => {
-			const usdPrice = 10;
-			const result = converter.convertFromUSDLegacy(usdPrice, "USD");
-			expect(result).toBe(10);
-		});
-
-		it("should convert USD to KRW correctly", () => {
-			const usdPrice = 10;
-			const result = converter.convertFromUSDLegacy(usdPrice, "KRW");
-			expect(result).toBe(13000); // 10 * 1300
-		});
-
-		it("should convert USD to EUR correctly", () => {
-			const usdPrice = 100;
-			const result = converter.convertFromUSDLegacy(usdPrice, "EUR");
-			expect(result).toBe(85); // 100 * 0.85
-		});
-	});
-
-	describe("isSupportedCurrency", () => {
-		it("should return true for supported currencies", () => {
-			expect(converter.isSupportedCurrency("USD")).toBe(true);
-			expect(converter.isSupportedCurrency("KRW")).toBe(true);
-			expect(converter.isSupportedCurrency("EUR")).toBe(true);
-			expect(converter.isSupportedCurrency("JPY")).toBe(true);
-			expect(converter.isSupportedCurrency("PHP")).toBe(true);
-			expect(converter.isSupportedCurrency("VND")).toBe(true);
-		});
-	});
-
-	describe("getSupportedCurrencies", () => {
-		it("should return all supported currencies", () => {
-			const supportedCurrencies = converter.getSupportedCurrencies();
-			expect(supportedCurrencies).toEqual([
-				"USD",
-				"KRW",
-				"EUR",
-				"JPY",
-				"PHP",
-				"VND",
-			]);
-		});
-	});
-
 	describe("edge cases", () => {
 		it("should handle very large USD amounts", () => {
 			const usdMoney = MoneyFactory.createUSD(1000000);
@@ -133,7 +88,7 @@ describe("CurrencyConverter", () => {
 			const result = converter.convertFromUSD(usdMoney, "EUR");
 
 			// TypeScript should ensure usdMoney is of type Money<"USD">
-			expect(MoneyUtils.isUSD(usdMoney)).toBe(true);
+			expect(usdMoney.currency.ticker).toBe("USD");
 			expect(result.currency.ticker).toBe("EUR");
 		});
 

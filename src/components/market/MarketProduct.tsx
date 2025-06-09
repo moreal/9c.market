@@ -7,6 +7,7 @@ import { useProducts } from "~/contexts/ProductsContext";
 import { SHEET_ID_MAP } from "~/constants";
 import type { ItemProduct } from "~/types/market";
 import { PriceFormatter } from "~/utils/PriceFormatter";
+import { MoneyFactory } from "~/types/Money";
 import { PriceDisplay } from "~/components/market/PriceDisplay";
 import { IAPComparison } from "~/components/market/IAPComparison";
 import { AddressLink } from "~/components/market/AddressLink";
@@ -40,7 +41,7 @@ interface ProductPriceGridProps {
 	currency: CurrencyTicker;
 	wncgPrice: number;
 	iapComparison: ReturnType<
-		typeof PriceFormatter.calculatePriceComparison
+		typeof PriceFormatter.calculateMoneyPriceComparison
 	> | null;
 }
 
@@ -126,10 +127,17 @@ export function MarketProduct(props: MarketProductProps) {
 		const price = wncgPrice();
 		if (price === null || price === undefined) return null;
 
-		return PriceFormatter.calculatePriceComparison(
-			props.product.unitPrice,
+		// Convert to Money types for the new API
+		const averagePriceMoney = MoneyFactory.create(
 			result.averagePrice,
-			price,
+			currency(),
+		);
+		const wncgPriceMoney = MoneyFactory.create(price, currency());
+
+		return PriceFormatter.calculateMoneyPriceComparison(
+			props.product.unitPrice,
+			averagePriceMoney,
+			wncgPriceMoney,
 		);
 	});
 

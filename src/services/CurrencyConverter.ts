@@ -44,40 +44,4 @@ export class CurrencyConverter {
 		const convertedAmount = usdMoney.decimal * exchangeRate;
 		return MoneyFactory.create(convertedAmount, targetCurrency);
 	}
-
-	/**
-	 * Legacy method for backward compatibility
-	 * @deprecated Use convertFromUSD with Money type instead
-	 *
-	 * @param usdPrice - The price in USD to convert
-	 * @param targetCurrency - The target currency to convert to
-	 * @returns The converted price in the target currency
-	 */
-	convertFromUSDLegacy(
-		usdPrice: number,
-		targetCurrency: CurrencyTicker,
-	): number {
-		const usdMoney = MoneyFactory.createUSD(usdPrice);
-		const convertedMoney = this.convertFromUSD(usdMoney, targetCurrency);
-		return convertedMoney.decimal;
-	}
-
-	/**
-	 * Checks if a currency is supported by this converter
-	 *
-	 * @param currency - The currency to check
-	 * @returns True if the currency is supported, false otherwise
-	 */
-	isSupportedCurrency(currency: CurrencyTicker): boolean {
-		return currency in this.exchangeRates;
-	}
-
-	/**
-	 * Gets all supported currencies
-	 *
-	 * @returns Array of supported currency types
-	 */
-	getSupportedCurrencies(): CurrencyTicker[] {
-		return Object.keys(this.exchangeRates) as CurrencyTicker[];
-	}
 }

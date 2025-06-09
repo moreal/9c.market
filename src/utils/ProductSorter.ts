@@ -65,25 +65,4 @@ export const ProductSorter = {
 	getStrategy(sortBy: keyof typeof STRATEGIES): IProductSortStrategy {
 		return STRATEGIES[sortBy];
 	},
-
-	/**
-	 * @deprecated Use sort('unitPrice') instead
-	 */
-	sortByUnitPrice(products: ItemProduct[]): ItemProduct[] {
-		return ProductSorter.sort(products, "unitPrice");
-	},
-
-	/**
-	 * @deprecated Use sort('price') instead
-	 */
-	sortByPrice(products: ItemProduct[]): ItemProduct[] {
-		return ProductSorter.sort(products, "price");
-	},
-
-	/**
-	 * @deprecated Use sort('quantity') instead
-	 */
-	sortByQuantity(products: ItemProduct[]): ItemProduct[] {
-		return ProductSorter.sort(products, "quantity");
-	},
 } as const;

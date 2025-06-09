@@ -8,7 +8,9 @@ import { type CurrencyTicker, type Currency, CurrencyUtils } from "./Currency";
  *
  * @template TCurrencyTicker - The specific currency ticker (e.g., "USD", "EUR", etc.)
  */
-export interface Money<TCurrencyTicker extends CurrencyTicker = CurrencyTicker> {
+export interface Money<
+	TCurrencyTicker extends CurrencyTicker = CurrencyTicker,
+> {
 	/** The decimal amount of the monetary value */
 	readonly decimal: number;
 	/** The currency information including ticker, decimal places, and symbol */
@@ -76,59 +78,4 @@ export const MoneyFactory = {
 /**
  * Utility functions for working with Money instances
  */
-export const MoneyUtils = {
-	/**
-	 * Checks if a Money instance is in USD
-	 *
-	 * @param money - The Money instance to check
-	 * @returns True if the money is in USD, false otherwise
-	 */
-	isUSD(money: Money): money is USDMoney {
-		return money.currency.ticker === "USD";
-	},
-
-	/**
-	 * Formats a Money instance as a string using the currency's decimal places
-	 *
-	 * @param money - The Money instance to format
-	 * @param customDecimals - Optional custom decimal places (overrides currency default)
-	 * @returns Formatted string representation
-	 */
-	format(money: Money, customDecimals?: number): string {
-		const decimals = customDecimals ?? money.currency.decimalPlaces;
-		return `${money.decimal.toFixed(decimals)} ${money.currency.ticker}`;
-	},
-
-	/**
-	 * Formats a Money instance with symbol
-	 *
-	 * @param money - The Money instance to format
-	 * @param customDecimals - Optional custom decimal places (overrides currency default)
-	 * @returns Formatted string with currency symbol
-	 */
-	formatWithSymbol(money: Money, customDecimals?: number): string {
-		const decimals = customDecimals ?? money.currency.decimalPlaces;
-		return `${money.currency.symbol}${money.decimal.toFixed(decimals)}`;
-	},
-
-	/**
-	 * Checks if two Money instances have the same currency
-	 *
-	 * @param money1 - First Money instance
-	 * @param money2 - Second Money instance
-	 * @returns True if both have the same currency, false otherwise
-	 */
-	hasSameCurrency(money1: Money, money2: Money): boolean {
-		return money1.currency.ticker === money2.currency.ticker;
-	},
-
-	/**
-	 * Gets the currency ticker from a Money instance
-	 *
-	 * @param money - The Money instance
-	 * @returns The currency ticker
-	 */
-	getTicker(money: Money): CurrencyTicker {
-		return money.currency.ticker;
-	},
-} as const;
+export const MoneyUtils = {} as const;

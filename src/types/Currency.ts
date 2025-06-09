@@ -66,32 +66,4 @@ export const CurrencyUtils = {
 	getCurrency<T extends CurrencyTicker>(ticker: T): Currency<T> {
 		return CURRENCIES[ticker] as Currency<T>;
 	},
-
-	/**
-	 * Gets all available currencies
-	 *
-	 * @returns Array of all Currency objects
-	 */
-	getAllCurrencies(): Currency[] {
-		return Object.values(CURRENCIES);
-	},
-
-	/**
-	 * Gets all available currency tickers
-	 *
-	 * @returns Array of all CurrencyTicker values
-	 */
-	getAllTickers(): CurrencyTicker[] {
-		return Object.keys(CURRENCIES) as CurrencyTicker[];
-	},
-
-	/**
-	 * Checks if a ticker is valid
-	 *
-	 * @param ticker - The ticker to validate
-	 * @returns True if the ticker is valid, false otherwise
-	 */
-	isValidTicker(ticker: string): ticker is CurrencyTicker {
-		return Object.keys(CURRENCIES).includes(ticker);
-	},
 } as const;
