@@ -26,7 +26,7 @@ export default function Nav() {
 				</div>
 				<ul class="flex items-center">
 					<li class={`border-b-2 ${active("/")} mx-3 py-2`}>
-						<a
+						<A
 							href="/"
 							class="flex items-center transition-colors duration-200"
 						>
@@ -37,10 +37,10 @@ export default function Nav() {
 								stroke="currentColor"
 							/>
 							On-Chain Products
-						</a>
+						</A>
 					</li>
 					<li class={`border-b-2 ${active("/iap")} mx-3 py-2`}>
-						<a
+						<A
 							href="/iap"
 							class="flex items-center transition-colors duration-200"
 						>
@@ -51,16 +51,16 @@ export default function Nav() {
 								stroke="currentColor"
 							/>
 							IAP Products
-						</a>
+						</A>
 					</li>
 					<li class={`border-b-2 ${active("/about")} mx-3 py-2`}>
-						<a
+						<A
 							href="/about"
 							class="flex items-center transition-colors duration-200"
 						>
 							<InformationCircleIcon />
 							About
-						</a>
+						</A>
 					</li>
 				</ul>
 				<div class="ml-auto flex items-center space-x-3">

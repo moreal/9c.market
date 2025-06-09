@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
-import PageHeader from "../components/ui/PageHeader";
-import Button from "../components/ui/Button";
+import PageHeader from "~/components/ui/PageHeader";
+import Button from "~/components/ui/Button";
 
 export default function About() {
 	return (
@@ -41,7 +41,12 @@ export default function About() {
 					<h3 class="text-xl font-bold text-gray-800 mb-4">Source Code</h3>
 					<p class="text-gray-700 leading-relaxed mb-4">
 						9c.market is open-sourced on GitHub in AGPL-3.0 license.{" "}
-						<a href="https://github.com/moreal/9c-market">
+						<a
+							href="https://github.com/moreal/9c-market"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="text-sky-600 hover:underline"
+						>
 							https://github.com/moreal/9c-market
 						</a>
 					</p>

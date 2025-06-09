@@ -1,16 +1,9 @@
-import Icons from "unplugin-icons/vite";
 import { defineConfig } from "vite";
-import solidPlugin from "vite-plugin-solid";
 
+// This file is used by Vitest for testing configuration only
+// Main Vite configuration is handled by SolidStart's app.config.ts
 export default defineConfig({
-	plugins: [
-		solidPlugin(),
-		Icons({
-			compiler: "jsx",
-			jsx: "preact",
-		}),
-	],
-	build: {
-		target: "esnext",
+	test: {
+		environment: "jsdom",
 	},
 });
