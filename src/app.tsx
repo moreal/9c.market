@@ -1,18 +1,24 @@
 import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
-import { Suspense } from "solid-js";
+import { Suspense, ErrorBoundary } from "solid-js";
 import Nav from "~/components/nav/Nav";
 import "./app.css";
 import { Providers } from "./contexts/Providers";
+import { ErrorFallback } from "~/components/error/ErrorFallback";
+import { LoadingSpinner } from "~/components/common/LoadingSpinner";
 
 export default function App() {
 	return (
 		<Router
 			root={(props) => (
-				<Providers>
-					<Nav />
-					<Suspense>{props.children}</Suspense>
-				</Providers>
+				<ErrorBoundary fallback={(err) => <ErrorFallback error={err} />}>
+					<Providers>
+						<Nav />
+						<Suspense fallback={<LoadingSpinner />}>
+							{props.children}
+						</Suspense>
+					</Providers>
+				</ErrorBoundary>
 			)}
 		>
 			<FileRoutes />

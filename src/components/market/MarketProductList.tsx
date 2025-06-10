@@ -1,9 +1,9 @@
 import { createAsync } from "@solidjs/router";
-import { createMemo } from "solid-js";
 
 import { useNetwork } from "~/contexts/NetworkContext";
 import { useItemSubType } from "~/contexts/ItemSubTypeContext";
 import { getDIContainer } from "~/utils/DIContainer";
+import { ProductListRenderer } from "~/services/ProductListRenderer";
 
 /**
  * Market product list component
@@ -24,18 +24,12 @@ export function MarketProductList() {
 			network(),
 			itemSubType(),
 		);
-		return response.itemProducts;
-	});
+    const productList = response.itemProducts;
+    if (!productList) return [];
+    return diContainer.productSortService.sort(productList)
+	}, {
+    initialValue: [],
+  });
 
-	// Sort products using injected sorting service
-	const sortedProducts = createMemo(() => {
-		const productList = products();
-		if (!productList) return [];
-
-		return diContainer.productSortService.sort(productList);
-	});
-
-	// Render using injected renderer
-	const ProductRenderer = diContainer.productListRenderer;
-	return <ProductRenderer products={sortedProducts()} />;
+	return <ProductListRenderer products={products} />;
 }
