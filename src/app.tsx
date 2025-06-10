@@ -14,9 +14,7 @@ export default function App() {
 				<ErrorBoundary fallback={(err) => <ErrorFallback error={err} />}>
 					<Providers>
 						<Nav />
-						<Suspense fallback={<LoadingSpinner />}>
-							{props.children}
-						</Suspense>
+						<Suspense fallback={<LoadingSpinner />}>{props.children}</Suspense>
 					</Providers>
 				</ErrorBoundary>
 			)}

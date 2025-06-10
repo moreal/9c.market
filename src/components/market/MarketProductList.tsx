@@ -19,17 +19,20 @@ export function MarketProductList() {
 	const diContainer = getDIContainer();
 
 	// Fetch products using injected service
-	const products = createAsync(async () => {
-		const response = await diContainer.marketProductService.fetchProducts(
-			network(),
-			itemSubType(),
-		);
-    const productList = response.itemProducts;
-    if (!productList) return [];
-    return diContainer.productSortService.sort(productList)
-	}, {
-    initialValue: [],
-  });
+	const products = createAsync(
+		async () => {
+			const response = await diContainer.marketProductService.fetchProducts(
+				network(),
+				itemSubType(),
+			);
+			const productList = response.itemProducts;
+			if (!productList) return [];
+			return diContainer.productSortService.sort(productList);
+		},
+		{
+			initialValue: [],
+		},
+	);
 
 	return <ProductListRenderer products={products} />;
 }

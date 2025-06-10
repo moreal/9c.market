@@ -4,13 +4,13 @@ import HomePageContent from "~/components/pages/HomePageContent";
 import { ItemSubTypeProvider } from "~/contexts/ItemSubTypeContext";
 
 const Products: Component = () => {
-  return (
-    <Layout>
-      <ItemSubTypeProvider>
-        <HomePageContent />
-      </ItemSubTypeProvider>
-    </Layout>
-  );
+	return (
+		<Layout>
+			<ItemSubTypeProvider>
+				<HomePageContent />
+			</ItemSubTypeProvider>
+		</Layout>
+	);
 };
 
-export default Products; 
+export default Products;
