@@ -8,28 +8,32 @@ import { RenderServiceError, ErrorHandler } from "~/utils/ErrorHandler";
  * Follows SRP by focusing only on rendering concerns
  * Includes comprehensive error handling
  */
+
+const NoProductsErrorMessage = () => {
+  return <div class="text-center text-gray-500 py-8">상품이 없습니다.</div>
+};
+
+const ProductRenderErrorMessage = ({ productId }: { productId: string }) => {
+  return (
+    <div class="bg-red-50 border border-red-200 rounded p-4 mb-2">
+      <p class="text-red-700">상품 표시 중 오류가 발생했습니다.</p>
+      <p class="text-red-500 text-sm">상품 ID: {productId}</p>
+    </div>
+  );
+}
+
 export const ProductListRenderer: Component<{ products: Accessor<ItemProduct[]> }> = (
   props,
 ) => {
   try {
     const [local] = splitProps(props, ["products"]);
     return (
-      <For each={local.products()} fallback={<div class="text-center text-gray-500 py-8">상품이 없습니다.</div>}>
+      <For each={local.products()} fallback={<NoProductsErrorMessage />}>
         {(product) => {
           try {
             return <MarketProduct product={product} />;
           } catch (error) {
-            console.error(
-              "Failed to render product:",
-              product.productId,
-              error,
-            );
-            return (
-              <div class="bg-red-50 border border-red-200 rounded p-4 mb-2">
-                <p class="text-red-700">상품 표시 중 오류가 발생했습니다.</p>
-                <p class="text-red-500 text-sm">상품 ID: {product.productId}</p>
-              </div>
-            );
+            return <ProductRenderErrorMessage productId={product.productId} />;
           }
         }}
       </For>
