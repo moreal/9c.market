@@ -1,20 +1,18 @@
-import { Suspense } from "solid-js";
-import ItemSubTypeSelector from "~/components/market/ItemSubTypeSelector";
-import { MarketProductList } from "~/components/market/MarketProductList";
-import LoadingSpinner from "~/components/ui/LoadingSpinner";
+import PageLayout from "~/components/layout/PageLayout";
+import HomePageContent from "~/components/pages/HomePageContent";
 import { ItemSubTypeProvider } from "~/contexts/ItemSubTypeContext";
 
+/**
+ * Home page route component
+ * Follows SRP by handling only routing concerns and context provision
+ * Uses composition to separate layout from content
+ */
 export default function Home() {
 	return (
-		<main class="container mx-auto px-4 py-8 max-w-6xl">
+		<PageLayout padding="lg">
 			<ItemSubTypeProvider>
-				<div class="ml-auto flex items-center space-x-3 mb-6">
-					<ItemSubTypeSelector />
-				</div>
-				<Suspense fallback={<LoadingSpinner />}>
-					<MarketProductList />
-				</Suspense>
+				<HomePageContent />
 			</ItemSubTypeProvider>
-		</main>
+		</PageLayout>
 	);
 }
