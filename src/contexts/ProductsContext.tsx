@@ -1,5 +1,4 @@
 import { createContext, useContext, type JSX, createMemo } from "solid-js";
-import { createStore } from "solid-js/store";
 import type { Category, Product } from "~/types/iap";
 import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
 import { createAsync, query } from "@solidjs/router";
@@ -16,16 +15,8 @@ const fetchProducts = query((networkName: NetworkType) => {
 	return marketApi.fetchProducts(networkName);
 }, "fetch-products");
 
-// Define state interface for the store
-interface ProductsState {
-	categories: Category[];
-	isLoading: boolean;
-	error: string | null;
-}
-
 // Create the context
 interface ProductsContextType {
-	state: ProductsState;
 	categories: () => Category[] | undefined;
 	allProducts: () => Product[];
 	getAveragePrice: (
@@ -39,13 +30,6 @@ const ProductsContext = createContext<ProductsContextType>();
 // Provider component following SolidJS best practices
 export function ProductsProvider(props: { children: JSX.Element }) {
 	const { network } = useNetwork();
-
-	// Use createStore for complex state management
-	const [state, _setState] = createStore<ProductsState>({
-		categories: [],
-		isLoading: true,
-		error: null,
-	});
 
 	const categories = createAsync(() => fetchProducts(network()), {
 		initialValue: [],
@@ -98,7 +82,6 @@ export function ProductsProvider(props: { children: JSX.Element }) {
 	};
 
 	const contextValue: ProductsContextType = {
-		state,
 		categories,
 		allProducts,
 		getAveragePrice,
