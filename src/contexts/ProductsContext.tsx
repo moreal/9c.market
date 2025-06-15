@@ -1,86 +1,14 @@
-import { createContext, useContext, type JSX } from "solid-js";
+import { createContext, useContext, type JSX, createMemo } from "solid-js";
+import { createStore } from "solid-js/store";
 import type { Category, Product } from "~/types/iap";
 import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
 import { createAsync, query } from "@solidjs/router";
 import { marketApi } from "~/lib/api";
 import type { CurrencyTicker } from "~/types/Currency";
-import { EXCHANGE_RATE_BY_CURRENCY } from "~/constants";
-
-// Constants for average price calculation
-const SINGLE_FUNGIBLE_ITEM_COUNT = 1;
-const MINIMUM_AMOUNT = 0;
-
-/**
- * Result type for average price calculation
- */
-export interface AveragePriceResult {
-	averagePrice: number;
-	amount: number;
-	sheetId: number;
-}
-
-/**
- * Helper functions for product filtering and price calculation
- */
-const ProductHelpers = {
-	/**
-	 * Checks if product has single fungible item
-	 */
-	isSingleFungibleItem(product: Product): boolean {
-		return product.fungible_item_list.length === SINGLE_FUNGIBLE_ITEM_COUNT;
-	},
-
-	/**
-	 * Checks if product has valid USD price
-	 */
-	hasValidPrice(product: Product): boolean {
-		return product.usdPrice !== undefined && product.usdPrice > 0;
-	},
-
-	/**
-	 * Checks if product matches the given sheet ID
-	 */
-	hasMatchingSheetId(product: Product, sheetId: number): boolean {
-		return product.fungible_item_list[0]?.sheet_item_id === sheetId;
-	},
-
-	/**
-	 * Filters products eligible for average price calculation
-	 */
-	getEligibleProducts(products: Product[], sheetId: number): Product[] {
-		return products.filter(
-			(product) =>
-				this.isSingleFungibleItem(product) &&
-				this.hasValidPrice(product) &&
-				this.hasMatchingSheetId(product, sheetId),
-		);
-	},
-
-	/**
-	 * Calculates average price for a product
-	 */
-	calculateAveragePrice(
-		product: Product,
-		currency: CurrencyTicker,
-		sheetId: number,
-	): AveragePriceResult | null {
-		const amount = product.fungible_item_list[0]?.amount || MINIMUM_AMOUNT;
-		const usdPrice = product.usdPrice;
-
-		if (amount <= MINIMUM_AMOUNT || !usdPrice) {
-			return null;
-		}
-
-		const exchangeRate = EXCHANGE_RATE_BY_CURRENCY[currency];
-		const averagePrice = (usdPrice * exchangeRate) / amount;
-
-		return {
-			averagePrice,
-			sheetId,
-			amount,
-		};
-	},
-};
+import {
+	ProductHelpers,
+	type AveragePriceResult,
+} from "~/utils/ProductHelpers";
 
 // Create a server action for product fetching
 const fetchProducts = query((networkName: NetworkType) => {
@@ -88,37 +16,53 @@ const fetchProducts = query((networkName: NetworkType) => {
 	return marketApi.fetchProducts(networkName);
 }, "fetch-products");
 
+// Define state interface for the store
+interface ProductsState {
+	categories: Category[];
+	isLoading: boolean;
+	error: string | null;
+}
+
 // Create the context
-type ProductsContextType = {
+interface ProductsContextType {
+	state: ProductsState;
 	categories: () => Category[] | undefined;
 	allProducts: () => Product[];
 	getAveragePrice: (
 		sheetId: number,
 		currency: CurrencyTicker,
 	) => AveragePriceResult | null;
-};
+}
 
 const ProductsContext = createContext<ProductsContextType>();
 
-// Provider component
+// Provider component following SolidJS best practices
 export function ProductsProvider(props: { children: JSX.Element }) {
 	const { network } = useNetwork();
+
+	// Use createStore for complex state management
+	const [state, _setState] = createStore<ProductsState>({
+		categories: [],
+		isLoading: true,
+		error: null,
+	});
 
 	const categories = createAsync(() => fetchProducts(network()), {
 		initialValue: [],
 	});
 
 	/**
-	 * Flattens all products from all categories into a single array
+	 * Memoized computation for flattening all products from all categories
+	 * Uses createMemo to prevent redundant calculations
 	 */
-	const allProducts = (): Product[] => {
+	const allProducts = createMemo((): Product[] => {
 		const categoryList = categories();
 		if (!categoryList) return [];
 
 		return categoryList.reduce((acc, category) => {
 			return acc.concat(category.product_list);
 		}, [] as Product[]);
-	};
+	});
 
 	/**
 	 * Calculates average price for a given sheet ID and currency
@@ -153,14 +97,15 @@ export function ProductsProvider(props: { children: JSX.Element }) {
 		);
 	};
 
+	const contextValue: ProductsContextType = {
+		state,
+		categories,
+		allProducts,
+		getAveragePrice,
+	};
+
 	return (
-		<ProductsContext.Provider
-			value={{
-				categories,
-				allProducts,
-				getAveragePrice,
-			}}
-		>
+		<ProductsContext.Provider value={contextValue}>
 			{props.children}
 		</ProductsContext.Provider>
 	);
