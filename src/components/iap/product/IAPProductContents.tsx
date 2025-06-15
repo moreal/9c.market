@@ -8,12 +8,10 @@ type IAPProductContentsProps = {
 };
 
 export default function IAPProductContents(props: IAPProductContentsProps) {
-	const { product } = props;
-
 	return (
 		<CollapsibleContent title="Contents:">
 			<ul class="space-y-2 text-sm mt-2">
-				<For each={product.fungible_item_list}>
+				<For each={props.product.fungible_item_list}>
 					{(item) => (
 						<li class="flex justify-between items-center bg-white p-2 rounded border border-gray-100">
 							<span class="text-gray-700">
@@ -31,7 +29,7 @@ export default function IAPProductContents(props: IAPProductContentsProps) {
 						</li>
 					)}
 				</For>
-				<For each={product.fav_list}>
+				<For each={props.product.fav_list}>
 					{(item) => (
 						<li class="flex justify-between items-center bg-white p-2 rounded border border-gray-100">
 							<span class="text-gray-700">{item.ticker}</span>

@@ -7,10 +7,8 @@ type AttributeItemProps = {
 };
 
 export default function AttributeItem(props: AttributeItemProps) {
-	const { icon, label, value } = props;
-
 	const renderIcon = () => {
-		switch (icon) {
+		switch (props.icon) {
 			case "lightning":
 				return (
 					<svg
@@ -114,7 +112,7 @@ export default function AttributeItem(props: AttributeItemProps) {
 	return (
 		<div class="flex items-center">
 			{renderIcon()}
-			{label} <span class="font-medium ml-1">{value}</span>
+			{props.label} <span class="font-medium ml-1">{props.value}</span>
 		</div>
 	);
 }

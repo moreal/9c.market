@@ -1,6 +1,5 @@
-import type { Money, USDMoney } from "~/types/Money";
+import type { Money } from "~/types/Money";
 import type { CurrencyTicker } from "~/types/Currency";
-import { DECIMALS_BY_CURRENCY } from "~/constants";
 
 /**
  * Type for price comparison result

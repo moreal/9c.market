@@ -1,4 +1,4 @@
-import { Component, JSX, splitProps } from "solid-js";
+import { type Component, type JSX, splitProps } from "solid-js";
 import { Nav } from "~/components/layout/Nav";
 
 interface LayoutProps {
@@ -8,7 +8,7 @@ interface LayoutProps {
 }
 
 export const Layout: Component<LayoutProps> = (props) => {
-	const [local, rest] = splitProps(props, ["showNav", "class", "children"]);
+	const [local] = splitProps(props, ["showNav", "class", "children"]);
 
 	return (
 		<div class="min-h-screen bg-gray-50 dark:bg-gray-900">

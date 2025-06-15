@@ -55,7 +55,7 @@ vi.mock("../queries/MarketQueries", () => ({
 
 // Mock @solidjs/router
 vi.mock("@solidjs/router", () => ({
-	query: vi.fn((fn, key) => fn),
+	query: vi.fn((fn, _) => fn),
 	createAsync: vi.fn(),
 }));
 

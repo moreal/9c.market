@@ -31,6 +31,7 @@ const CurrencyContext = createContext<CurrencyContextType>();
 export function CurrencyProvider(props: CurrencyProviderProps) {
 	const [currency, setCurrency] = makePersisted(
 		createSignal<CurrencyTicker>(
+			// eslint-disable-line solid/reactivity
 			config.currency.defaultCurrency as CurrencyTicker,
 		),
 		{

@@ -9,35 +9,34 @@ type IAPProductPriceProps = {
 };
 
 export default function IAPProductPrice(props: IAPProductPriceProps) {
-	const { product } = props;
 	const { currency } = useCurrency();
 	const { currencyConverter } = getDIContainer();
 
 	const definePriceMessage = () => {
-		if (product.product_type === "MILEAGE") {
-			if (product.mileage_price !== null) {
-				return `${product.mileage_price} Mileage`;
+		if (props.product.product_type === "MILEAGE") {
+			if (props.product.mileage_price !== null) {
+				return `${props.product.mileage_price} Mileage`;
 			}
 
-			return `${product.mileage} Mileage`;
+			return `${props.product.mileage} Mileage`;
 		}
 
-		if (product.product_type === "FREE") {
+		if (props.product.product_type === "FREE") {
 			return "FREE";
 		}
 
-		if (product.product_type === "IAP") {
-			if (product.usdPrice === undefined) {
+		if (props.product.product_type === "IAP") {
+			if (props.product.usdPrice === undefined) {
 				return "Unknown Price";
 			}
 
 			// If current currency is USD, show USD price directly
 			if (currency() === "USD") {
-				return `${SYMBOL_BY_CURRENCY.USD}${product.usdPrice.toFixed(DECIMALS_BY_CURRENCY.USD)} USD`;
+				return `${SYMBOL_BY_CURRENCY.USD}${props.product.usdPrice.toFixed(DECIMALS_BY_CURRENCY.USD)} USD`;
 			}
 
 			// Convert USD to other currencies using the currency converter
-			const usdMoney = MoneyFactory.createUSD(product.usdPrice);
+			const usdMoney = MoneyFactory.createUSD(props.product.usdPrice);
 			const convertedMoney = currencyConverter.convertFromUSD(
 				usdMoney,
 				currency(),
@@ -46,7 +45,7 @@ export default function IAPProductPrice(props: IAPProductPriceProps) {
 			return (
 				<span
 					class="flex items-center gap-1 border-b border-dotted border-gray-400 cursor-help"
-					title={`Guessed from USD, ${SYMBOL_BY_CURRENCY.USD}${product.usdPrice.toFixed(DECIMALS_BY_CURRENCY.USD)} USD`}
+					title={`Guessed from USD, ${SYMBOL_BY_CURRENCY.USD}${props.product.usdPrice.toFixed(DECIMALS_BY_CURRENCY.USD)} USD`}
 				>
 					<span>🤔</span>
 					<span>

@@ -1,4 +1,4 @@
-import { For, type JSX } from "solid-js";
+import { For, Match, Switch, type JSX } from "solid-js";
 import { type NetworkType, useNetwork } from "~/contexts/NetworkContext";
 import { Dropdown } from "~/components/ui/Dropdown";
 import HeroiconsOutlineChevronDown from "~icons/heroicons-outline/chevron-down";
@@ -151,20 +151,22 @@ function NetworkSelector(props: NetworkSelectorProps = {}): JSX.Element {
 		setNetwork(selectedNetwork as NetworkType);
 	};
 
-	if (variant === "compact") {
-		return (
-			<CompactNetworkSelector
-				class={props.class}
-				onNetworkSelect={handleNetworkSelect}
-			/>
-		);
-	}
-
 	return (
-		<PrimaryNetworkSelector
-			class={props.class}
-			onNetworkSelect={handleNetworkSelect}
-		/>
+		<Switch
+			fallback={
+				<PrimaryNetworkSelector
+					class={props.class}
+					onNetworkSelect={handleNetworkSelect}
+				/>
+			}
+		>
+			<Match when={variant === "compact"}>
+				<CompactNetworkSelector
+					class={props.class}
+					onNetworkSelect={handleNetworkSelect}
+				/>
+			</Match>
+		</Switch>
 	);
 }
 

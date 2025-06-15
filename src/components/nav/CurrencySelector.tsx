@@ -1,4 +1,4 @@
-import { For, type JSX } from "solid-js";
+import { For, Match, Switch, type JSX } from "solid-js";
 import { type CurrencyTicker, useCurrency } from "~/contexts/CurrencyContext";
 import { Dropdown } from "~/components/ui/Dropdown";
 import HeroiconsOutlineChevronDown from "~icons/heroicons-outline/chevron-down";
@@ -120,20 +120,22 @@ function CurrencySelector(props: CurrencySelectorProps = {}): JSX.Element {
 		setCurrency(selectedCurrency);
 	};
 
-	if (variant === "compact") {
-		return (
-			<CompactCurrencySelector
-				class={props.class}
-				onCurrencySelect={handleCurrencySelect}
-			/>
-		);
-	}
-
 	return (
-		<PrimaryCurrencySelector
-			class={props.class}
-			onCurrencySelect={handleCurrencySelect}
-		/>
+		<Switch
+			fallback={
+				<PrimaryCurrencySelector
+					class={props.class}
+					onCurrencySelect={handleCurrencySelect}
+				/>
+			}
+		>
+			<Match when={variant === "compact"}>
+				<CompactCurrencySelector
+					class={props.class}
+					onCurrencySelect={handleCurrencySelect}
+				/>
+			</Match>
+		</Switch>
 	);
 }
 

@@ -1,4 +1,4 @@
-import { Component } from "solid-js";
+import type { Component } from "solid-js";
 import { Layout } from "~/components/layout/Layout";
 import HomePageContent from "~/components/pages/HomePageContent";
 import { ItemSubTypeProvider } from "~/contexts/ItemSubTypeContext";

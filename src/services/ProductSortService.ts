@@ -46,16 +46,16 @@ export class ProductSortService implements IProductSortService {
  * Factory for creating sort services with different strategies
  * Follows OCP by allowing new strategies without modification
  */
-export class ProductSortServiceFactory {
-	static createUnitPriceSorter(): ProductSortService {
+export const ProductSortServiceFactory = {
+	createUnitPriceSorter: (): ProductSortService => {
 		return new ProductSortService(ProductSorter.getStrategy("unitPrice"));
-	}
+	},
 
-	static createPriceSorter(): ProductSortService {
+	createPriceSorter: (): ProductSortService => {
 		return new ProductSortService(ProductSorter.getStrategy("price"));
-	}
+	},
 
-	static createQuantitySorter(): ProductSortService {
+	createQuantitySorter: (): ProductSortService => {
 		return new ProductSortService(ProductSorter.getStrategy("quantity"));
-	}
-}
+	},
+};

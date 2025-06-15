@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, assert } from "vitest";
 import { PriceFormatter } from "~/utils/PriceFormatter";
 import { MoneyFactory } from "~/types/Money";
 
@@ -13,9 +13,9 @@ describe("PriceFormatter", () => {
 				wncgPrice,
 			);
 
-			expect(result).not.toBeNull();
-			expect(result!.percent).toBe(25);
-			expect(result!.cheaper).toBe(true);
+			assert.isNotNull(result);
+			expect(result.percent).toBe(25);
+			expect(result.cheaper).toBe(true);
 		});
 
 		it("should calculate price comparison when current price is more expensive", () => {
@@ -27,9 +27,9 @@ describe("PriceFormatter", () => {
 				wncgPrice,
 			);
 
-			expect(result).not.toBeNull(); //
-			expect(result!.percent).toBe(50);
-			expect(result!.cheaper).toBe(false);
+			assert.isNotNull(result);
+			expect(result.percent).toBe(50);
+			expect(result.cheaper).toBe(false);
 		});
 
 		it("should return null for mismatched currencies", () => {

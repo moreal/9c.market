@@ -31,7 +31,7 @@ const NetworkContext = createContext<NetworkContextType>();
  */
 export function NetworkProvider(props: NetworkProviderProps) {
 	const [network, setNetwork] = makePersisted(
-		createSignal<NetworkType>(config.networks.defaultNetwork),
+		createSignal<NetworkType>(config.networks.defaultNetwork), // eslint-disable-line solid/reactivity
 		{
 			storage: cookieStorage,
 		},

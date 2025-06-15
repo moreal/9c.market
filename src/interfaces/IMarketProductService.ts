@@ -1,4 +1,4 @@
-import type { Component } from "solid-js";
+import type { Accessor, Component } from "solid-js";
 import type { ItemProduct, MarketItemProductsResponse } from "~/types/market";
 import type { NetworkType } from "~/contexts/NetworkContext";
 import type { ItemSubType } from "~/types/item";
@@ -32,4 +32,6 @@ export interface IProductSortService {
  * Interface for product list renderer component
  * Follows SRP by focusing only on rendering concerns
  */
-export type IProductListRenderer = Component<{ products: ItemProduct[] }>;
+export type IProductListRenderer = Component<{
+	products: Accessor<ItemProduct[]>;
+}>;

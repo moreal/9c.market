@@ -1,4 +1,4 @@
-import { For, type JSX } from "solid-js";
+import { For, Match, Switch, type JSX } from "solid-js";
 import { Dropdown } from "~/components/ui/Dropdown";
 import HeroiconsOutlineChevronDown from "~icons/heroicons-outline/chevron-down";
 import { useItemSubType } from "~/contexts/ItemSubTypeContext";
@@ -129,20 +129,22 @@ function ItemSubTypeSelector(
 		setItemSubType(selectedSubType);
 	};
 
-	if (variant === "compact") {
-		return (
-			<CompactItemSubTypeSelector
-				class={props.class}
-				onItemSubTypeSelect={handleItemSubTypeSelect}
-			/>
-		);
-	}
-
 	return (
-		<PrimaryItemSubTypeSelector
-			class={props.class}
-			onItemSubTypeSelect={handleItemSubTypeSelect}
-		/>
+		<Switch
+			fallback={
+				<PrimaryItemSubTypeSelector
+					class={props.class}
+					onItemSubTypeSelect={handleItemSubTypeSelect}
+				/>
+			}
+		>
+			<Match when={variant === "compact"}>
+				<CompactItemSubTypeSelector
+					class={props.class}
+					onItemSubTypeSelect={handleItemSubTypeSelect}
+				/>
+			</Match>
+		</Switch>
 	);
 }
 

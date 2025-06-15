@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { CurrencyConverter } from "~/services/CurrencyConverter";
 import type { CurrencyTicker } from "~/types/Currency";
-import { MoneyFactory, MoneyUtils } from "~/types/Money";
+import { MoneyFactory } from "~/types/Money";
 
 describe("CurrencyConverter", () => {
 	const mockExchangeRates: Record<CurrencyTicker, number> = {

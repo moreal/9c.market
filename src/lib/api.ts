@@ -26,7 +26,6 @@ export const marketApi = {
 				data.map(async (category) => {
 					const enhancedProducts = await this.attachNetworkPrices(
 						category.product_list,
-						networkName,
 					);
 
 					return {
@@ -46,10 +45,7 @@ export const marketApi = {
 	/**
 	 * Attach network prices to products
 	 */
-	async attachNetworkPrices(
-		products: ProductData[],
-		network: NetworkType,
-	): Promise<Product[]> {
+	async attachNetworkPrices(products: ProductData[]): Promise<Product[]> {
 		try {
 			// Enhance each product with its USD price from price_list
 			return products.map((product) => {

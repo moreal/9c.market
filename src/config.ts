@@ -1,4 +1,3 @@
-import type { CurrencyTicker } from "./types/Currency";
 import type { NetworkType } from "./contexts/NetworkContext";
 
 /**
