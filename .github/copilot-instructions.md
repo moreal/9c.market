@@ -23,9 +23,6 @@ The goal of this document is to provide guidelines and best practices for improv
 - SolidStart: https://context7.com/solidjs/solid-start/llms.txt
 - SolidUI: https://context7.com/stefan-karger/solid-ui/llms.txt
 
-**Frontend Design Guidelines**: For frontend code design principles, patterns, and best practices, refer to:
-- `.cursor/rules/toss-frontend-rules.mdc`: Contains guidelines for readability, predictability, cohesion, and coupling in frontend code
-
 ## Improvement Directions and Considerations
 
 ### 1. Code Style and Consistency
@@ -33,7 +30,6 @@ The goal of this document is to provide guidelines and best practices for improv
 -   Maintain consistent code style by adhering to Prettier and ESLint configurations.
 -   Use meaningful variable, function, and class names.
 -   Write clear and concise comments only when necessary (retain already well-written comments).
--   Follow the frontend design guidelines in `.cursor/rules/toss-frontend-rules.mdc` for improved readability, predictability, cohesion, and coupling.
 
 ### 2. Strengthening SOLID Principles Application
 
