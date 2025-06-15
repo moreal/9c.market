@@ -98,3 +98,4 @@ Always run `yarn validate` after code changes - this is mandatory per project gu
 
 ## Git Commit Guidelines
 - Commit for each job with Co-Authored-by Claude
+- Commit when every phase(or step) finished.
