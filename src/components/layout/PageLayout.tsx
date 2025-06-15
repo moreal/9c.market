@@ -41,7 +41,7 @@ export default function PageLayout(props: PageLayoutProps) {
 
 	const errorConfig = () =>
 		props.errorConfig ?? {
-			title: "오류가 발생했습니다",
+			title: "An error occurred",
 			showReloadButton: true,
 			onReload: () => window.location.reload(),
 		};
@@ -64,7 +64,7 @@ export default function PageLayout(props: PageLayoutProps) {
 								onClick={errorConfig().onReload}
 								class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
 							>
-								페이지 새로고침
+								Reload Page
 							</button>
 						)}
 					</div>
