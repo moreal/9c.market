@@ -118,28 +118,28 @@ export const ErrorHandler = {
 	},
 
 	/**
-	 * Converts errors to user-friendly messages in Korean
+	 * Converts errors to user-friendly messages in English
 	 * @param error - The error to convert
 	 * @returns User-friendly error message
 	 */
 	getUserFriendlyMessage(error: unknown): string {
 		if (this.isMarketServiceError(error)) {
-			return `데이터를 불러오는 중 오류가 발생했습니다: ${error.message}`;
+			return `An error occurred while loading data: ${error.message}`;
 		}
 
 		if (this.isSortServiceError(error)) {
-			return `정렬 중 오류가 발생했습니다: ${error.message}`;
+			return `An error occurred during sorting: ${error.message}`;
 		}
 
 		if (this.isRenderServiceError(error)) {
-			return `화면을 표시하는 중 오류가 발생했습니다: ${error.message}`;
+			return `An error occurred while displaying the screen: ${error.message}`;
 		}
 
 		if (isError(error)) {
-			return `오류가 발생했습니다: ${error.message}`;
+			return `An error occurred: ${error.message}`;
 		}
 
-		return "알 수 없는 오류가 발생했습니다.";
+		return "An unknown error occurred.";
 	},
 
 	/**

@@ -5,7 +5,7 @@ import Nav from "~/components/nav/Nav";
 import "./app.css";
 import { Providers } from "./contexts/Providers";
 import { ErrorFallback } from "~/components/error/ErrorFallback";
-import { LoadingSpinner } from "~/components/common/LoadingSpinner";
+import LoadingSpinner from "~/components/ui/LoadingSpinner";
 
 export default function App() {
 	return (

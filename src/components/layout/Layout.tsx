@@ -1,5 +1,5 @@
 import { type Component, type JSX, splitProps } from "solid-js";
-import { Nav } from "~/components/layout/Nav";
+import Nav from "~/components/nav/Nav";
 
 interface LayoutProps {
 	showNav?: boolean;
