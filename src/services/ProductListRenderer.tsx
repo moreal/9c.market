@@ -3,7 +3,6 @@ import type { ItemProduct } from "~/types/market";
 import { MarketProduct } from "~/components/market/MarketProduct";
 import {
 	NoProductsMessage,
-	ProductRenderError,
 	ProductErrorBoundary,
 } from "~/components/error/ProductErrorBoundary";
 
@@ -20,13 +19,7 @@ export const ProductListRenderer: Component<{
 	return (
 		<ProductErrorBoundary>
 			<For each={local.products()} fallback={<NoProductsMessage />}>
-				{(product) => {
-					try {
-						return <MarketProduct product={product} />;
-					} catch {
-						return <ProductRenderError productId={product.productId} />;
-					}
-				}}
+				{(product) => <MarketProduct product={product} />}
 			</For>
 		</ProductErrorBoundary>
 	);

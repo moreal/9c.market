@@ -11,19 +11,6 @@ export const NoProductsMessage = () => {
 };
 
 /**
- * Error message component for individual product rendering errors
- * Follows SRP by handling only product-specific error display
- */
-export const ProductRenderError = (props: { productId: string }) => {
-	return (
-		<div class="bg-red-50 border border-red-200 rounded p-4 mb-2">
-			<p class="text-red-700">Error displaying product.</p>
-			<p class="text-red-500 text-sm">Product ID: {props.productId}</p>
-		</div>
-	);
-};
-
-/**
  * Error boundary wrapper for product list rendering
  * Follows SRP by handling only error boundary concerns
  */
